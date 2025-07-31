@@ -33,6 +33,7 @@
             --dropdown-hover-text: #1f2937;
             --main-font: 'Space Grotesk', sans-serif;
             --display-font: 'Space Grotesk', sans-serif;
+            --background-image: none;
         }
 
         * {
@@ -48,6 +49,25 @@
             overflow-x: hidden;
             line-height: 1.6;
             transition: all 0.3s ease;
+            position: relative;
+        }
+
+        /* Background Image Support */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: var(--background-image);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.3;
+            transition: all 0.5s ease;
         }
 
         /* Animated Background */
@@ -120,8 +140,9 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .nav-item {
@@ -134,6 +155,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
             position: relative;
+            white-space: nowrap;
         }
 
         .nav-link:hover {
@@ -155,12 +177,8 @@
             width: 100%;
         }
 
-        /* Version Selector */
-        .version-selector {
-            position: relative;
-        }
-
-        .version-btn {
+        /* Selector Buttons */
+        .selector-btn {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             color: var(--text-light);
@@ -169,14 +187,20 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
-        .version-btn:hover {
+        .selector-btn:hover {
             background: var(--skill-hover-bg);
             color: var(--skill-hover-text);
         }
 
-        .version-dropdown {
+        /* Dropdown Containers */
+        .dropdown, .version-selector, .background-selector {
+            position: relative;
+        }
+
+        .dropdown-content, .version-dropdown, .background-dropdown {
             position: absolute;
             top: 100%;
             right: 0;
@@ -193,13 +217,15 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .version-selector:hover .version-dropdown {
+        .dropdown:hover .dropdown-content,
+        .version-selector:hover .version-dropdown,
+        .background-selector:hover .background-dropdown {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
 
-        .version-option {
+        .dropdown-item, .version-option, .background-option {
             display: block;
             padding: 1rem 1.5rem;
             color: var(--dropdown-text);
@@ -210,65 +236,24 @@
             font-weight: 500;
         }
 
-        .version-option:last-child {
+        .dropdown-item:last-child, 
+        .version-option:last-child,
+        .background-option:last-child {
             border-bottom: none;
         }
 
-        .version-option:hover {
+        .dropdown-item:hover,
+        .version-option:hover,
+        .background-option:hover {
             background: var(--dropdown-hover-bg);
             color: var(--dropdown-hover-text);
         }
 
-        .version-option.active {
+        .version-option.active,
+        .background-option.active {
             background: var(--skill-hover-bg);
             color: var(--skill-hover-text);
             font-weight: 600;
-        }
-
-        /* Dropdown */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-content {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: var(--dropdown-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--dropdown-border);
-            border-radius: 10px;
-            min-width: 250px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .dropdown:hover .dropdown-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-item {
-            display: block;
-            padding: 1rem 1.5rem;
-            color: var(--dropdown-text);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-item:hover {
-            background: var(--dropdown-hover-bg);
-            color: var(--dropdown-hover-text);
         }
 
         .dropdown-item .item-desc {
@@ -360,6 +345,8 @@
             padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .section-title {
@@ -382,6 +369,8 @@
             padding: 3rem;
             margin-bottom: 2rem;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
         }
 
         .resume-content:hover {
@@ -591,6 +580,32 @@
             margin-top: 0.3rem;
         }
 
+        /* PDF Download Section */
+        .download-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--primary-gradient);
+            color: var(--text-contrast);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
         /* Theme Variants - All Minimalist Based */
         .theme-light {
             --primary-gradient: linear-gradient(135deg, #374151 0%, #6b7280 100%);
@@ -705,11 +720,24 @@
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .nav-menu {
+                gap: 0.8rem;
+                justify-content: center;
+            }
+
+            .nav-container {
+                flex-direction: column;
                 gap: 1rem;
+                padding: 0 1rem;
+            }
+
+            .selector-btn {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
             }
             
             .hero {
                 padding: 0 1rem;
+                margin-top: 120px;
             }
             
             .resume-content {
@@ -721,9 +749,9 @@
                 gap: 1rem;
             }
             
-            .dropdown-content, .version-dropdown {
+            .dropdown-content, .version-dropdown, .background-dropdown {
                 position: fixed;
-                top: 80px;
+                top: 120px;
                 left: 1rem;
                 right: 1rem;
                 width: auto;
@@ -732,6 +760,14 @@
             .skill-modal-content {
                 margin: 1rem;
                 padding: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .certifications-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -801,17 +837,44 @@
                         </a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">RTPSUG ▼</a>
+                    <div class="dropdown-content">
+                        <a href="https://www.meetup.com/research-triangle-powershell-users-group/" target="_blank" class="dropdown-item">
+                            <strong>Meetup Group</strong>
+                            <div class="item-desc">Join our monthly meetings</div>
+                        </a>
+                        <a href="https://www.youtube.com/@ResearchTrianglePowerShellU" target="_blank" class="dropdown-item">
+                            <strong>YouTube Channel</strong>
+                            <div class="item-desc">Watch past presentations</div>
+                        </a>
+                        <a href="https://rtpsug.com/" target="_blank" class="dropdown-item">
+                            <strong>RTPSUG Website</strong>
+                            <div class="item-desc">Main group website</div>
+                        </a>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a href="https://linkedin.com/in/kevinlaux" target="_blank" class="nav-link">LinkedIn</a>
                 </li>
                 <li class="nav-item version-selector">
-                    <button class="version-btn">Colors ▼</button>
+                    <button class="selector-btn">Colors ▼</button>
                     <div class="version-dropdown">
                         <div class="version-option active" onclick="changeTheme('light')">⚪ Light Gray</div>
                         <div class="version-option" onclick="changeTheme('slate')">🔵 Slate Blue</div>
                         <div class="version-option" onclick="changeTheme('stone')">🤎 Warm Stone</div>
                         <div class="version-option" onclick="changeTheme('zinc')">⚫ Cool Zinc</div>
                         <div class="version-option" onclick="changeTheme('neutral')">⬛ Pure Neutral</div>
+                    </div>
+                </li>
+                <li class="nav-item background-selector">
+                    <button class="selector-btn">Background ▼</button>
+                    <div class="background-dropdown">
+                        <div class="background-option" onclick="setBackground('tech')">💻 Tech Circuit</div>
+                        <div class="background-option" onclick="setBackground('abstract')">🎨 Abstract Waves</div>
+                        <div class="background-option" onclick="setBackground('geometric')">📐 Geometric</div>
+                        <div class="background-option" onclick="setBackground('minimal')">✨ Minimal Lines</div>
+                        <div class="background-option" onclick="setBackground('corporate')">🏢 Corporate</div>
                     </div>
                 </li>
             </ul>
@@ -851,7 +914,7 @@
             <div class="contact-info">
                 <h1>Kevin Laux</h1>
                 <div class="contact-links">
-                    <a href="mailto:rsrychro@gmail.com" class="contact-link">rsrychro@gmail.com</a>
+                    <a href="mailto:resume@kevinlaux.com" class="contact-link">resume@kevinlaux.com</a>
                     <a href="https://linkedin.com/in/kevinlaux" target="_blank" class="contact-link">LinkedIn Profile</a>
                     <a href="https://github.com/KevinLaux" target="_blank" class="contact-link">GitHub Portfolio</a>
                 </div>
@@ -1022,10 +1085,26 @@
                     </div>
                 </div>
             </div>
+
+            <!-- PDF Download Section -->
+            <div class="download-section">
+                <a href="#" onclick="generatePDF()" class="download-btn">
+                    📄 Download PDF Resume
+                </a>
+            </div>
         </div>
     </section>
 
     <script>
+        // Background image URLs (using Unsplash for high-quality images)
+        const backgrounds = {
+            tech: 'url("https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")',
+            abstract: 'url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")',
+            geometric: 'url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")',
+            minimal: 'url("https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")',
+            corporate: 'url("https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")'
+        };
+
         // Skills modal functionality
         function showSkillModal(skill, description) {
             document.getElementById('skillTitle').textContent = skill;
@@ -1051,6 +1130,30 @@
             }
         });
 
+        // Background management
+        function setBackground(backgroundType) {
+            const currentBackground = localStorage.getItem('current-background');
+            
+            if (currentBackground === backgroundType) {
+                // Remove background if same one is selected
+                document.documentElement.style.setProperty('--background-image', 'none');
+                localStorage.removeItem('current-background');
+                // Remove active state from all background options
+                document.querySelectorAll('.background-option').forEach(option => {
+                    option.classList.remove('active');
+                });
+            } else {
+                // Set new background
+                document.documentElement.style.setProperty('--background-image', backgrounds[backgroundType]);
+                localStorage.setItem('current-background', backgroundType);
+                // Update active state
+                document.querySelectorAll('.background-option').forEach(option => {
+                    option.classList.remove('active');
+                });
+                event.target.classList.add('active');
+            }
+        }
+
         // Theme switching functionality
         function changeTheme(theme) {
             const body = document.body;
@@ -1073,20 +1176,64 @@
             localStorage.setItem('preferred-theme', theme);
         }
 
-        // Load saved theme on page load
+        // PDF Generation
+        function generatePDF() {
+            // Simple PDF generation approach
+            const resumeContent = document.querySelector('.resume-content').innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Kevin Laux - Resume</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; color: #333; line-height: 1.6; }
+                        h1 { color: #1f2937; border-bottom: 2px solid #1f2937; padding-bottom: 10px; }
+                        h2 { color: #4b5563; border-left: 4px solid #4b5563; padding-left: 15px; margin-top: 30px; }
+                        h3 { color: #1f2937; margin-bottom: 5px; }
+                        .period { color: #6b7280; font-weight: bold; margin-bottom: 10px; }
+                        .job { margin-bottom: 25px; padding: 15px; border-left: 3px solid #1f2937; background: #f9fafb; }
+                        ul { margin: 10px 0; padding-left: 20px; }
+                        li { margin-bottom: 5px; }
+                        .skills-grid, .certifications-grid { display: none; }
+                        .download-section { display: none; }
+                        .contact-links { margin: 10px 0; }
+                        .contact-link { margin-right: 20px; color: #1f2937; }
+                        @media print { body { margin: 0; } }
+                    </style>
+                </head>
+                <body>
+                    ${resumeContent}
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            setTimeout(() => {
+                printWindow.print();
+            }, 500);
+        }
+
+        // Load saved preferences on page load
         document.addEventListener('DOMContentLoaded', function() {
+            // Load theme
             const savedTheme = localStorage.getItem('preferred-theme') || 'light';
-            // Find and activate the correct theme option
             const themeOption = document.querySelector(`[onclick="changeTheme('${savedTheme}')"]`);
             if (themeOption) {
-                // Remove active from all
                 document.querySelectorAll('.version-option').forEach(option => {
                     option.classList.remove('active');
                 });
-                // Add active to saved theme
                 themeOption.classList.add('active');
-                // Apply theme
                 document.body.className = `theme-${savedTheme}`;
+            }
+
+            // Load background
+            const savedBackground = localStorage.getItem('current-background');
+            if (savedBackground && backgrounds[savedBackground]) {
+                document.documentElement.style.setProperty('--background-image', backgrounds[savedBackground]);
+                const backgroundOption = document.querySelector(`[onclick="setBackground('${savedBackground}')"]`);
+                if (backgroundOption) {
+                    backgroundOption.classList.add('active');
+                }
             }
         });
 
