@@ -3,42 +3,782 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kevin Laux - Resume</title>
-    <meta http-equiv="refresh" content="0; url=/resume/">
+    <title>Kevin Laux - DevOps Engineer & Technology Leader</title>
+    <meta name="description" content="Kevin Laux - Principal DevOps Engineer, PowerShell Expert, and Technology Leader">
+    <meta name="keywords" content="DevOps, PowerShell, Azure, Automation, Engineering Manager, Technology Leader">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            padding: 50px; 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+            --accent-blue: #00d4ff;
+            --accent-purple: #b794f6;
+            --accent-pink: #f093fb;
+            --text-light: #ffffff;
+            --text-dark: #2d3748;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
         }
-        .container {
-            background: rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            display: inline-block;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        a { 
-            color: #fff; 
-            text-decoration: none; 
-            background: rgba(255,255,255,0.2);
-            padding: 10px 20px;
-            border-radius: 5px;
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: var(--dark-gradient);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--dark-gradient);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, var(--accent-blue) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--accent-purple) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, var(--accent-pink) 0%, transparent 50%);
+            opacity: 0.1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(2deg); }
+            66% { transform: translateY(20px) rotate(-2deg); }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(12, 12, 12, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 0;
             transition: all 0.3s ease;
         }
-        a:hover {
-            background: rgba(255,255,255,0.3);
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(12, 12, 12, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            min-width: 250px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: var(--glass-bg);
+            color: var(--accent-blue);
+        }
+
+        .dropdown-item .item-desc {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 0.2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(102, 126, 234, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 40px rgba(102, 126, 234, 0.5); }
+            to { text-shadow: 0 0 60px rgba(102, 126, 234, 0.8), 0 0 80px rgba(118, 75, 162, 0.5); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            color: var(--accent-blue);
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+        }
+
+        .cta-button:hover {
             transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Resume Section */
+        .resume-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .resume-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .resume-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .contact-info h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-pink);
+            transform: scale(1.1);
+        }
+
+        .resume-section-item {
+            margin-bottom: 3rem;
+        }
+
+        .resume-section-item h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-purple);
+            border-left: 4px solid var(--accent-purple);
+            padding-left: 1rem;
+        }
+
+        .job {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .job h3 {
+            font-size: 1.4rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .job .period {
+            color: var(--accent-pink);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .job ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .job li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .job li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent-purple);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-blue);
+            color: var(--text-dark);
+            transform: scale(1.05);
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .cert-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+            
+            .hero {
+                padding: 0 1rem;
+            }
+            
+            .resume-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .dropdown-content {
+                position: fixed;
+                top: 80px;
+                left: 1rem;
+                right: 1rem;
+                width: auto;
+            }
+        }
+
+        /* Scroll Effects */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Kevin Laux</h1>
-        <p>Redirecting to resume...</p>
-        <p><a href="/resume/">View Resume</a></p>
-    </div>
+    <div class="bg-animation"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">KEVIN LAUX</div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#resume" class="nav-link">Resume</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Presentations ▼</a>
+                    <div class="dropdown-content">
+                        <a href="https://github.com/KevinLaux/ATOM" target="_blank" class="dropdown-item">
+                            <strong>ATOM Editor & PowerShell</strong>
+                            <div class="item-desc">PowerShell Core presentation content</div>
+                        </a>
+                        <a href="https://github.com/KevinLaux/GUI" target="_blank" class="dropdown-item">
+                            <strong>PowerShell GUI Development</strong>
+                            <div class="item-desc">Advanced GUI scripting techniques</div>
+                        </a>
+                        <a href="https://github.com/KevinLaux/introtodocker" target="_blank" class="dropdown-item">
+                            <strong>Introduction to Docker</strong>
+                            <div class="item-desc">Containerization fundamentals</div>
+                        </a>
+                        <a href="https://github.com/KevinLaux/wordle" target="_blank" class="dropdown-item">
+                            <strong>PowerShell Wordle</strong>
+                            <div class="item-desc">Game development in PowerShell</div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Projects ▼</a>
+                    <div class="dropdown-content">
+                        <a href="https://github.com/KevinLaux/m3u2strm" target="_blank" class="dropdown-item">
+                            <strong>M3U2STRM</strong>
+                            <div class="item-desc">IPTV content organizer for media servers</div>
+                        </a>
+                        <a href="https://github.com/KevinLaux/GoodberrysFlavoroftheDay" target="_blank" class="dropdown-item">
+                            <strong>Goodberrys Flavor Parser</strong>
+                            <div class="item-desc">Web scraping module for ice cream flavors</div>
+                        </a>
+                        <a href="https://github.com/KevinLaux/MyScripts" target="_blank" class="dropdown-item">
+                            <strong>PowerShell Scripts</strong>
+                            <div class="item-desc">Collection of automation scripts</div>
+                        </a>
+                        <a href="https://github.com/KevinLaux" target="_blank" class="dropdown-item">
+                            <strong>View All Projects</strong>
+                            <div class="item-desc">Complete GitHub repository list</div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="https://linkedin.com/in/kevinlaux" target="_blank" class="nav-link">LinkedIn</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">KEVIN LAUX</h1>
+            <p class="hero-subtitle">Principal DevOps Engineer & Technology Leader</p>
+            <p class="hero-description">
+                Transforming complex platforms through automation, orchestration, and innovative DevOps practices. 
+                Leading teams to deliver mission-critical solutions while mentoring the next generation of engineers.
+            </p>
+            <div class="hero-cta">
+                <a href="#resume" class="cta-button cta-primary">View Resume</a>
+                <a href="https://linkedin.com/in/kevinlaux" target="_blank" class="cta-button cta-secondary">Connect on LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume-section">
+        <h2 class="section-title">Professional Resume</h2>
+        <div class="resume-content fade-in">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h1>Kevin Laux</h1>
+                <div class="contact-links">
+                    <a href="mailto:rsrychro@gmail.com" class="contact-link">rsrychro@gmail.com</a>
+                    <a href="https://linkedin.com/in/kevinlaux" target="_blank" class="contact-link">LinkedIn Profile</a>
+                    <a href="https://github.com/KevinLaux" target="_blank" class="contact-link">GitHub Portfolio</a>
+                </div>
+            </div>
+
+            <!-- Professional Summary -->
+            <div class="resume-section-item">
+                <h2>Professional Summary</h2>
+                <p>Experienced technology leader with a passion for automating and orchestrating complex platforms. Adept in leading cross-functional teams to improve quality, reduce downtime, and increase efficiency. Skilled in DevOps practices and implementing Git, CI/CD pipelines, and Agile methodologies. Strong knowledge of application platforms including Docker, .Net, Ansible, Elastic, IIS and more. Proven ability to write advanced PowerShell scripts and experienced with deployment using BladeLogic and SCCM. Holds certifications in AZ-900 Azure Fundamentals, ITIL Foundation, ITIL CSI, SAFe 4/5, MCSA Windows 7, MCITP Enterprise Desktop Administrator (Windows 7), Network+. A champion of learning and growth, regularly encouraging and mentoring team members to up-skill and pursue certifications.</p>
+                
+                <p style="margin-top: 1rem;">In my spare time, I am also a dedicated leader of the Research Triangle PowerShell User Group. Our group is the largest PowerShell community and we hold monthly meetings where we share knowledge and educate individuals on PowerShell and its related technologies. I believe in the power of collaboration and sharing and I am proud to be part of this community.</p>
+                
+                <p style="margin-top: 1rem;">Additionally, I am dedicated to providing training and education to my colleagues. I host training sessions on API's, Azure, Containers, and PowerShell, and I have also been invited to contribute to books and speak at conferences. My goal is to empower others with the knowledge and skills they need to succeed in the fast-paced world of technology.</p>
+            </div>
+
+            <!-- Professional Experience -->
+            <div class="resume-section-item">
+                <h2>Professional Experience</h2>
+                
+                <div class="job">
+                    <h3>Principal DevOps Engineer - MetLife</h3>
+                    <div class="period">2024-01-01 - Present</div>
+                    <p>Architected and delivered the strategic roadmap for multiple mission-critical projects on the application platform.</p>
+                    <ul>
+                        <li>Spearheaded the upgrade of the IBM Workload Scheduler platform to version 10.2, a complex project involving over 2,500 agents and processing more than a million jobs per month. Achieved a flawless execution with zero downtime or interruption to schedule jobs.</li>
+                        <li>Engineered and implemented new technologies to enhance the fault tolerance and robustness of the scheduling platform.</li>
+                        <li>Identified and realized significant cost savings, achieving a $2.5 million cost avoidance for the platform and an additional $15 million across the product suite through a comprehensive licensing audit.</li>
+                        <li>Technical lead for the migration and modernization of our 1Desk based automation framework to Ansible for APT. This included the integration of Ansible, Elastic, Zenoss and Service Now for automated incident handling.</li>
+                        <li>Played a pivotal role in shaping the direction of major self-service initiative. This initiative will enable cross-platform application deployments in on premises OpenShift (both x86 and Z) as well as cloud based Azure Kubernetes Service (AKS).</li>
+                        <li>Mentored, developed, and provided technical direction to engineers within the organization, fostering growth and expertise.</li>
+                        <li>Hosted and led internal user groups to evangelize automation best practices and establish organization-wide standards.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <h3>Orchestration Platform Manager - MetLife</h3>
+                    <div class="period">2022-04-01 - 2024-01-01</div>
+                    <p>As an Orchestration Platform Manager with over 7 years of experience at MetLife, I lead a team of engineers in the development, design, deployment, and support of orchestration and automation platforms. With a focus on driving technical initiatives and fostering an environment of learning and personal growth for my team, I have successfully managed the migration from IPcenter to the 1Desk platform, resulting in a 50% improvement in quality of migrated automata.</p>
+                    <ul>
+                        <li>Lead a team of engineers in the development, design, deployment, and support of orchestration and automation platforms</li>
+                        <li>Worked with partner teams to automate and orchestrate tasks utilizing the 1Desk platform, saving thousands of hours annually</li>
+                        <li>Managed the successful migration from IPcenter to the 1Desk platform, resulting in a 50% improvement in quality of migrated automata</li>
+                        <li>Developed standards and documentation to improve platform stability, reduce downtime, and enhance connectivity</li>
+                        <li>Conducted data improvement activities leading to a 66% reduction in failed automata</li>
+                        <li>Championed DevOps initiatives to leverage git, CI/CD pipelines, and Agile methodologies</li>
+                        <li>Encouraged team members to complete certifications and acquire new technical skills</li>
+                        <li>Led the development of the Workflow Linter to ensure code quality in Production environments</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <h3>Container Engineering Manager - MetLife</h3>
+                    <div class="period">2019-07-01 - 2022-04-30</div>
+                    <p>Experienced manager with a strong background in container technologies. Skilled in leading cross-functional teams to design, implement, and support complex container orchestration systems.</p>
+                    <ul>
+                        <li>Led the expansion and scaling of the container environment, increasing capacity two-fold to handle seasonal spikes</li>
+                        <li>Managed multiple international projects deploying application platforms globally</li>
+                        <li>Worked with vendors on licensing renewals to reduce annual cost by over 30%</li>
+                        <li>Led Migration from legacy .Net platforms running Server 2008 to 2012R2</li>
+                        <li>Oversaw effort to retool teams' automation from BladeLogic to Chef</li>
+                        <li>Initiated cost saving efforts reducing cloud spend by over $700,000 annually</li>
+                        <li>Participated in Internship program to support and develop junior talent</li>
+                        <li>Hosted monthly onsite training sessions for upskilling teams to the infrastructure as code paradigm</li>
+                        <li>Automated the Image build process in Azure with pipelines</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <h3>.Net Infrastructure Senior Engineer - MetLife</h3>
+                    <div class="period">2018-07-01 - 2019-07-31</div>
+                    <p>Experienced Senior .Net Infrastructure Engineer with a track record of successfully designing, deploying, and maintaining highly available .Net applications.</p>
+                    <ul>
+                        <li>Worked with partners to migrate 50 .NET applications and 36 Servers to Server 2012</li>
+                        <li>Enacted multiple measures to tighten TLS security and harden proxy configurations</li>
+                        <li>Built a POC for running Windows workloads in containers</li>
+                        <li>Developed, maintained, and secured .NET Core images for .NET applications</li>
+                        <li>Maintained and secured Apache Proxy environment for Shared Application Platforms</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <h3>Virtualization Engineer - MetLife</h3>
+                    <div class="period">2015-07-01 - 2018-07-31</div>
+                    <p>As a Virtualization Engineer I was responsible for Citrix infrastructure and providing access to 30,000+ users globally. I developed the base server build in BladeLogic to configure and deploy applications to over 300 servers, saving thousands of operational hours.</p>
+                    <ul>
+                        <li>Developed our core build in BladeLogic to configure and deploy applications to over 600 servers in our farm. Automated the manual build process changing the metric from hours per server to servers per hour. Allowing us to build and configure hundreds of servers per night</li>
+                        <li>Developed and maintained several PowerShell scripts that monitored server status and queried server access for billing purposes</li>
+                        <li>10x quicker build times were achieved in our VDI space by fully automating the process and building new infrastructure</li>
+                        <li>Completed 2003 Server migration project moving over 250 published applications and desktops to Server 2008/2012 and Citrix XenApp 7.8</li>
+                        <li>Worked on global data center consolidation project, migrating Citrix farms from LATAM countries to our data center in the US. Simplified support and provided a more feature rich and stable environment</li>
+                        <li>Used AppSense and group policy to provide customization for published desktop and applications</li>
+                        <li>Created detailed documentation around packaging, deployment, scripts, operations, and software information</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="resume-section-item">
+                <h2>Education</h2>
+                <div class="job">
+                    <h3>B.S.B.A in Management Information Systems</h3>
+                    <p>University of North Carolina at Charlotte - Belk College of Business</p>
+                </div>
+                <div class="job">
+                    <h3>A.A. in General Education</h3>
+                    <p>Palm Beach Community College</p>
+                </div>
+            </div>
+
+            <!-- Key Skills -->
+            <div class="resume-section-item">
+                <h2>Key Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-tag">Cloud Infrastructure</div>
+                    <div class="skill-tag">DevOps & Automation</div>
+                    <div class="skill-tag">Container Technologies</div>
+                    <div class="skill-tag">Infrastructure as Code</div>
+                    <div class="skill-tag">CI/CD Pipelines</div>
+                    <div class="skill-tag">PowerShell Scripting</div>
+                    <div class="skill-tag">System Architecture</div>
+                    <div class="skill-tag">Team Leadership</div>
+                    <div class="skill-tag">Cost Optimization</div>
+                    <div class="skill-tag">Platform Migration</div>
+                    <div class="skill-tag">Troubleshooting</div>
+                    <div class="skill-tag">System Deployment</div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="resume-section-item">
+                <h2>Certifications</h2>
+                <div class="certifications-grid">
+                    <div class="cert-item">
+                        <strong>Microsoft Certified: Azure Fundamentals (AZ-900)</strong>
+                        <div class="item-desc">Microsoft</div>
+                    </div>
+                    <div class="cert-item">
+                        <strong>Certified SAFe® 5 Practitioner</strong>
+                        <div class="item-desc">Scaled Agile, Inc.</div>
+                    </div>
+                    <div class="cert-item">
+                        <strong>Certified SAFe® 4 Practitioner</strong>
+                        <div class="item-desc">Scaled Agile, Inc.</div>
+                    </div>
+                    <div class="cert-item">
+                        <strong>ITIL Foundation</strong>
+                        <div class="item-desc">Office of Government Commerce</div>
+                    </div>
+                    <div class="cert-item">
+                        <strong>ITIL CSI Intermediate</strong>
+                        <div class="item-desc">Office of Government Commerce</div>
+                    </div>
+                    <div class="cert-item">
+                        <strong>MCSA: Windows 7</strong>
+                        <div class="item-desc">Microsoft</div>
+                    </div>
+                    <div class="cert-item">
+                        <strong>MCITP: Enterprise Desktop Administrator</strong>
+                        <div class="item-desc">Microsoft</div>
+                    </div>
+                    <div class="cert-item">
+                        <strong>Network+</strong>
+                        <div class="item-desc">CompTIA</div>
+                    </div>
+                    <div class="cert-item">
+                        <strong>Power and Influence</strong>
+                        <div class="item-desc">NC State Executive Education</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(12, 12, 12, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(12, 12, 12, 0.95)';
+            }
+        });
+    </script>
 </body>
 </html>
