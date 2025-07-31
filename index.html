@@ -84,6 +84,11 @@
             transition: all 0.5s ease;
         }
 
+        /* Stronger overlay for corporate background for better readability */
+        body.has-background-image.corporate-bg::after {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
         /* Animated Background */
         .bg-animation {
             position: fixed;
@@ -884,10 +889,10 @@
                 <li class="nav-item background-selector">
                     <button class="selector-btn">Background ▼</button>
                     <div class="background-dropdown">
-                        <div class="background-option active" data-bg="none">❌ None</div>
-                        <div class="background-option" data-bg="tech">💻 Tech Circuit</div>
-                        <div class="background-option" data-bg="abstract">🎨 Abstract Waves</div>
-                        <div class="background-option" data-bg="geometric">📐 Geometric</div>
+                        <div class="background-option" data-bg="none">❌ None</div>
+                        <div class="background-option" data-bg="nature">🌿 Nature Landscape</div>
+                        <div class="background-option active" data-bg="abstract">🎨 Abstract Waves</div>
+                        <div class="background-option" data-bg="urban">🏙️ Urban Skyline</div>
                         <div class="background-option" data-bg="minimal">✨ Minimal Lines</div>
                         <div class="background-option" data-bg="corporate">🏢 Corporate</div>
                     </div>
@@ -1114,9 +1119,9 @@
         // Background image URLs (using Unsplash for high-quality images)
         const backgrounds = {
             none: 'none',
-            tech: 'url("https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #1a1a2e, #16213e)',
+            nature: 'url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #2d5016, #3e7b27)',
             abstract: 'url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #ee7752, #e73c7e)',
-            geometric: 'url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #23074d, #cc5333)',
+            urban: 'url("https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #1a1a2e, #16213e)',
             minimal: 'url("https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #667eea, #764ba2)',
             corporate: 'url("https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #2c3e50, #34495e)'
         };
@@ -1160,7 +1165,7 @@
             // Handle body class and animation visibility
             if (backgroundType === 'none') {
                 // Show animated background when no image is selected
-                body.classList.remove('has-background-image');
+                body.classList.remove('has-background-image', 'corporate-bg');
                 if (bgAnimation) {
                     bgAnimation.style.opacity = '1';
                 }
@@ -1168,6 +1173,14 @@
             } else {
                 // Add class for background image and reduce animated background
                 body.classList.add('has-background-image');
+                
+                // Special handling for corporate background
+                if (backgroundType === 'corporate') {
+                    body.classList.add('corporate-bg');
+                } else {
+                    body.classList.remove('corporate-bg');
+                }
+                
                 if (bgAnimation) {
                     bgAnimation.style.opacity = '0.1';
                 }
@@ -1288,8 +1301,8 @@
             console.log('Loading saved theme:', savedTheme);
             changeTheme(savedTheme);
 
-            // Load background
-            const savedBackground = localStorage.getItem('current-background') || 'none';
+            // Load background - default to abstract waves
+            const savedBackground = localStorage.getItem('current-background') || 'abstract';
             console.log('Loading saved background:', savedBackground);
             setBackground(savedBackground);
         });
