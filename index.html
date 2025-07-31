@@ -60,13 +60,27 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
+            z-index: -1;
             background-image: var(--background-image);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            opacity: 0.3;
+            opacity: 0.8;
+            transition: all 0.5s ease;
+        }
+
+        /* When background image is set, add subtle overlay for readability */
+        body.has-background-image::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: rgba(0, 0, 0, 0.3);
+            pointer-events: none;
             transition: all 0.5s ease;
         }
 
@@ -77,7 +91,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: -2;
             background: var(--dark-gradient);
             transition: all 0.3s ease;
         }
@@ -870,7 +884,7 @@
                 <li class="nav-item background-selector">
                     <button class="selector-btn">Background ▼</button>
                     <div class="background-dropdown">
-                        <div class="background-option" data-bg="none">❌ None</div>
+                        <div class="background-option active" data-bg="none">❌ None</div>
                         <div class="background-option" data-bg="tech">💻 Tech Circuit</div>
                         <div class="background-option" data-bg="abstract">🎨 Abstract Waves</div>
                         <div class="background-option" data-bg="geometric">📐 Geometric</div>
@@ -1100,11 +1114,11 @@
         // Background image URLs (using Unsplash for high-quality images)
         const backgrounds = {
             none: 'none',
-            tech: 'url("https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")',
-            abstract: 'url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")',
-            geometric: 'url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")',
-            minimal: 'url("https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")',
-            corporate: 'url("https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")'
+            tech: 'url("https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #1a1a2e, #16213e)',
+            abstract: 'url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #ee7752, #e73c7e)',
+            geometric: 'url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #23074d, #cc5333)',
+            minimal: 'url("https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #667eea, #764ba2)',
+            corporate: 'url("https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #2c3e50, #34495e)'
         };
 
         // Skills modal functionality
@@ -1136,9 +1150,39 @@
         function setBackground(backgroundType) {
             console.log('Setting background to:', backgroundType);
             
+            const bgAnimation = document.querySelector('.bg-animation');
+            const body = document.body;
+            
             // Set new background
             document.documentElement.style.setProperty('--background-image', backgrounds[backgroundType]);
             localStorage.setItem('current-background', backgroundType);
+            
+            // Handle body class and animation visibility
+            if (backgroundType === 'none') {
+                // Show animated background when no image is selected
+                body.classList.remove('has-background-image');
+                if (bgAnimation) {
+                    bgAnimation.style.opacity = '1';
+                }
+                document.documentElement.style.setProperty('--background-image', 'none');
+            } else {
+                // Add class for background image and reduce animated background
+                body.classList.add('has-background-image');
+                if (bgAnimation) {
+                    bgAnimation.style.opacity = '0.1';
+                }
+            }
+            
+            // Visual feedback - briefly highlight the selector button
+            const selectorBtn = document.querySelector('.background-selector .selector-btn');
+            if (selectorBtn) {
+                selectorBtn.style.background = 'var(--skill-hover-bg)';
+                selectorBtn.style.color = 'var(--skill-hover-text)';
+                setTimeout(() => {
+                    selectorBtn.style.background = '';
+                    selectorBtn.style.color = '';
+                }, 300);
+            }
             
             // Update active state
             document.querySelectorAll('.background-option').forEach(option => {
@@ -1147,6 +1191,9 @@
                     option.classList.add('active');
                 }
             });
+            
+            console.log('Background set successfully. Current --background-image:', 
+                getComputedStyle(document.documentElement).getPropertyValue('--background-image'));
         }
 
         // Theme switching functionality - Fixed implementation
