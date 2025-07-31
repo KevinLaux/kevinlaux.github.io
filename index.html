@@ -8,23 +8,31 @@
     <meta name="keywords" content="DevOps, PowerShell, Azure, Automation, Engineering Manager, Technology Leader">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Theme Variables - Updated dynamically */
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
-            --accent-blue: #00d4ff;
-            --accent-purple: #b794f6;
-            --accent-pink: #f093fb;
-            --text-light: #ffffff;
-            --text-dark: #2d3748;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --main-font: 'Inter', sans-serif;
-            --display-font: 'Orbitron', monospace;
-            --code-font: 'JetBrains Mono', monospace;
+            /* Base Minimalist Theme Variables */
+            --primary-gradient: linear-gradient(135deg, #374151 0%, #6b7280 100%);
+            --secondary-gradient: linear-gradient(135deg, #9ca3af 0%, #d1d5db 100%);
+            --dark-gradient: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            --accent-blue: #1f2937;
+            --accent-purple: #4b5563;
+            --accent-pink: #6b7280;
+            --text-light: #1f2937;
+            --text-contrast: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --nav-border: rgba(0, 0, 0, 0.1);
+            --skill-hover-bg: #1f2937;
+            --skill-hover-text: #ffffff;
+            --dropdown-bg: rgba(255, 255, 255, 0.98);
+            --dropdown-border: rgba(0, 0, 0, 0.15);
+            --dropdown-text: #1f2937;
+            --dropdown-hover-bg: #f3f4f6;
+            --dropdown-hover-text: #1f2937;
+            --main-font: 'Space Grotesk', sans-serif;
+            --display-font: 'Space Grotesk', sans-serif;
         }
 
         * {
@@ -83,9 +91,9 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(12, 12, 12, 0.95);
+            background: var(--nav-bg);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--nav-border);
             padding: 1rem 0;
             transition: all 0.3s ease;
         }
@@ -102,7 +110,7 @@
         .logo {
             font-family: var(--display-font);
             font-size: 1.8rem;
-            font-weight: 900;
+            font-weight: 700;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -164,24 +172,25 @@
         }
 
         .version-btn:hover {
-            background: var(--accent-blue);
-            color: var(--text-dark);
+            background: var(--skill-hover-bg);
+            color: var(--skill-hover-text);
         }
 
         .version-dropdown {
             position: absolute;
             top: 100%;
             right: 0;
-            background: rgba(12, 12, 12, 0.95);
+            background: var(--dropdown-bg);
             backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
+            border: 1px solid var(--dropdown-border);
             border-radius: 10px;
-            min-width: 200px;
+            min-width: 220px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
             transition: all 0.3s ease;
             margin-top: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         .version-selector:hover .version-dropdown {
@@ -193,11 +202,12 @@
         .version-option {
             display: block;
             padding: 1rem 1.5rem;
-            color: var(--text-light);
+            color: var(--dropdown-text);
             text-decoration: none;
             transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             cursor: pointer;
+            font-weight: 500;
         }
 
         .version-option:last-child {
@@ -205,13 +215,14 @@
         }
 
         .version-option:hover {
-            background: var(--glass-bg);
-            color: var(--accent-blue);
+            background: var(--dropdown-hover-bg);
+            color: var(--dropdown-hover-text);
         }
 
         .version-option.active {
-            background: var(--accent-blue);
-            color: var(--text-dark);
+            background: var(--skill-hover-bg);
+            color: var(--skill-hover-text);
+            font-weight: 600;
         }
 
         /* Dropdown */
@@ -223,9 +234,9 @@
             position: absolute;
             top: 100%;
             right: 0;
-            background: rgba(12, 12, 12, 0.95);
+            background: var(--dropdown-bg);
             backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
+            border: 1px solid var(--dropdown-border);
             border-radius: 10px;
             min-width: 250px;
             opacity: 0;
@@ -233,6 +244,7 @@
             transform: translateY(-10px);
             transition: all 0.3s ease;
             margin-top: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         .dropdown:hover .dropdown-content {
@@ -244,10 +256,10 @@
         .dropdown-item {
             display: block;
             padding: 1rem 1.5rem;
-            color: var(--text-light);
+            color: var(--dropdown-text);
             text-decoration: none;
             transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .dropdown-item:last-child {
@@ -255,8 +267,8 @@
         }
 
         .dropdown-item:hover {
-            background: var(--glass-bg);
-            color: var(--accent-blue);
+            background: var(--dropdown-hover-bg);
+            color: var(--dropdown-hover-text);
         }
 
         .dropdown-item .item-desc {
@@ -283,26 +295,19 @@
         .hero-title {
             font-family: var(--display-font);
             font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 900;
+            font-weight: 700;
             margin-bottom: 1rem;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 40px rgba(102, 126, 234, 0.5);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 40px rgba(102, 126, 234, 0.5); }
-            to { text-shadow: 0 0 60px rgba(102, 126, 234, 0.8), 0 0 80px rgba(118, 75, 162, 0.5); }
         }
 
         .hero-subtitle {
             font-size: clamp(1.2rem, 3vw, 2rem);
             margin-bottom: 2rem;
             color: var(--accent-blue);
-            font-weight: 300;
+            font-weight: 400;
         }
 
         .hero-description {
@@ -336,7 +341,7 @@
 
         .cta-primary {
             background: var(--primary-gradient);
-            color: white;
+            color: var(--text-contrast);
         }
 
         .cta-secondary {
@@ -347,7 +352,7 @@
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         /* Resume Section */
@@ -366,6 +371,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 600;
         }
 
         .resume-content {
@@ -380,7 +386,7 @@
 
         .resume-content:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .contact-info {
@@ -398,6 +404,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 600;
         }
 
         .contact-links {
@@ -412,11 +419,12 @@
             color: var(--accent-blue);
             text-decoration: none;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .contact-link:hover {
             color: var(--accent-pink);
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .resume-section-item {
@@ -430,12 +438,13 @@
             color: var(--accent-purple);
             border-left: 4px solid var(--accent-purple);
             padding-left: 1rem;
+            font-weight: 600;
         }
 
         .job {
             margin-bottom: 2.5rem;
             padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.4);
             border-radius: 10px;
             border-left: 3px solid var(--accent-blue);
         }
@@ -444,6 +453,7 @@
             font-size: 1.4rem;
             color: var(--accent-blue);
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .job .period {
@@ -487,12 +497,15 @@
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
+            font-weight: 500;
+            color: var(--text-light);
         }
 
         .skill-tag:hover {
-            background: var(--accent-blue);
-            color: var(--text-dark);
+            background: var(--skill-hover-bg);
+            color: var(--skill-hover-text);
             transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Skills Modal */
@@ -538,8 +551,8 @@
         }
 
         .skill-modal-close:hover {
-            background: var(--glass-bg);
-            color: var(--accent-pink);
+            background: var(--skill-hover-bg);
+            color: var(--skill-hover-text);
         }
 
         .skill-modal h3 {
@@ -550,6 +563,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 600;
         }
 
         .certifications-grid {
@@ -564,22 +578,21 @@
             border: 1px solid var(--glass-border);
             padding: 1rem;
             border-radius: 10px;
-            /* Removed hover effects */
         }
 
-        /* Theme Styles */
-        .theme-corporate {
-            --primary-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            --secondary-gradient: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
-            --dark-gradient: linear-gradient(135deg, #111827 0%, #1f2937 100%);
-            --accent-blue: #3b82f6;
-            --accent-purple: #8b5cf6;
-            --accent-pink: #ec4899;
-            --main-font: 'Inter', sans-serif;
-            --display-font: 'Inter', sans-serif;
+        .cert-item strong {
+            color: var(--text-light);
+            font-weight: 600;
         }
 
-        .theme-minimalist {
+        .cert-item .item-desc {
+            color: var(--accent-purple);
+            font-weight: 500;
+            margin-top: 0.3rem;
+        }
+
+        /* Theme Variants - All Minimalist Based */
+        .theme-light {
             --primary-gradient: linear-gradient(135deg, #374151 0%, #6b7280 100%);
             --secondary-gradient: linear-gradient(135deg, #9ca3af 0%, #d1d5db 100%);
             --dark-gradient: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
@@ -587,43 +600,106 @@
             --accent-purple: #4b5563;
             --accent-pink: #6b7280;
             --text-light: #1f2937;
+            --text-contrast: #ffffff;
             --glass-bg: rgba(255, 255, 255, 0.8);
             --glass-border: rgba(0, 0, 0, 0.1);
-            --main-font: 'Space Grotesk', sans-serif;
-            --display-font: 'Space Grotesk', sans-serif;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --nav-border: rgba(0, 0, 0, 0.1);
+            --skill-hover-bg: #1f2937;
+            --skill-hover-text: #ffffff;
+            --dropdown-bg: rgba(255, 255, 255, 0.98);
+            --dropdown-border: rgba(0, 0, 0, 0.15);
+            --dropdown-text: #1f2937;
+            --dropdown-hover-bg: #f3f4f6;
+            --dropdown-hover-text: #1f2937;
         }
 
-        .theme-creative {
-            --primary-gradient: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
-            --secondary-gradient: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
-            --dark-gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 100%);
-            --accent-blue: #06b6d4;
-            --accent-purple: #a855f7;
-            --accent-pink: #f59e0b;
-            --main-font: 'Poppins', sans-serif;
-            --display-font: 'Poppins', sans-serif;
+        .theme-slate {
+            --primary-gradient: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+            --secondary-gradient: linear-gradient(135deg, #475569 0%, #64748b 100%);
+            --dark-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            --accent-blue: #0f172a;
+            --accent-purple: #334155;
+            --accent-pink: #475569;
+            --text-light: #0f172a;
+            --text-contrast: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(15, 23, 42, 0.1);
+            --nav-bg: rgba(248, 250, 252, 0.95);
+            --nav-border: rgba(15, 23, 42, 0.1);
+            --skill-hover-bg: #0f172a;
+            --skill-hover-text: #f8fafc;
+            --dropdown-bg: rgba(248, 250, 252, 0.98);
+            --dropdown-border: rgba(15, 23, 42, 0.15);
+            --dropdown-text: #0f172a;
+            --dropdown-hover-bg: #e2e8f0;
+            --dropdown-hover-text: #0f172a;
         }
 
-        .theme-tech {
-            --primary-gradient: linear-gradient(135deg, #059669 0%, #10b981 100%);
-            --secondary-gradient: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
-            --dark-gradient: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
-            --accent-blue: #10b981;
-            --accent-purple: #06b6d4;
-            --accent-pink: #f59e0b;
-            --main-font: 'JetBrains Mono', monospace;
-            --display-font: 'JetBrains Mono', monospace;
+        .theme-stone {
+            --primary-gradient: linear-gradient(135deg, #292524 0%, #57534e 100%);
+            --secondary-gradient: linear-gradient(135deg, #78716c 0%, #a8a29e 100%);
+            --dark-gradient: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%);
+            --accent-blue: #292524;
+            --accent-purple: #57534e;
+            --accent-pink: #78716c;
+            --text-light: #292524;
+            --text-contrast: #fafaf9;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(41, 37, 36, 0.1);
+            --nav-bg: rgba(250, 250, 249, 0.95);
+            --nav-border: rgba(41, 37, 36, 0.1);
+            --skill-hover-bg: #292524;
+            --skill-hover-text: #fafaf9;
+            --dropdown-bg: rgba(250, 250, 249, 0.98);
+            --dropdown-border: rgba(41, 37, 36, 0.15);
+            --dropdown-text: #292524;
+            --dropdown-hover-bg: #f5f5f4;
+            --dropdown-hover-text: #292524;
         }
 
-        .theme-executive {
-            --primary-gradient: linear-gradient(135deg, #92400e 0%, #d97706 100%);
-            --secondary-gradient: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-            --dark-gradient: linear-gradient(135deg, #1c1917 0%, #292524 100%);
-            --accent-blue: #d97706;
-            --accent-purple: #a855f7;
-            --accent-pink: #ef4444;
-            --main-font: 'Inter', sans-serif;
-            --display-font: 'Inter', sans-serif;
+        .theme-zinc {
+            --primary-gradient: linear-gradient(135deg, #18181b 0%, #3f3f46 100%);
+            --secondary-gradient: linear-gradient(135deg, #52525b 0%, #71717a 100%);
+            --dark-gradient: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
+            --accent-blue: #18181b;
+            --accent-purple: #3f3f46;
+            --accent-pink: #52525b;
+            --text-light: #18181b;
+            --text-contrast: #fafafa;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(24, 24, 27, 0.1);
+            --nav-bg: rgba(250, 250, 250, 0.95);
+            --nav-border: rgba(24, 24, 27, 0.1);
+            --skill-hover-bg: #18181b;
+            --skill-hover-text: #fafafa;
+            --dropdown-bg: rgba(250, 250, 250, 0.98);
+            --dropdown-border: rgba(24, 24, 27, 0.15);
+            --dropdown-text: #18181b;
+            --dropdown-hover-bg: #f4f4f5;
+            --dropdown-hover-text: #18181b;
+        }
+
+        .theme-neutral {
+            --primary-gradient: linear-gradient(135deg, #171717 0%, #404040 100%);
+            --secondary-gradient: linear-gradient(135deg, #525252 0%, #737373 100%);
+            --dark-gradient: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            --accent-blue: #171717;
+            --accent-purple: #404040;
+            --accent-pink: #525252;
+            --text-light: #171717;
+            --text-contrast: #fafafa;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(23, 23, 23, 0.1);
+            --nav-bg: rgba(250, 250, 250, 0.95);
+            --nav-border: rgba(23, 23, 23, 0.1);
+            --skill-hover-bg: #171717;
+            --skill-hover-text: #fafafa;
+            --dropdown-bg: rgba(250, 250, 250, 0.98);
+            --dropdown-border: rgba(23, 23, 23, 0.15);
+            --dropdown-text: #171717;
+            --dropdown-hover-bg: #f5f5f5;
+            --dropdown-hover-text: #171717;
         }
 
         /* Mobile Responsiveness */
@@ -672,7 +748,7 @@
         }
     </style>
 </head>
-<body class="theme-futuristic">
+<body class="theme-light">
     <div class="bg-animation"></div>
     
     <!-- Navigation -->
@@ -729,14 +805,13 @@
                     <a href="https://linkedin.com/in/kevinlaux" target="_blank" class="nav-link">LinkedIn</a>
                 </li>
                 <li class="nav-item version-selector">
-                    <button class="version-btn">Themes ▼</button>
+                    <button class="version-btn">Colors ▼</button>
                     <div class="version-dropdown">
-                        <div class="version-option active" onclick="changeTheme('futuristic')">🚀 Futuristic</div>
-                        <div class="version-option" onclick="changeTheme('corporate')">🏢 Corporate</div>
-                        <div class="version-option" onclick="changeTheme('minimalist')">✨ Minimalist</div>
-                        <div class="version-option" onclick="changeTheme('creative')">🎨 Creative</div>
-                        <div class="version-option" onclick="changeTheme('tech')">⚡ Tech</div>
-                        <div class="version-option" onclick="changeTheme('executive')">👔 Executive</div>
+                        <div class="version-option active" onclick="changeTheme('light')">⚪ Light Gray</div>
+                        <div class="version-option" onclick="changeTheme('slate')">🔵 Slate Blue</div>
+                        <div class="version-option" onclick="changeTheme('stone')">🤎 Warm Stone</div>
+                        <div class="version-option" onclick="changeTheme('zinc')">⚫ Cool Zinc</div>
+                        <div class="version-option" onclick="changeTheme('neutral')">⬛ Pure Neutral</div>
                     </div>
                 </li>
             </ul>
@@ -979,17 +1054,13 @@
         // Theme switching functionality
         function changeTheme(theme) {
             const body = document.body;
-            const themes = ['theme-futuristic', 'theme-corporate', 'theme-minimalist', 'theme-creative', 'theme-tech', 'theme-executive'];
+            const themes = ['theme-light', 'theme-slate', 'theme-stone', 'theme-zinc', 'theme-neutral'];
             
             // Remove all theme classes
             themes.forEach(t => body.classList.remove(t));
             
             // Add new theme class
-            if (theme === 'futuristic') {
-                body.classList.add('theme-futuristic');
-            } else {
-                body.classList.add(`theme-${theme}`);
-            }
+            body.classList.add(`theme-${theme}`);
             
             // Update active state
             document.querySelectorAll('.version-option').forEach(option => {
@@ -1004,9 +1075,18 @@
 
         // Load saved theme on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('preferred-theme');
-            if (savedTheme) {
-                changeTheme(savedTheme);
+            const savedTheme = localStorage.getItem('preferred-theme') || 'light';
+            // Find and activate the correct theme option
+            const themeOption = document.querySelector(`[onclick="changeTheme('${savedTheme}')"]`);
+            if (themeOption) {
+                // Remove active from all
+                document.querySelectorAll('.version-option').forEach(option => {
+                    option.classList.remove('active');
+                });
+                // Add active to saved theme
+                themeOption.classList.add('active');
+                // Apply theme
+                document.body.className = `theme-${savedTheme}`;
             }
         });
 
@@ -1046,9 +1126,9 @@
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(12, 12, 12, 0.98)';
+                navbar.style.background = 'var(--nav-bg)';
             } else {
-                navbar.style.background = 'rgba(12, 12, 12, 0.95)';
+                navbar.style.background = 'var(--nav-bg)';
             }
         });
     </script>
