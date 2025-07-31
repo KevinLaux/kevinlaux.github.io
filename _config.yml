@@ -1,0 +1,27 @@
+title: Kevin Laux - Resume
+description: Professional resume and portfolio
+theme: minima
+
+# Enable GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO settings
+author: Kevin Laux
+social:
+  name: Kevin Laux
+  links:
+    - https://www.linkedin.com/in/kevinlaux
+    - https://github.com/KevinLaux
+
+# Navigation
+header_pages:
+  - resume/index.md
+
+# Exclude files
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
