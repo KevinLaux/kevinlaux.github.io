@@ -66,7 +66,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            opacity: 0.8;
+            opacity: 0.7;
             transition: all 0.5s ease;
         }
 
@@ -79,14 +79,14 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.2);
             pointer-events: none;
             transition: all 0.5s ease;
         }
 
         /* Stronger overlay for corporate background for better readability */
         body.has-background-image.corporate-bg::after {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.4);
         }
 
         /* Animated Background */
@@ -693,47 +693,47 @@
         }
 
         .theme-zinc {
-            --primary-gradient: linear-gradient(135deg, #18181b 0%, #3f3f46 100%);
-            --secondary-gradient: linear-gradient(135deg, #52525b 0%, #71717a 100%);
-            --dark-gradient: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
-            --accent-blue: #18181b;
-            --accent-purple: #3f3f46;
-            --accent-pink: #52525b;
-            --text-light: #18181b;
-            --text-contrast: #fafafa;
-            --glass-bg: rgba(255, 255, 255, 0.8);
-            --glass-border: rgba(24, 24, 27, 0.1);
-            --nav-bg: rgba(250, 250, 250, 0.95);
-            --nav-border: rgba(24, 24, 27, 0.1);
-            --skill-hover-bg: #18181b;
-            --skill-hover-text: #fafafa;
-            --dropdown-bg: rgba(250, 250, 250, 0.98);
-            --dropdown-border: rgba(24, 24, 27, 0.15);
-            --dropdown-text: #18181b;
-            --dropdown-hover-bg: #f4f4f5;
-            --dropdown-hover-text: #18181b;
+            --primary-gradient: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            --secondary-gradient: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+            --dark-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            --accent-blue: #0ea5e9;
+            --accent-purple: #0284c7;
+            --accent-pink: #0369a1;
+            --text-light: #0c4a6e;
+            --text-contrast: #ffffff;
+            --glass-bg: rgba(240, 249, 255, 0.8);
+            --glass-border: rgba(14, 165, 233, 0.1);
+            --nav-bg: rgba(240, 249, 255, 0.95);
+            --nav-border: rgba(14, 165, 233, 0.1);
+            --skill-hover-bg: #0ea5e9;
+            --skill-hover-text: #ffffff;
+            --dropdown-bg: rgba(240, 249, 255, 0.98);
+            --dropdown-border: rgba(14, 165, 233, 0.15);
+            --dropdown-text: #0c4a6e;
+            --dropdown-hover-bg: #e0f2fe;
+            --dropdown-hover-text: #0c4a6e;
         }
 
         .theme-neutral {
-            --primary-gradient: linear-gradient(135deg, #171717 0%, #404040 100%);
-            --secondary-gradient: linear-gradient(135deg, #525252 0%, #737373 100%);
-            --dark-gradient: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
-            --accent-blue: #171717;
-            --accent-purple: #404040;
-            --accent-pink: #525252;
-            --text-light: #171717;
-            --text-contrast: #fafafa;
-            --glass-bg: rgba(255, 255, 255, 0.8);
-            --glass-border: rgba(23, 23, 23, 0.1);
-            --nav-bg: rgba(250, 250, 250, 0.95);
-            --nav-border: rgba(23, 23, 23, 0.1);
-            --skill-hover-bg: #171717;
-            --skill-hover-text: #fafafa;
-            --dropdown-bg: rgba(250, 250, 250, 0.98);
-            --dropdown-border: rgba(23, 23, 23, 0.15);
-            --dropdown-text: #171717;
-            --dropdown-hover-bg: #f5f5f5;
-            --dropdown-hover-text: #171717;
+            --primary-gradient: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            --secondary-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            --dark-gradient: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            --accent-blue: #dc2626;
+            --accent-purple: #b91c1c;
+            --accent-pink: #991b1b;
+            --text-light: #7f1d1d;
+            --text-contrast: #ffffff;
+            --glass-bg: rgba(254, 242, 242, 0.8);
+            --glass-border: rgba(220, 38, 38, 0.1);
+            --nav-bg: rgba(254, 242, 242, 0.95);
+            --nav-border: rgba(220, 38, 38, 0.1);
+            --skill-hover-bg: #dc2626;
+            --skill-hover-text: #ffffff;
+            --dropdown-bg: rgba(254, 242, 242, 0.98);
+            --dropdown-border: rgba(220, 38, 38, 0.15);
+            --dropdown-text: #7f1d1d;
+            --dropdown-hover-bg: #fee2e2;
+            --dropdown-hover-text: #7f1d1d;
         }
 
         /* Mobile Responsiveness */
@@ -882,17 +882,17 @@
                         <div class="version-option active" data-theme="light">⚪ Light Gray</div>
                         <div class="version-option" data-theme="slate">🔵 Slate Blue</div>
                         <div class="version-option" data-theme="stone">🤎 Warm Stone</div>
-                        <div class="version-option" data-theme="zinc">⚫ Cool Zinc</div>
-                        <div class="version-option" data-theme="neutral">⬛ Pure Neutral</div>
+                        <div class="version-option" data-theme="zinc">🔷 Cool Blue</div>
+                        <div class="version-option" data-theme="neutral">🔴 Bold Red</div>
                     </div>
                 </li>
                 <li class="nav-item background-selector">
                     <button class="selector-btn">Background ▼</button>
                     <div class="background-dropdown">
                         <div class="background-option" data-bg="none">❌ None</div>
-                        <div class="background-option" data-bg="nature">🌿 Nature Landscape</div>
+                        <div class="background-option" data-bg="tech">💻 Tech Circuit</div>
                         <div class="background-option active" data-bg="abstract">🎨 Abstract Waves</div>
-                        <div class="background-option" data-bg="urban">🏙️ Urban Skyline</div>
+                        <div class="background-option" data-bg="gradient">� Color Gradient</div>
                         <div class="background-option" data-bg="minimal">✨ Minimal Lines</div>
                         <div class="background-option" data-bg="corporate">🏢 Corporate</div>
                     </div>
@@ -1119,11 +1119,11 @@
         // Background image URLs (using Unsplash for high-quality images)
         const backgrounds = {
             none: 'none',
-            nature: 'url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #2d5016, #3e7b27)',
+            tech: 'url("https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #0f172a, #1e293b)',
             abstract: 'url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #ee7752, #e73c7e)',
-            urban: 'url("https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #1a1a2e, #16213e)',
+            gradient: 'url("https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #667eea, #764ba2)',
             minimal: 'url("https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #667eea, #764ba2)',
-            corporate: 'url("https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #2c3e50, #34495e)'
+            corporate: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #2c3e50, #34495e)'
         };
 
         // Skills modal functionality
