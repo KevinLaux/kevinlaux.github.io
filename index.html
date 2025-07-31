@@ -470,6 +470,7 @@
             color: var(--accent-purple);
         }
 
+        /* Skills Section */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -484,12 +485,71 @@
             border-radius: 25px;
             text-align: center;
             transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
         }
 
         .skill-tag:hover {
             background: var(--accent-blue);
             color: var(--text-dark);
             transform: scale(1.05);
+        }
+
+        /* Skills Modal */
+        .skill-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .skill-modal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .skill-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .skill-modal-close:hover {
+            background: var(--glass-bg);
+            color: var(--accent-pink);
+        }
+
+        .skill-modal h3 {
+            font-family: var(--display-font);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .certifications-grid {
@@ -504,12 +564,7 @@
             border: 1px solid var(--glass-border);
             padding: 1rem;
             border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .cert-item:hover {
-            border-color: var(--accent-purple);
-            transform: translateY(-2px);
+            /* Removed hover effects */
         }
 
         /* Theme Styles */
@@ -596,6 +651,11 @@
                 left: 1rem;
                 right: 1rem;
                 width: auto;
+            }
+
+            .skill-modal-content {
+                margin: 1rem;
+                padding: 1.5rem;
             }
         }
 
@@ -698,6 +758,15 @@
             </div>
         </div>
     </section>
+
+    <!-- Skills Modal -->
+    <div id="skillModal" class="skill-modal">
+        <div class="skill-modal-content">
+            <button class="skill-modal-close" onclick="closeSkillModal()">&times;</button>
+            <h3 id="skillTitle"></h3>
+            <p id="skillDescription"></p>
+        </div>
+    </div>
 
     <!-- Resume Section -->
     <section id="resume" class="resume-section">
@@ -821,18 +890,18 @@
             <div class="resume-section-item">
                 <h2>Key Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-tag">Cloud Infrastructure</div>
-                    <div class="skill-tag">DevOps & Automation</div>
-                    <div class="skill-tag">Container Technologies</div>
-                    <div class="skill-tag">Infrastructure as Code</div>
-                    <div class="skill-tag">CI/CD Pipelines</div>
-                    <div class="skill-tag">PowerShell Scripting</div>
-                    <div class="skill-tag">System Architecture</div>
-                    <div class="skill-tag">Team Leadership</div>
-                    <div class="skill-tag">Cost Optimization</div>
-                    <div class="skill-tag">Platform Migration</div>
-                    <div class="skill-tag">Troubleshooting</div>
-                    <div class="skill-tag">System Deployment</div>
+                    <div class="skill-tag" onclick="showSkillModal('Cloud Infrastructure', 'Led the expansion and scaling of container environments, managed Azure cloud spend optimization reducing costs by $700,000 annually, and automated image build processes in Azure with CI/CD pipelines. Extensive experience with on-premises OpenShift and Azure Kubernetes Service (AKS) for cross-platform deployments.')">Cloud Infrastructure</div>
+                    <div class="skill-tag" onclick="showSkillModal('DevOps & Automation', 'Championed DevOps initiatives implementing Git, CI/CD pipelines, and Agile methodologies. Led migration from legacy tools to modern automation frameworks, developed Workflow Linter for code quality, and established organization-wide automation standards. Saved thousands of hours annually through orchestration platforms.')">DevOps & Automation</div>
+                    <div class="skill-tag" onclick="showSkillModal('Container Technologies', 'Managed complex container orchestration systems, led Docker and container platform expansion increasing capacity two-fold, built POCs for Windows workloads in containers, and developed secure .NET Core images. Experience with Docker, OpenShift, and Kubernetes.')">Container Technologies</div>
+                    <div class="skill-tag" onclick="showSkillModal('Infrastructure as Code', 'Implemented Infrastructure as Code paradigms through BladeLogic, Chef, and Ansible. Automated manual build processes changing metrics from hours per server to servers per hour. Led teams in adopting IaC practices and modern deployment methodologies.')">Infrastructure as Code</div>
+                    <div class="skill-tag" onclick="showSkillModal('CI/CD Pipelines', 'Architected and implemented CI/CD pipelines for application deployments, automated Azure image build processes, and integrated multiple tools including Ansible, Elastic, and Service Now for automated incident handling. Champion of continuous integration and deployment practices.')">CI/CD Pipelines</div>
+                    <div class="skill-tag" onclick="showSkillModal('PowerShell Scripting', 'Advanced PowerShell expertise demonstrated through leadership of Research Triangle PowerShell User Group, development of monitoring and billing scripts, creation of GUI applications, and extensive automation solutions. Published presentations and training materials on PowerShell technologies.')">PowerShell Scripting</div>
+                    <div class="skill-tag" onclick="showSkillModal('System Architecture', 'Architected strategic roadmaps for mission-critical platforms processing over 1 million jobs monthly. Designed fault-tolerant systems, led platform migrations, and engineered robust scheduling platforms with zero downtime deployments.')">System Architecture</div>
+                    <div class="skill-tag" onclick="showSkillModal('Team Leadership', 'Led cross-functional teams of engineers, mentored and developed technical talent, fostered learning environments encouraging certifications and skill development. Managed international projects and internship programs while establishing organization-wide standards.')">Team Leadership</div>
+                    <div class="skill-tag" onclick="showSkillModal('Cost Optimization', 'Achieved $2.5M cost avoidance through platform optimization and $15M in additional savings via comprehensive licensing audits. Reduced annual costs by 30% through vendor negotiations and eliminated $700,000 in cloud spend through optimization initiatives.')">Cost Optimization</div>
+                    <div class="skill-tag" onclick="showSkillModal('Platform Migration', 'Successfully managed large-scale migrations including IPcenter to 1Desk platform (50% quality improvement), Server 2003 to 2012 migration (250+ applications), and BladeLogic to Chef automation retooling. Specialized in zero-downtime migrations and platform modernization.')">Platform Migration</div>
+                    <div class="skill-tag" onclick="showSkillModal('Troubleshooting', 'Developed data improvement activities reducing failed automata by 66%, implemented monitoring solutions for server status tracking, and enhanced platform stability through comprehensive troubleshooting methodologies and robust error handling.')">Troubleshooting</div>
+                    <div class="skill-tag" onclick="showSkillModal('System Deployment', 'Automated deployment processes for 600+ servers, implemented BladeLogic and SCCM deployment solutions, and created scalable deployment frameworks. Experience spans from manual process automation to modern containerized application deployments.')">System Deployment</div>
                 </div>
             </div>
 
@@ -882,6 +951,31 @@
     </section>
 
     <script>
+        // Skills modal functionality
+        function showSkillModal(skill, description) {
+            document.getElementById('skillTitle').textContent = skill;
+            document.getElementById('skillDescription').textContent = description;
+            document.getElementById('skillModal').style.display = 'flex';
+        }
+
+        function closeSkillModal() {
+            document.getElementById('skillModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('skillModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSkillModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeSkillModal();
+            }
+        });
+
         // Theme switching functionality
         function changeTheme(theme) {
             const body = document.body;
