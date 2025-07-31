@@ -8,9 +8,10 @@
     <meta name="keywords" content="DevOps, PowerShell, Azure, Automation, Engineering Manager, Technology Leader">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Theme Variables - Updated dynamically */
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
@@ -21,6 +22,9 @@
             --text-dark: #2d3748;
             --glass-bg: rgba(255, 255, 255, 0.1);
             --glass-border: rgba(255, 255, 255, 0.2);
+            --main-font: 'Inter', sans-serif;
+            --display-font: 'Orbitron', monospace;
+            --code-font: 'JetBrains Mono', monospace;
         }
 
         * {
@@ -30,11 +34,12 @@
         }
 
         body {
-            font-family: 'Exo 2', sans-serif;
+            font-family: var(--main-font);
             background: var(--dark-gradient);
             color: var(--text-light);
             overflow-x: hidden;
             line-height: 1.6;
+            transition: all 0.3s ease;
         }
 
         /* Animated Background */
@@ -46,6 +51,7 @@
             height: 100%;
             z-index: -1;
             background: var(--dark-gradient);
+            transition: all 0.3s ease;
         }
 
         .bg-animation::before {
@@ -61,6 +67,7 @@
                 radial-gradient(circle at 40% 60%, var(--accent-pink) 0%, transparent 50%);
             opacity: 0.1;
             animation: float 20s ease-in-out infinite;
+            transition: all 0.3s ease;
         }
 
         @keyframes float {
@@ -93,7 +100,7 @@
         }
 
         .logo {
-            font-family: 'Orbitron', monospace;
+            font-family: var(--display-font);
             font-size: 1.8rem;
             font-weight: 900;
             background: var(--primary-gradient);
@@ -138,6 +145,73 @@
 
         .nav-link:hover::after {
             width: 100%;
+        }
+
+        /* Version Selector */
+        .version-selector {
+            position: relative;
+        }
+
+        .version-btn {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .version-btn:hover {
+            background: var(--accent-blue);
+            color: var(--text-dark);
+        }
+
+        .version-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(12, 12, 12, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .version-selector:hover .version-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .version-option {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .version-option:last-child {
+            border-bottom: none;
+        }
+
+        .version-option:hover {
+            background: var(--glass-bg);
+            color: var(--accent-blue);
+        }
+
+        .version-option.active {
+            background: var(--accent-blue);
+            color: var(--text-dark);
         }
 
         /* Dropdown */
@@ -207,7 +281,7 @@
         }
 
         .hero-title {
-            font-family: 'Orbitron', monospace;
+            font-family: var(--display-font);
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
             margin-bottom: 1rem;
@@ -284,7 +358,7 @@
         }
 
         .section-title {
-            font-family: 'Orbitron', monospace;
+            font-family: var(--display-font);
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
@@ -317,7 +391,7 @@
         }
 
         .contact-info h1 {
-            font-family: 'Orbitron', monospace;
+            font-family: var(--display-font);
             font-size: 3rem;
             margin-bottom: 1rem;
             background: var(--primary-gradient);
@@ -350,7 +424,7 @@
         }
 
         .resume-section-item h2 {
-            font-family: 'Orbitron', monospace;
+            font-family: var(--display-font);
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             color: var(--accent-purple);
@@ -438,6 +512,65 @@
             transform: translateY(-2px);
         }
 
+        /* Theme Styles */
+        .theme-corporate {
+            --primary-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            --secondary-gradient: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+            --dark-gradient: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --main-font: 'Inter', sans-serif;
+            --display-font: 'Inter', sans-serif;
+        }
+
+        .theme-minimalist {
+            --primary-gradient: linear-gradient(135deg, #374151 0%, #6b7280 100%);
+            --secondary-gradient: linear-gradient(135deg, #9ca3af 0%, #d1d5db 100%);
+            --dark-gradient: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            --accent-blue: #1f2937;
+            --accent-purple: #4b5563;
+            --accent-pink: #6b7280;
+            --text-light: #1f2937;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --main-font: 'Space Grotesk', sans-serif;
+            --display-font: 'Space Grotesk', sans-serif;
+        }
+
+        .theme-creative {
+            --primary-gradient: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            --secondary-gradient: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
+            --dark-gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 100%);
+            --accent-blue: #06b6d4;
+            --accent-purple: #a855f7;
+            --accent-pink: #f59e0b;
+            --main-font: 'Poppins', sans-serif;
+            --display-font: 'Poppins', sans-serif;
+        }
+
+        .theme-tech {
+            --primary-gradient: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            --secondary-gradient: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            --dark-gradient: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+            --accent-blue: #10b981;
+            --accent-purple: #06b6d4;
+            --accent-pink: #f59e0b;
+            --main-font: 'JetBrains Mono', monospace;
+            --display-font: 'JetBrains Mono', monospace;
+        }
+
+        .theme-executive {
+            --primary-gradient: linear-gradient(135deg, #92400e 0%, #d97706 100%);
+            --secondary-gradient: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            --dark-gradient: linear-gradient(135deg, #1c1917 0%, #292524 100%);
+            --accent-blue: #d97706;
+            --accent-purple: #a855f7;
+            --accent-pink: #ef4444;
+            --main-font: 'Inter', sans-serif;
+            --display-font: 'Inter', sans-serif;
+        }
+
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .nav-menu {
@@ -457,7 +590,7 @@
                 gap: 1rem;
             }
             
-            .dropdown-content {
+            .dropdown-content, .version-dropdown {
                 position: fixed;
                 top: 80px;
                 left: 1rem;
@@ -479,7 +612,7 @@
         }
     </style>
 </head>
-<body>
+<body class="theme-futuristic">
     <div class="bg-animation"></div>
     
     <!-- Navigation -->
@@ -534,6 +667,17 @@
                 </li>
                 <li class="nav-item">
                     <a href="https://linkedin.com/in/kevinlaux" target="_blank" class="nav-link">LinkedIn</a>
+                </li>
+                <li class="nav-item version-selector">
+                    <button class="version-btn">Themes ▼</button>
+                    <div class="version-dropdown">
+                        <div class="version-option active" onclick="changeTheme('futuristic')">🚀 Futuristic</div>
+                        <div class="version-option" onclick="changeTheme('corporate')">🏢 Corporate</div>
+                        <div class="version-option" onclick="changeTheme('minimalist')">✨ Minimalist</div>
+                        <div class="version-option" onclick="changeTheme('creative')">🎨 Creative</div>
+                        <div class="version-option" onclick="changeTheme('tech')">⚡ Tech</div>
+                        <div class="version-option" onclick="changeTheme('executive')">👔 Executive</div>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -738,6 +882,40 @@
     </section>
 
     <script>
+        // Theme switching functionality
+        function changeTheme(theme) {
+            const body = document.body;
+            const themes = ['theme-futuristic', 'theme-corporate', 'theme-minimalist', 'theme-creative', 'theme-tech', 'theme-executive'];
+            
+            // Remove all theme classes
+            themes.forEach(t => body.classList.remove(t));
+            
+            // Add new theme class
+            if (theme === 'futuristic') {
+                body.classList.add('theme-futuristic');
+            } else {
+                body.classList.add(`theme-${theme}`);
+            }
+            
+            // Update active state
+            document.querySelectorAll('.version-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            
+            // Store preference
+            localStorage.setItem('preferred-theme', theme);
+        }
+
+        // Load saved theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('preferred-theme');
+            if (savedTheme) {
+                changeTheme(savedTheme);
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
