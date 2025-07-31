@@ -870,6 +870,7 @@
                 <li class="nav-item background-selector">
                     <button class="selector-btn">Background ▼</button>
                     <div class="background-dropdown">
+                        <div class="background-option" data-bg="none">❌ None</div>
                         <div class="background-option" data-bg="tech">💻 Tech Circuit</div>
                         <div class="background-option" data-bg="abstract">🎨 Abstract Waves</div>
                         <div class="background-option" data-bg="geometric">📐 Geometric</div>
@@ -1098,6 +1099,7 @@
     <script>
         // Background image URLs (using Unsplash for high-quality images)
         const backgrounds = {
+            none: 'none',
             tech: 'url("https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")',
             abstract: 'url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")',
             geometric: 'url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")',
@@ -1131,31 +1133,25 @@
         });
 
         // Background management - Fixed implementation
-        function setBackground(backgroundType, element) {
-            const currentBackground = localStorage.getItem('current-background');
+        function setBackground(backgroundType) {
+            console.log('Setting background to:', backgroundType);
             
-            if (currentBackground === backgroundType) {
-                // Remove background if same one is selected
-                document.documentElement.style.setProperty('--background-image', 'none');
-                localStorage.removeItem('current-background');
-                // Remove active state from all background options
-                document.querySelectorAll('.background-option').forEach(option => {
-                    option.classList.remove('active');
-                });
-            } else {
-                // Set new background
-                document.documentElement.style.setProperty('--background-image', backgrounds[backgroundType]);
-                localStorage.setItem('current-background', backgroundType);
-                // Update active state
-                document.querySelectorAll('.background-option').forEach(option => {
-                    option.classList.remove('active');
-                });
-                element.classList.add('active');
-            }
+            // Set new background
+            document.documentElement.style.setProperty('--background-image', backgrounds[backgroundType]);
+            localStorage.setItem('current-background', backgroundType);
+            
+            // Update active state
+            document.querySelectorAll('.background-option').forEach(option => {
+                option.classList.remove('active');
+                if (option.getAttribute('data-bg') === backgroundType) {
+                    option.classList.add('active');
+                }
+            });
         }
 
         // Theme switching functionality - Fixed implementation
-        function changeTheme(theme, element) {
+        function changeTheme(theme) {
+            console.log('Changing theme to:', theme);
             const body = document.body;
             const themes = ['theme-light', 'theme-slate', 'theme-stone', 'theme-zinc', 'theme-neutral'];
             
@@ -1168,9 +1164,10 @@
             // Update active state
             document.querySelectorAll('.version-option').forEach(option => {
                 option.classList.remove('active');
+                if (option.getAttribute('data-theme') === theme) {
+                    option.classList.add('active');
+                }
             });
-            
-            element.classList.add('active');
             
             // Store preference
             localStorage.setItem('preferred-theme', theme);
@@ -1213,44 +1210,41 @@
             }, 500);
         }
 
-        // Initialize event listeners
+        // Initialize everything when the page loads
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, initializing...');
+
             // Theme selector event listeners
             document.querySelectorAll('.version-option').forEach(option => {
-                option.addEventListener('click', function() {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     const theme = this.getAttribute('data-theme');
-                    changeTheme(theme, this);
+                    console.log('Theme clicked:', theme);
+                    changeTheme(theme);
                 });
             });
 
-            // Background selector event listeners
+            // Background selector event listeners - Fixed
             document.querySelectorAll('.background-option').forEach(option => {
-                option.addEventListener('click', function() {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     const bgType = this.getAttribute('data-bg');
-                    setBackground(bgType, this);
+                    console.log('Background clicked:', bgType);
+                    setBackground(bgType);
                 });
             });
 
             // Load saved preferences
             const savedTheme = localStorage.getItem('preferred-theme') || 'light';
-            const themeOption = document.querySelector(`[data-theme="${savedTheme}"]`);
-            if (themeOption) {
-                document.querySelectorAll('.version-option').forEach(option => {
-                    option.classList.remove('active');
-                });
-                themeOption.classList.add('active');
-                document.body.className = `theme-${savedTheme}`;
-            }
+            console.log('Loading saved theme:', savedTheme);
+            changeTheme(savedTheme);
 
             // Load background
-            const savedBackground = localStorage.getItem('current-background');
-            if (savedBackground && backgrounds[savedBackground]) {
-                document.documentElement.style.setProperty('--background-image', backgrounds[savedBackground]);
-                const backgroundOption = document.querySelector(`[data-bg="${savedBackground}"]`);
-                if (backgroundOption) {
-                    backgroundOption.classList.add('active');
-                }
-            }
+            const savedBackground = localStorage.getItem('current-background') || 'none';
+            console.log('Loading saved background:', savedBackground);
+            setBackground(savedBackground);
         });
 
         // Smooth scrolling for navigation links
