@@ -171,27 +171,27 @@
 
         /* Glass Theme - Blue */
         body.glass-blue {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 25%, #1d4ed8 50%, #1e40af 75%, #1e3a8a 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 25%, #7dd3fc 50%, #bae6fd 75%, #e0f2fe 100%);
             background-size: 400% 400%;
             animation: gradientMove 16s ease infinite;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-bg-card: rgba(255, 255, 255, 0.15);
-            --glass-bg-hover: rgba(255, 255, 255, 0.25);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --glass-bg-card: rgba(255, 255, 255, 0.12);
+            --glass-bg-hover: rgba(255, 255, 255, 0.18);
             --glass-text: #ffffff;
-            --glass-text-secondary: rgba(255, 255, 255, 0.75);
-            --glass-accent: #60a5fa;
-            --glass-accent-light: #93c5fd;
-            --glass-accent-dark: #2563eb;
-            --glass-accent-rgb: 96, 165, 250;
+            --glass-text-secondary: rgba(255, 255, 255, 0.8);
+            --glass-accent: #7dd3fc;
+            --glass-accent-light: #bae6fd;
+            --glass-accent-dark: #0ea5e9;
+            --glass-accent-rgb: 125, 211, 252;
         }
 
         body.glass-blue::before {
             background: 
-                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.4) 0%, transparent 60%),
-                radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.5) 0%, transparent 60%),
-                radial-gradient(circle at 40% 40%, rgba(29, 78, 216, 0.3) 0%, transparent 60%);
-            backdrop-filter: blur(1px);
+                radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.3) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(125, 211, 252, 0.2) 0%, transparent 60%);
+            backdrop-filter: blur(2px);
         }
 
         /* Glass Theme - Coral */
@@ -1231,80 +1231,42 @@
             
             const skills = {
                 'cloud-architecture': {
-                    title: 'Cloud Architecture Expertise',
+                    title: 'Cloud Architecture Expertise',  
                     text: `<strong>Experience:</strong> 8+ years designing and implementing enterprise cloud solutions<br><br>
-                           <strong>Key Roles:</strong><br>
-                           • Principal DevOps Engineer - Multi-cloud strategy implementation<br>
-                           • Platform Manager - Azure and AWS infrastructure design<br>
-                           • Container Engineering Lead - Cloud-native architecture<br><br>
-                           <strong>Achievements:</strong><br>
-                           • Reduced cloud spend by $700K annually<br>
-                           • Designed high-availability multi-region deployments<br>
-                           • Implemented disaster recovery and business continuity plans<br><br>
                            <strong>Technologies:</strong> Azure, AWS, OpenShift, AKS, Infrastructure as Code`
                 },
                 'container-orchestration': {
                     title: 'Container Orchestration Leadership',
-                    text: `<strong>Role:</strong> Container Engineering Lead at MetLife<br><br>
-                           <strong>Achievement:</strong> Scaled container environment capacity by 200% while optimizing costs<br><br>
-                           <strong>Responsibilities:</strong><br>
-                           • Kubernetes cluster management and optimization<br>
-                           • OpenShift enterprise deployment<br>
-                           • Container security and compliance implementation<br>
-                           • International deployment coordination<br><br>
-                           <strong>Impact:</strong> Enabled the organization to handle massive scale while reducing operational overhead and improving deployment velocity.`
+                    text: `<strong>Achievement:</strong> Scaled container environment capacity by 200% while optimizing costs<br><br>
+                           <strong>Technologies:</strong> Docker, Kubernetes, Container Security, Cloud-native Architecture`
                 },
                 'devops-excellence': {
                     title: 'DevOps Excellence & Implementation',
-                    text: `<strong>Experience:</strong> Led DevOps transformation across multiple roles<br><br>
-                           <strong>Key Contributions:</strong><br>
+                    text: `<strong>Key Contributions:</strong><br>
                            • Championed DevOps initiatives as Platform Manager<br>
                            • Implemented CI/CD pipelines and GitOps workflows<br>
-                           • Established Infrastructure as Code practices<br>
-                           • Led migration of 1Desk automation framework to Ansible<br><br>
-                           <strong>Tools & Technologies:</strong><br>
-                           • Git, Ansible, Chef, Terraform<br>
-                           • CI/CD pipeline design and optimization<br>
-                           • Monitoring and observability implementation`
+                           • Established Infrastructure as Code practices`
                 },
                 'powershell-mastery': {
                     title: 'PowerShell Mastery & Community Leadership',
                     text: `<strong>Community Role:</strong> Leader of Research Triangle PowerShell User Group (RTPSUG)<br><br>
                            <strong>Speaking Engagements:</strong><br>
                            • Featured speaker at PowerShell Summit 2024<br>
-                           • Regular lightning talks and educational presentations<br>
-                           • UI development and automation best practices<br><br>
-                           <strong>Publications:</strong><br>
-                           • Contributed to multiple PowerShell technical books<br>
-                           • Technical writing and documentation<br><br>
-                           <strong>Professional Application:</strong> Expert-level PowerShell automation across all roles, driving efficiency and reliability improvements.`
+                           • Regular lightning talks and educational presentations`
                 },
                 'platform-engineering': {
                     title: 'Platform Engineering Excellence',
-                    text: `<strong>Current Role:</strong> Principal DevOps Engineer specializing in mission-critical platforms<br><br>
-                           <strong>Platform Scope:</strong><br>
+                    text: `<strong>Platform Scope:</strong><br>
                            • Processing 1M+ jobs monthly<br>
                            • Managing 2,500+ agent infrastructure<br>
-                           • Zero-downtime upgrade implementations<br>
-                           • Enterprise-scale reliability and performance<br><br>
-                           <strong>Key Platforms:</strong><br>
-                           • IBM Workload Scheduler<br>
-                           • Container orchestration platforms<br>
-                           • Cloud-native application platforms<br>
-                           • Automation and integration platforms`
+                           • Zero-downtime upgrade implementations`
                 },
                 'team-leadership': {
                     title: 'Team Leadership & Mentorship',
                     text: `<strong>Leadership Experience:</strong> Platform Manager leading cross-functional teams<br><br>
-                           <strong>Responsibilities:</strong><br>
                            • Led orchestration platform team<br>
                            • Mentored emerging talent across engineering teams<br>
-                           • Championed DevOps initiatives organization-wide<br>
-                           • Coordinated international deployments and operations<br><br>
-                           <strong>Community Leadership:</strong><br>
-                           • RTPSUG leader building PowerShell community<br>
-                           • Conference speaking and knowledge sharing<br>
-                           • "Building staircases, not pulling up ladders" philosophy`
+                           • RTPSUG leader building PowerShell community`
                 }
             };
             
