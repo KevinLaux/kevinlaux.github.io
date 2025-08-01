@@ -123,6 +123,45 @@
             66% { transform: translateY(20px) rotate(-2deg); }
         }
 
+        /* Animated Background Patterns */
+        .animated-gradient-bg, .animated-lines-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.7;
+            transition: all 0.5s ease;
+        }
+
+        .animated-gradient-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #667eea, #764ba2);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .animated-lines-bg {
+            background: 
+                linear-gradient(90deg, transparent 24%, rgba(102, 126, 234, 0.05) 25%, rgba(102, 126, 234, 0.05) 26%, transparent 27%, transparent 74%, rgba(102, 126, 234, 0.05) 75%, rgba(102, 126, 234, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(0deg, transparent 24%, rgba(118, 75, 162, 0.05) 25%, rgba(118, 75, 162, 0.05) 26%, transparent 27%, transparent 74%, rgba(118, 75, 162, 0.05) 75%, rgba(118, 75, 162, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(45deg, transparent 40%, rgba(102, 126, 234, 0.1) 45%, rgba(102, 126, 234, 0.1) 55%, transparent 60%, transparent),
+                linear-gradient(-45deg, transparent 40%, rgba(118, 75, 162, 0.1) 45%, rgba(118, 75, 162, 0.1) 55%, transparent 60%, transparent);
+            background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
+            animation: linesMove 20s linear infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes linesMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50px, -50px); }
+        }
+
         /* Navigation */
         .navbar {
             position: fixed;
@@ -1121,8 +1160,8 @@
             none: 'none',
             tech: 'url("https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #00ff88, #0066ff)',
             abstract: 'url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #ee7752, #e73c7e)',
-            gradient: 'url("https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #667eea, #764ba2)',
-            minimal: 'url("https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #667eea, #764ba2)',
+            gradient: 'animated-gradient',
+            minimal: 'animated-lines',
             corporate: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"), linear-gradient(45deg, #2c3e50, #34495e)'
         };
 
@@ -1158,20 +1197,47 @@
             const bgAnimation = document.querySelector('.bg-animation');
             const body = document.body;
             
-            // Set new background
-            document.documentElement.style.setProperty('--background-image', backgrounds[backgroundType]);
-            localStorage.setItem('current-background', backgroundType);
+            // Remove any existing animated backgrounds
+            const existingAnimated = document.querySelectorAll('.animated-gradient-bg, .animated-lines-bg');
+            existingAnimated.forEach(el => el.remove());
             
-            // Handle body class and animation visibility
+            // Handle different background types
             if (backgroundType === 'none') {
-                // Show animated background when no image is selected
+                // Show original animated background when no background is selected
                 body.classList.remove('has-background-image', 'corporate-bg');
                 if (bgAnimation) {
                     bgAnimation.style.opacity = '1';
                 }
                 document.documentElement.style.setProperty('--background-image', 'none');
+                
+            } else if (backgroundType === 'gradient') {
+                // Create animated gradient background
+                body.classList.add('has-background-image');
+                body.classList.remove('corporate-bg');
+                if (bgAnimation) {
+                    bgAnimation.style.opacity = '0.1';
+                }
+                
+                const animatedDiv = document.createElement('div');
+                animatedDiv.className = 'animated-gradient-bg';
+                document.body.appendChild(animatedDiv);
+                document.documentElement.style.setProperty('--background-image', 'none');
+                
+            } else if (backgroundType === 'minimal') {
+                // Create animated lines background
+                body.classList.add('has-background-image');
+                body.classList.remove('corporate-bg');
+                if (bgAnimation) {
+                    bgAnimation.style.opacity = '0.1';
+                }
+                
+                const animatedDiv = document.createElement('div');
+                animatedDiv.className = 'animated-lines-bg';
+                document.body.appendChild(animatedDiv);
+                document.documentElement.style.setProperty('--background-image', 'none');
+                
             } else {
-                // Add class for background image and reduce animated background
+                // Regular image backgrounds
                 body.classList.add('has-background-image');
                 
                 // Special handling for corporate background
@@ -1184,7 +1250,12 @@
                 if (bgAnimation) {
                     bgAnimation.style.opacity = '0.1';
                 }
+                
+                document.documentElement.style.setProperty('--background-image', backgrounds[backgroundType]);
             }
+            
+            // Store preference
+            localStorage.setItem('current-background', backgroundType);
             
             // Visual feedback - briefly highlight the selector button
             const selectorBtn = document.querySelector('.background-selector .selector-btn');
@@ -1205,8 +1276,7 @@
                 }
             });
             
-            console.log('Background set successfully. Current --background-image:', 
-                getComputedStyle(document.documentElement).getPropertyValue('--background-image'));
+            console.log('Background set successfully to:', backgroundType);
         }
 
         // Theme switching functionality - Fixed implementation
