@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Laux - Glass Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@100;200;300;400;500;600;700;800;900&family=SF+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: rgba(0, 0, 0, 0.3);
+            --glass-text: #ffffff;
+            --glass-text-secondary: rgba(255, 255, 255, 0.7);
+            --glass-accent: #007aff;
+            --glass-accent-alt: #5ac8fa;
+            --glass-success: #34c759;
+            --glass-warning: #ff9500;
+            --glass-purple: #af52de;
+            --glass-pink: #ff2d92;
+            --font-system: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'SF Mono', 'Monaco', 'Menlo', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-system);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            color: var(--glass-text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Glass Effect Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Glass Navigation */
+        .glass-nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px var(--glass-shadow);
+        }
+
+        .glass-nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            height: 60px;
+        }
+
+        .glass-logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--glass-text);
+            letter-spacing: 0.5px;
+        }
+
+        .glass-nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .glass-nav-link {
+            color: var(--glass-text-secondary);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .glass-nav-link:hover {
+            color: var(--glass-text);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .glass-nav-link.active {
+            color: var(--glass-accent);
+            background: rgba(0, 122, 255, 0.1);
+        }
+
+        /* Glass Hero Section */
+        .glass-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: 100px;
+        }
+
+        .glass-hero-content {
+            max-width: 900px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            box-shadow: 0 20px 60px var(--glass-shadow);
+        }
+
+        .glass-hero-title {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 100;
+            margin-bottom: 1rem;
+            color: var(--glass-text);
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin-bottom: 2rem;
+            color: var(--glass-text-secondary);
+            font-weight: 300;
+        }
+
+        .glass-hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: var(--glass-text-secondary);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Glass Buttons */
+        .glass-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        .glass-button-primary {
+            background: linear-gradient(135deg, var(--glass-accent) 0%, var(--glass-accent-alt) 100%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 122, 255, 0.3);
+        }
+
+        .glass-button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 122, 255, 0.4);
+        }
+
+        .glass-button-secondary {
+            background: var(--glass-bg);
+            color: var(--glass-text);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px var(--glass-shadow);
+        }
+
+        .glass-button-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px var(--glass-shadow);
+        }
+
+        /* Glass Cards */
+        .glass-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .glass-section-title {
+            font-size: 2.5rem;
+            font-weight: 200;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--glass-text);
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 45px var(--glass-shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px var(--glass-shadow);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .glass-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--glass-accent) 0%, var(--glass-purple) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 32px rgba(0, 122, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-card-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--glass-text);
+            margin-bottom: 0.3rem;
+        }
+
+        .glass-card-subtitle {
+            color: var(--glass-text-secondary);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .glass-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Glass Achievement Cards */
+        .glass-achievement {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-achievement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--glass-accent), var(--glass-pink), var(--glass-purple));
+        }
+
+        .glass-achievement:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 45px var(--glass-shadow);
+        }
+
+        .glass-achievement-number {
+            font-size: 2.5rem;
+            font-weight: 200;
+            color: var(--glass-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .glass-achievement-label {
+            font-size: 0.9rem;
+            color: var(--glass-text-secondary);
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Glass Skills */
+        .glass-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .glass-skill {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-skill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        .glass-skill:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--glass-shadow);
+        }
+
+        .glass-skill-name {
+            font-weight: 500;
+            color: var(--glass-text);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .glass-skill-desc {
+            font-size: 0.85rem;
+            color: var(--glass-text-secondary);
+            font-weight: 300;
+        }
+
+        /* Glass Contact */
+        .glass-contact {
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .glass-contact-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px var(--glass-shadow);
+        }
+
+        .glass-contact-title {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--glass-text);
+        }
+
+        .glass-contact-subtitle {
+            color: var(--glass-text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .glass-contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .glass-contact-link {
+            color: var(--glass-text-secondary);
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+        }
+
+        .glass-contact-link:hover {
+            color: var(--glass-accent);
+            background: rgba(0, 122, 255, 0.1);
+            border-color: var(--glass-accent);
+            transform: translateY(-1px);
+        }
+
+        /* Typography */
+        .glass-text {
+            color: var(--glass-text);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .glass-text-secondary {
+            color: var(--glass-text-secondary);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .glass-code {
+            font-family: var(--font-mono);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.9rem;
+            color: var(--glass-accent-alt);
+            font-weight: 400;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .glass-nav {
+                left: 10px;
+                right: 10px;
+                top: 10px;
+            }
+
+            .glass-nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+                height: auto;
+            }
+
+            .glass-nav-menu {
+                gap: 1rem;
+            }
+
+            .glass-hero {
+                margin-top: 120px;
+            }
+
+            .glass-hero-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .glass-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .glass-skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .glass-contact-links {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .glass-hero-content {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Glass Navigation -->
+    <nav class="glass-nav">
+        <div class="glass-nav-container">
+            <div class="glass-logo">KEVIN LAUX</div>
+            <ul class="glass-nav-menu">
+                <li><a href="#about" class="glass-nav-link active">About</a></li>
+                <li><a href="#achievements" class="glass-nav-link">Achievements</a></li>
+                <li><a href="#expertise" class="glass-nav-link">Expertise</a></li>
+                <li><a href="#contact" class="glass-nav-link">Connect</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Glass Hero -->
+    <section class="glass-hero">
+        <div class="glass-hero-content">
+            <h1 class="glass-hero-title">Kevin Laux</h1>
+            <p class="glass-hero-subtitle">Principal DevOps Engineer & Community Builder</p>
+            <p class="glass-hero-description">
+                Transforming complex infrastructure challenges into elegant solutions. 
+                Leading teams, mentoring talent, and building communities that elevate everyone.
+            </p>
+            <div>
+                <a href="#achievements" class="glass-button glass-button-primary">
+                    Explore Achievements
+                </a>
+                <a href="#contact" class="glass-button glass-button-secondary">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="glass-section">
+        <h2 class="glass-section-title">Impact Metrics</h2>
+        
+        <div class="glass-grid">
+            <div class="glass-achievement">
+                <div class="glass-achievement-number">$17.5M</div>
+                <div class="glass-achievement-label">Cost Savings Delivered</div>
+            </div>
+            <div class="glass-achievement">
+                <div class="glass-achievement-number">1M+</div>
+                <div class="glass-achievement-label">Jobs Processed Monthly</div>
+            </div>
+            <div class="glass-achievement">
+                <div class="glass-achievement-number">2,500+</div>
+                <div class="glass-achievement-label">Agents Managed</div>
+            </div>
+            <div class="glass-achievement">
+                <div class="glass-achievement-number">50%</div>
+                <div class="glass-achievement-label">Quality Improvement</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Journey -->
+    <section class="glass-section">
+        <h2 class="glass-section-title">Professional Journey</h2>
+        
+        <div class="glass-card">
+            <div class="glass-card-header">
+                <div class="glass-icon">🚀</div>
+                <div>
+                    <div class="glass-card-title">Principal DevOps Engineer</div>
+                    <div class="glass-card-subtitle">MetLife • 2024 - Present</div>
+                </div>
+            </div>
+            <div class="glass-text">
+                <p>Architecting strategic roadmaps for mission-critical platforms that process over 
+                <span class="glass-code">1M jobs monthly</span>. Delivered transformational cost savings 
+                of <span class="glass-code">$17.5M</span> through platform optimization and strategic licensing audits.</p>
+                
+                <div style="margin: 1.5rem 0;">
+                    <h4 style="color: var(--glass-text); margin-bottom: 0.5rem; font-weight: 500;">Key Achievements:</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin: 0.5rem 0; color: var(--glass-text-secondary);">✦ Led IBM Workload Scheduler upgrade across 2,500+ agents with zero downtime</li>
+                        <li style="margin: 0.5rem 0; color: var(--glass-text-secondary);">✦ Spearheaded 1Desk automation framework migration to Ansible</li>
+                        <li style="margin: 0.5rem 0; color: var(--glass-text-secondary);">✦ Shaped cross-platform deployment strategy for OpenShift and AKS</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-grid">
+            <div class="glass-card">
+                <div class="glass-card-header">
+                    <div class="glass-icon">⚙️</div>
+                    <div>
+                        <div class="glass-card-title">Platform Manager</div>
+                        <div class="glass-card-subtitle">MetLife • 2022 - 2024</div>
+                    </div>
+                </div>
+                <div class="glass-text-secondary">
+                    Led orchestration platform team delivering 50% quality improvements. Championed DevOps 
+                    initiatives and mentored emerging talent across multiple engineering teams.
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <div class="glass-card-header">
+                    <div class="glass-icon">🐳</div>
+                    <div>
+                        <div class="glass-card-title">Container Engineering Lead</div>
+                        <div class="glass-card-subtitle">MetLife • 2019 - 2022</div>
+                    </div>
+                </div>
+                <div class="glass-text-secondary">
+                    Scaled container environment capacity 2x while reducing cloud spend by $700K annually. 
+                    Managed international deployments and established DevOps best practices.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="glass-section">
+        <h2 class="glass-section-title">Technical Expertise</h2>
+        
+        <div class="glass-skills-grid">
+            <div class="glass-skill">
+                <div class="glass-skill-name">Cloud Architecture</div>
+                <div class="glass-skill-desc">Azure, AWS, Multi-cloud</div>
+            </div>
+            <div class="glass-skill">
+                <div class="glass-skill-name">Container Orchestration</div>
+                <div class="glass-skill-desc">Kubernetes, OpenShift, Docker</div>
+            </div>
+            <div class="glass-skill">
+                <div class="glass-skill-name">DevOps Excellence</div>
+                <div class="glass-skill-desc">CI/CD, GitOps, Automation</div>
+            </div>
+            <div class="glass-skill">
+                <div class="glass-skill-name">PowerShell Mastery</div>
+                <div class="glass-skill-desc">Expert-level scripting</div>
+            </div>
+            <div class="glass-skill">
+                <div class="glass-skill-name">Infrastructure as Code</div>
+                <div class="glass-skill-desc">Ansible, Terraform, Chef</div>
+            </div>
+            <div class="glass-skill">
+                <div class="glass-skill-name">Team Leadership</div>
+                <div class="glass-skill-desc">Mentoring, Strategy, Growth</div>
+            </div>
+            <div class="glass-skill">
+                <div class="glass-skill-name">Platform Engineering</div>
+                <div class="glass-skill-desc">Mission-critical systems</div>
+            </div>
+            <div class="glass-skill">
+                <div class="glass-skill-name">Community Building</div>
+                <div class="glass-skill-desc">RTPSUG, Speaking, Teaching</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Impact -->
+    <section class="glass-section">
+        <h2 class="glass-section-title">Community Impact</h2>
+        
+        <div class="glass-grid">
+            <div class="glass-card">
+                <div class="glass-card-header">
+                    <div class="glass-icon">👥</div>
+                    <div>
+                        <div class="glass-card-title">RTPSUG Leadership</div>
+                        <div class="glass-card-subtitle">Research Triangle PowerShell User Group</div>
+                    </div>
+                </div>
+                <div class="glass-text">
+                    Leading the Research Triangle's premier PowerShell community through monthly educational 
+                    sessions, collaborative learning initiatives, and professional development opportunities.
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <div class="glass-card-header">
+                    <div class="glass-icon">🎯</div>
+                    <div>
+                        <div class="glass-card-title">Conference Speaking</div>
+                        <div class="glass-card-subtitle">PowerShell Summit & Beyond</div>
+                    </div>
+                </div>
+                <div class="glass-text">
+                    Featured speaker sharing expertise in UI development, automation best practices, 
+                    and community building at industry conferences and technical meetups.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="glass-contact">
+        <div class="glass-contact-container">
+            <h2 class="glass-contact-title">Let's Build Together</h2>
+            <p class="glass-contact-subtitle">Building staircases, not pulling up ladders</p>
+            
+            <div class="glass-contact-links">
+                <a href="mailto:resume@kevinlaux.com" class="glass-contact-link">Email</a>
+                <a href="https://linkedin.com/in/kevinlaux" target="_blank" class="glass-contact-link">LinkedIn</a>
+                <a href="https://github.com/KevinLaux" target="_blank" class="glass-contact-link">GitHub</a>
+                <a href="/" class="glass-contact-link">Full Resume</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

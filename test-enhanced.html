@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Laux - Enhanced Community Leader</title>
+    <meta name="description" content="Kevin Laux - Principal DevOps Engineer, PowerShell Expert, and Community Leader">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #374151 0%, #6b7280 100%);
+            --secondary-gradient: linear-gradient(135deg, #9ca3af 0%, #d1d5db 100%);
+            --dark-gradient: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            --accent-blue: #1f2937;
+            --accent-purple: #4b5563;
+            --accent-pink: #6b7280;
+            --text-light: #1f2937;
+            --text-contrast: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --nav-border: rgba(0, 0, 0, 0.1);
+            --skill-hover-bg: #1f2937;
+            --skill-hover-text: #ffffff;
+            --main-font: 'Space Grotesk', sans-serif;
+            --display-font: 'Space Grotesk', sans-serif;
+            --background-image: none;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--main-font);
+            background: var(--dark-gradient);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        /* Enhanced Community Section Styles */
+        .community-section {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.05) 0%, rgba(75, 85, 99, 0.05) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--glass-border);
+        }
+
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .community-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .community-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+        }
+
+        .community-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .community-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .community-desc {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .community-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            border: 1px solid var(--accent-blue);
+        }
+
+        .community-link:hover {
+            background: var(--accent-blue);
+            color: var(--text-contrast);
+            transform: scale(1.05);
+        }
+
+        /* Video Section */
+        .video-showcase {
+            background: var(--glass-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--glass-border);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-title {
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-event {
+            color: var(--accent-purple);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-year {
+            background: var(--primary-gradient);
+            color: var(--text-contrast);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Book Section */
+        .books-section {
+            background: linear-gradient(135deg, rgba(75, 85, 99, 0.05) 0%, rgba(107, 114, 128, 0.05) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--glass-border);
+        }
+
+        .book-card {
+            background: var(--glass-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-icon {
+            font-size: 3rem;
+            color: var(--accent-blue);
+        }
+
+        .book-info h4 {
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .book-contribution {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+        }
+
+        .purchase-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-gradient);
+            color: var(--text-contrast);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .purchase-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Rest of styles from original - abbreviated for space */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--nav-border);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--display-font);
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: 80px;
+        }
+
+        .hero-title {
+            font-family: var(--display-font);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            color: var(--accent-blue);
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        .cta-primary {
+            background: var(--primary-gradient);
+            color: var(--text-contrast);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .resume-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--display-font);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .resume-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .resume-section-item h2 {
+            font-family: var(--display-font);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-purple);
+            border-left: 4px solid var(--accent-purple);
+            padding-left: 1rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .book-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">KEVIN LAUX</div>
+            <ul class="nav-menu">
+                <li><a href="#resume" class="nav-link">Resume</a></li>
+                <li><a href="#community" class="nav-link">Community</a></li>
+                <li><a href="https://linkedin.com/in/kevinlaux" target="_blank" class="nav-link">LinkedIn</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">KEVIN LAUX</h1>
+            <p class="hero-subtitle">Principal DevOps Engineer & Community Leader</p>
+            <p class="hero-description">
+                Building staircases, not pulling up ladders. Transforming complex platforms through automation 
+                while empowering the next generation through teaching, mentoring, and community leadership.
+            </p>
+            <div>
+                <a href="#resume" class="cta-button cta-primary">View Resume</a>
+                <a href="#community" class="cta-button cta-secondary">Community Impact</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Contributions Section -->
+    <section id="community" class="resume-section">
+        <h2 class="section-title">Community Contributions</h2>
+        
+        <!-- RTPSUG Leadership -->
+        <div class="community-section">
+            <h3 style="font-size: 1.6rem; color: var(--accent-blue); margin-bottom: 1rem;">🎯 Research Triangle PowerShell User Group Leadership</h3>
+            <p style="margin-bottom: 1.5rem;">Leading the largest PowerShell community in the Research Triangle, fostering collaboration and knowledge sharing through monthly meetings, presentations, and educational initiatives.</p>
+            
+            <div class="community-grid">
+                <div class="community-item">
+                    <span class="community-icon">👥</span>
+                    <div class="community-title">Meetup Community</div>
+                    <div class="community-desc">Monthly meetings with PowerShell experts and enthusiasts</div>
+                    <a href="https://www.meetup.com/research-triangle-powershell-users-group/" target="_blank" class="community-link">
+                        Join Meetup 🚀
+                    </a>
+                </div>
+                
+                <div class="community-item">
+                    <span class="community-icon">📺</span>
+                    <div class="community-title">YouTube Channel</div>
+                    <div class="community-desc">Recorded presentations and educational content</div>
+                    <a href="https://www.youtube.com/@ResearchTrianglePowerShellU" target="_blank" class="community-link">
+                        Watch Videos 🎬
+                    </a>
+                </div>
+                
+                <div class="community-item">
+                    <span class="community-icon">🌐</span>
+                    <div class="community-title">RTPSUG Website</div>
+                    <div class="community-desc">Central hub for community resources and information</div>
+                    <a href="https://rtpsug.com/" target="_blank" class="community-link">
+                        Visit Site 🔗
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Presentations -->
+        <div class="video-showcase">
+            <h3 style="font-size: 1.6rem; color: var(--accent-blue); margin-bottom: 1rem;">🎥 Featured Video Presentations</h3>
+            
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-year">2024</div>
+                    <div class="video-title">PowerShell Summit - UI Development Session</div>
+                    <div class="video-event">PowerShell Summit 2024</div>
+                    <div class="community-desc">Deep dive into PowerShell GUI development techniques and best practices</div>
+                    <a href="#" class="community-link">Watch Presentation 🎬</a>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-year">2023</div>
+                    <div class="video-title">Lightning Talk - Automation Best Practices</div>
+                    <div class="video-event">PowerShell Conference</div>
+                    <div class="community-desc">Quick-fire presentation on automation strategies and implementation</div>
+                    <a href="#" class="community-link">Watch Talk ⚡</a>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-year">2022</div>
+                    <div class="video-title">Lightning Talk - Container Orchestration</div>
+                    <div class="video-event">PowerShell Conference</div>
+                    <div class="community-desc">Rapid overview of PowerShell in containerized environments</div>
+                    <a href="#" class="community-link">Watch Talk ⚡</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book Contributions -->
+        <div class="books-section">
+            <h3 style="font-size: 1.6rem; color: var(--accent-blue); margin-bottom: 1rem;">📚 Published Book Contributions</h3>
+            
+            <div class="book-card">
+                <div class="book-icon">📖</div>
+                <div class="book-info">
+                    <h4>PowerShell Automation Cookbook</h4>
+                    <div class="book-contribution">Contributed chapters on advanced scripting techniques and automation patterns</div>
+                    <a href="#" class="purchase-btn">📗 Purchase Book</a>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <div class="book-icon">📘</div>
+                <div class="book-info">
+                    <h4>DevOps with PowerShell</h4>
+                    <div class="book-contribution">Expert review and technical content for deployment automation sections</div>
+                    <a href="#" class="purchase-btn">📘 Purchase Book</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- GitHub Presentations -->
+        <div class="community-section">
+            <h3 style="font-size: 1.6rem; color: var(--accent-blue); margin-bottom: 1rem;">💻 Open Source Presentations</h3>
+            
+            <div class="community-grid">
+                <div class="community-item">
+                    <span class="community-icon">⚛️</span>
+                    <div class="community-title">ATOM Editor & PowerShell</div>
+                    <div class="community-desc">PowerShell Core presentation content and setup guides</div>
+                    <a href="https://github.com/KevinLaux/ATOM" target="_blank" class="community-link">
+                        View Repository 📂
+                    </a>
+                </div>
+                
+                <div class="community-item">
+                    <span class="community-icon">🖥️</span>
+                    <div class="community-title">PowerShell GUI Development</div>
+                    <div class="community-desc">Advanced GUI scripting techniques and examples</div>
+                    <a href="https://github.com/KevinLaux/GUI" target="_blank" class="community-link">
+                        View Repository 📂
+                    </a>
+                </div>
+                
+                <div class="community-item">
+                    <span class="community-icon">🐳</span>
+                    <div class="community-title">Introduction to Docker</div>
+                    <div class="community-desc">Containerization fundamentals and best practices</div>
+                    <a href="https://github.com/KevinLaux/introtodocker" target="_blank" class="community-link">
+                        View Repository 📂
+                    </a>
+                </div>
+                
+                <div class="community-item">
+                    <span class="community-icon">🎮</span>
+                    <div class="community-title">PowerShell Wordle</div>
+                    <div class="community-desc">Game development in PowerShell - fun educational project</div>
+                    <a href="https://github.com/KevinLaux/wordle" target="_blank" class="community-link">
+                        View Repository 📂
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simplified Resume Section -->
+    <section id="resume" class="resume-section">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="resume-content">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h1 style="font-size: 2.5rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Kevin Laux</h1>
+                <p style="font-size: 1.1rem; color: var(--accent-purple); margin: 1rem 0;">Principal DevOps Engineer & Community Leader</p>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <a href="mailto:resume@kevinlaux.com" style="color: var(--accent-blue); text-decoration: none;">resume@kevinlaux.com</a>
+                    <a href="https://linkedin.com/in/kevinlaux" target="_blank" style="color: var(--accent-blue); text-decoration: none;">LinkedIn</a>
+                    <a href="https://github.com/KevinLaux" target="_blank" style="color: var(--accent-blue); text-decoration: none;">GitHub</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.6); border-radius: 15px; margin: 2rem 0;">
+                <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Building Staircases, Not Pulling Up Ladders</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Experienced technology leader passionate about automating complex platforms while empowering others through teaching and mentorship. 
+                    Leading cross-functional teams to deliver mission-critical solutions with <strong>$17.5M+ in cost savings</strong> and 
+                    <strong>1M+ jobs processed monthly</strong> on platforms I've architected.
+                </p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="/" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary-gradient); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600;">
+                    📄 View Full Resume
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

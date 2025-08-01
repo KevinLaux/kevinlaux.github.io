@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Laux - Metal Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800;900&family=SF+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --metal-dark: #1c1c1e;
+            --metal-medium: #2c2c2e;
+            --metal-light: #3a3a3c;
+            --metal-border: #48484a;
+            --metal-accent: #007aff;
+            --metal-text: #ffffff;
+            --metal-text-secondary: #8e8e93;
+            --metal-surface: linear-gradient(145deg, #2c2c2e 0%, #1c1c1e 100%);
+            --metal-highlight: linear-gradient(145deg, #3a3a3c 0%, #2c2c2e 100%);
+            --metal-shadow-dark: rgba(0, 0, 0, 0.5);
+            --metal-shadow-light: rgba(255, 255, 255, 0.05);
+            --font-system: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'SF Mono', 'Monaco', 'Menlo', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-system);
+            background: var(--metal-dark);
+            color: var(--metal-text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Metal Navigation */
+        .metal-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--metal-surface);
+            backdrop-filter: blur(40px);
+            border-bottom: 1px solid var(--metal-border);
+            box-shadow: 
+                inset 0 1px 0 var(--metal-shadow-light),
+                0 2px 20px var(--metal-shadow-dark);
+        }
+
+        .metal-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            height: 60px;
+        }
+
+        .metal-logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--metal-text);
+            text-shadow: 0 1px 2px var(--metal-shadow-dark);
+        }
+
+        .metal-nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .metal-nav-link {
+            color: var(--metal-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .metal-nav-link:hover {
+            color: var(--metal-text);
+        }
+
+        .metal-nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--metal-accent);
+            border-radius: 1px;
+        }
+
+        /* Metal Hero Section */
+        .metal-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: 60px;
+            background: radial-gradient(ellipse at center, var(--metal-medium) 0%, var(--metal-dark) 70%);
+        }
+
+        .metal-hero-content {
+            max-width: 800px;
+        }
+
+        .metal-hero-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--metal-text);
+            text-shadow: 0 2px 20px var(--metal-shadow-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .metal-hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            margin-bottom: 2rem;
+            color: var(--metal-text-secondary);
+            font-weight: 400;
+        }
+
+        .metal-hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: var(--metal-text-secondary);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* Metal Buttons */
+        .metal-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metal-button-primary {
+            background: var(--metal-accent);
+            color: white;
+            box-shadow: 
+                0 1px 3px rgba(0, 122, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .metal-button-primary:hover {
+            background: #0051d0;
+            transform: translateY(-1px);
+            box-shadow: 
+                0 4px 12px rgba(0, 122, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .metal-button-secondary {
+            background: var(--metal-highlight);
+            color: var(--metal-text);
+            border: 1px solid var(--metal-border);
+            box-shadow: 
+                inset 0 1px 0 var(--metal-shadow-light),
+                0 1px 3px var(--metal-shadow-dark);
+        }
+
+        .metal-button-secondary:hover {
+            background: var(--metal-light);
+            transform: translateY(-1px);
+            box-shadow: 
+                inset 0 1px 0 var(--metal-shadow-light),
+                0 4px 12px var(--metal-shadow-dark);
+        }
+
+        /* Metal Cards */
+        .metal-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .metal-section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--metal-text);
+            text-shadow: 0 1px 2px var(--metal-shadow-dark);
+        }
+
+        .metal-card {
+            background: var(--metal-surface);
+            border: 1px solid var(--metal-border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 
+                inset 0 1px 0 var(--metal-shadow-light),
+                0 4px 20px var(--metal-shadow-dark);
+            transition: all 0.3s ease;
+        }
+
+        .metal-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                inset 0 1px 0 var(--metal-shadow-light),
+                0 8px 30px var(--metal-shadow-dark);
+        }
+
+        .metal-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--metal-border);
+        }
+
+        .metal-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--metal-highlight);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 1px solid var(--metal-border);
+            box-shadow: inset 0 1px 0 var(--metal-shadow-light);
+        }
+
+        .metal-card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--metal-text);
+            margin-bottom: 0.2rem;
+        }
+
+        .metal-card-subtitle {
+            color: var(--metal-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .metal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Metal Skills */
+        .metal-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .metal-skill {
+            background: var(--metal-highlight);
+            border: 1px solid var(--metal-border);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            box-shadow: inset 0 1px 0 var(--metal-shadow-light);
+        }
+
+        .metal-skill:hover {
+            background: var(--metal-light);
+            transform: scale(1.02);
+            box-shadow: 
+                inset 0 1px 0 var(--metal-shadow-light),
+                0 4px 12px var(--metal-shadow-dark);
+        }
+
+        .metal-skill-name {
+            font-weight: 600;
+            color: var(--metal-text);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Metal Contact */
+        .metal-contact {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--metal-surface);
+            border-top: 1px solid var(--metal-border);
+            margin-top: 4rem;
+        }
+
+        .metal-contact-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--metal-text);
+        }
+
+        .metal-contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .metal-contact-link {
+            color: var(--metal-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        .metal-contact-link:hover {
+            color: var(--metal-accent);
+            background: var(--metal-highlight);
+        }
+
+        /* Metal Typography */
+        .metal-text {
+            color: var(--metal-text);
+            line-height: 1.7;
+        }
+
+        .metal-text-secondary {
+            color: var(--metal-text-secondary);
+            line-height: 1.6;
+        }
+
+        .metal-code {
+            font-family: var(--font-mono);
+            background: var(--metal-dark);
+            border: 1px solid var(--metal-border);
+            border-radius: 6px;
+            padding: 0.2rem 0.4rem;
+            font-size: 0.9rem;
+            color: var(--metal-accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .metal-nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+                height: auto;
+            }
+
+            .metal-nav-menu {
+                gap: 1rem;
+            }
+
+            .metal-hero {
+                margin-top: 100px;
+            }
+
+            .metal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metal-skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metal-contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Metal Navigation -->
+    <nav class="metal-nav">
+        <div class="metal-nav-container">
+            <div class="metal-logo">KEVIN LAUX</div>
+            <ul class="metal-nav-menu">
+                <li><a href="#about" class="metal-nav-link active">About</a></li>
+                <li><a href="#experience" class="metal-nav-link">Experience</a></li>
+                <li><a href="#community" class="metal-nav-link">Community</a></li>
+                <li><a href="#contact" class="metal-nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Metal Hero -->
+    <section class="metal-hero">
+        <div class="metal-hero-content">
+            <h1 class="metal-hero-title">Kevin Laux</h1>
+            <p class="metal-hero-subtitle">Principal DevOps Engineer & Technology Leader</p>
+            <p class="metal-hero-description">
+                Architecting scalable platforms and building communities. Leading teams to deliver 
+                mission-critical solutions while empowering others through teaching and mentorship.
+            </p>
+            <div>
+                <a href="#experience" class="metal-button metal-button-primary">
+                    View Experience
+                </a>
+                <a href="#community" class="metal-button metal-button-secondary">
+                    Community Impact
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="metal-section">
+        <h2 class="metal-section-title">Professional Impact</h2>
+        
+        <div class="metal-card">
+            <div class="metal-card-header">
+                <div class="metal-icon">🚀</div>
+                <div>
+                    <div class="metal-card-title">Principal DevOps Engineer</div>
+                    <div class="metal-card-subtitle">MetLife • 2024 - Present</div>
+                </div>
+            </div>
+            <div class="metal-text">
+                <p>Architected strategic roadmaps for mission-critical platforms processing <span class="metal-code">1M+ jobs monthly</span>. 
+                Delivered <span class="metal-code">$17.5M cost savings</span> through platform optimization and licensing audits.</p>
+                
+                <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--metal-text-secondary);">
+                    <li>Spearheaded IBM Workload Scheduler upgrade (2,500+ agents) with zero downtime</li>
+                    <li>Led migration of 1Desk automation framework to Ansible for APT</li>
+                    <li>Shaped cross-platform deployment strategy for OpenShift and AKS</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="metal-grid">
+            <div class="metal-card">
+                <div class="metal-card-header">
+                    <div class="metal-icon">⚙️</div>
+                    <div>
+                        <div class="metal-card-title">Platform Manager</div>
+                        <div class="metal-card-subtitle">2022 - 2024</div>
+                    </div>
+                </div>
+                <div class="metal-text-secondary">
+                    Led orchestration platform team, achieved 50% quality improvement in automata migration, 
+                    and championed DevOps initiatives across the organization.
+                </div>
+            </div>
+
+            <div class="metal-card">
+                <div class="metal-card-header">
+                    <div class="metal-icon">🐳</div>
+                    <div>
+                        <div class="metal-card-title">Container Engineering</div>
+                        <div class="metal-card-subtitle">2019 - 2022</div>
+                    </div>
+                </div>
+                <div class="metal-text-secondary">
+                    Scaled container environment capacity 2x, managed international deployments, 
+                    and reduced cloud spend by $700K annually.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="metal-section">
+        <h2 class="metal-section-title">Core Expertise</h2>
+        
+        <div class="metal-skills-grid">
+            <div class="metal-skill">
+                <div class="metal-skill-name">Cloud Infrastructure</div>
+                <div class="metal-text-secondary">Azure, AWS, OpenShift, AKS</div>
+            </div>
+            <div class="metal-skill">
+                <div class="metal-skill-name">DevOps & Automation</div>
+                <div class="metal-text-secondary">CI/CD, Git, Ansible, Chef</div>
+            </div>
+            <div class="metal-skill">
+                <div class="metal-skill-name">Container Technologies</div>
+                <div class="metal-text-secondary">Docker, Kubernetes, OpenShift</div>
+            </div>
+            <div class="metal-skill">
+                <div class="metal-skill-name">PowerShell Scripting</div>
+                <div class="metal-text-secondary">Expert-level automation</div>
+            </div>
+            <div class="metal-skill">
+                <div class="metal-skill-name">System Architecture</div>
+                <div class="metal-text-secondary">Mission-critical platforms</div>
+            </div>
+            <div class="metal-skill">
+                <div class="metal-skill-name">Team Leadership</div>
+                <div class="metal-text-secondary">Mentoring & Development</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="metal-section">
+        <h2 class="metal-section-title">Community Leadership</h2>
+        
+        <div class="metal-grid">
+            <div class="metal-card">
+                <div class="metal-card-header">
+                    <div class="metal-icon">👥</div>
+                    <div>
+                        <div class="metal-card-title">RTPSUG Leader</div>
+                        <div class="metal-card-subtitle">Research Triangle PowerShell User Group</div>
+                    </div>
+                </div>
+                <div class="metal-text">
+                    Leading the largest PowerShell community in the Research Triangle through monthly meetings, 
+                    educational content, and collaborative learning initiatives.
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="https://rtpsug.com/" target="_blank" class="metal-button metal-button-secondary">
+                        Visit RTPSUG
+                    </a>
+                </div>
+            </div>
+
+            <div class="metal-card">
+                <div class="metal-card-header">
+                    <div class="metal-icon">📚</div>
+                    <div>
+                        <div class="metal-card-title">Published Author</div>
+                        <div class="metal-card-subtitle">Technical Book Contributions</div>
+                    </div>
+                </div>
+                <div class="metal-text">
+                    Contributed to multiple PowerShell and DevOps publications, sharing expertise 
+                    in automation, scripting, and platform architecture.
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="#" class="metal-button metal-button-secondary">
+                        View Publications
+                    </a>
+                </div>
+            </div>
+
+            <div class="metal-card">
+                <div class="metal-card-header">
+                    <div class="metal-icon">🎥</div>
+                    <div>
+                        <div class="metal-card-title">Conference Speaker</div>
+                        <div class="metal-card-subtitle">PowerShell Summit & Conferences</div>
+                    </div>
+                </div>
+                <div class="metal-text">
+                    Featured speaker at PowerShell Summit 2024 and multiple lightning talks, 
+                    sharing knowledge on UI development and automation best practices.
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="#" class="metal-button metal-button-secondary">
+                        Watch Presentations
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="metal-contact">
+        <h2 class="metal-contact-title">Let's Connect</h2>
+        <p class="metal-text-secondary">Building staircases, not pulling up ladders</p>
+        
+        <div class="metal-contact-links">
+            <a href="mailto:resume@kevinlaux.com" class="metal-contact-link">resume@kevinlaux.com</a>
+            <a href="https://linkedin.com/in/kevinlaux" target="_blank" class="metal-contact-link">LinkedIn</a>
+            <a href="https://github.com/KevinLaux" target="_blank" class="metal-contact-link">GitHub</a>
+            <a href="/" class="metal-contact-link">Full Resume</a>
+        </div>
+    </section>
+</body>
+</html>
