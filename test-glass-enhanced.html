@@ -9,20 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@100;200;300;400;500;600;700;800;900&family=SF+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Default Glass Theme - White */
-            --glass-bg: rgba(255, 255, 255, 0.15);
-            --glass-border: rgba(255, 255, 255, 0.3);
-            --glass-shadow: rgba(0, 0, 0, 0.25);
-            --glass-text: #1a1a1a;
-            --glass-text-secondary: #4a4a4a;
-            --glass-accent: #475569;
-            --glass-accent-light: #64748b;
-            --glass-accent-dark: #334155;
-            --glass-accent-rgb: 71, 85, 105;
-            --glass-success: #059669;
-            --glass-warning: #d97706;
-            --glass-bg-card: rgba(255, 255, 255, 0.2);
-            --glass-bg-hover: rgba(255, 255, 255, 0.3);
+            /* Default Glass Theme - Light Blue */
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --glass-shadow: rgba(0, 0, 0, 0.15);
+            --glass-text: #ffffff;
+            --glass-text-secondary: rgba(255, 255, 255, 0.8);
+            --glass-accent: #7dd3fc;
+            --glass-accent-light: #bae6fd;
+            --glass-accent-dark: #0ea5e9;
+            --glass-accent-rgb: 125, 211, 252;
+            --glass-success: #4ade80;
+            --glass-warning: #fbbf24;
+            --glass-bg-card: rgba(255, 255, 255, 0.12);
+            --glass-bg-hover: rgba(255, 255, 255, 0.18);
             --font-system: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-mono: 'SF Mono', 'Monaco', 'Menlo', monospace;
         }
@@ -33,10 +33,10 @@
             box-sizing: border-box;
         }
 
-        /* Default Glass Theme Background - White */
+        /* Default Glass Theme Background - Light Blue */
         body {
             font-family: var(--font-system);
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e1 50%, #94a3b8 75%, #64748b 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 25%, #7dd3fc 50%, #bae6fd 75%, #e0f2fe 100%);
             background-size: 400% 400%;
             animation: gradientMove 15s ease infinite;
             color: var(--glass-text);
@@ -60,37 +60,37 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.4) 0%, transparent 60%),
-                radial-gradient(circle at 80% 20%, rgba(248, 250, 252, 0.5) 0%, transparent 60%),
-                radial-gradient(circle at 40% 40%, rgba(241, 245, 249, 0.3) 0%, transparent 60%);
+                radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.3) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(125, 211, 252, 0.2) 0%, transparent 60%);
             pointer-events: none;
             z-index: -1;
-            backdrop-filter: blur(1px);
+            backdrop-filter: blur(2px);
         }
 
-        /* Glass Theme - Grey */
-        body.glass-grey {
-            background: linear-gradient(135deg, #6b7280 0%, #4b5563 25%, #374151 50%, #1f2937 75%, #111827 100%);
+        /* Glass Theme - Purple */
+        body.glass-purple {
+            background: linear-gradient(135deg, #a855f7 0%, #c084fc 25%, #d8b4fe 50%, #e9d5ff 75%, #f3e8ff 100%);
             background-size: 400% 400%;
             animation: gradientMove 18s ease infinite;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-bg-card: rgba(255, 255, 255, 0.15);
-            --glass-bg-hover: rgba(255, 255, 255, 0.25);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --glass-bg-card: rgba(255, 255, 255, 0.12);
+            --glass-bg-hover: rgba(255, 255, 255, 0.18);
             --glass-text: #ffffff;
-            --glass-text-secondary: rgba(255, 255, 255, 0.75);
-            --glass-accent: #9ca3af;
-            --glass-accent-light: #d1d5db;
-            --glass-accent-dark: #6b7280;
-            --glass-accent-rgb: 156, 163, 175;
+            --glass-text-secondary: rgba(255, 255, 255, 0.8);
+            --glass-accent: #c084fc;
+            --glass-accent-light: #d8b4fe;
+            --glass-accent-dark: #a855f7;
+            --glass-accent-rgb: 192, 132, 252;
         }
 
-        body.glass-grey::before {
+        body.glass-purple::before {
             background: 
-                radial-gradient(circle at 20% 80%, rgba(107, 114, 128, 0.4) 0%, transparent 60%),
-                radial-gradient(circle at 80% 20%, rgba(75, 85, 99, 0.5) 0%, transparent 60%),
-                radial-gradient(circle at 40% 40%, rgba(55, 65, 81, 0.3) 0%, transparent 60%);
-            backdrop-filter: blur(1px);
+                radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(192, 132, 252, 0.3) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(216, 180, 254, 0.2) 0%, transparent 60%);
+            backdrop-filter: blur(2px);
         }
 
         /* Glass Theme - Blue */
@@ -120,200 +120,77 @@
 
         /* Glass Theme - Green */
         body.glass-green {
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 25%, #15803d 50%, #166534 75%, #14532d 100%);
+            background: linear-gradient(135deg, #10b981 0%, #34d399 25%, #6ee7b7 50%, #a7f3d0 75%, #d1fae5 100%);
             background-size: 400% 400%;
             animation: gradientMove 17s ease infinite;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-bg-card: rgba(255, 255, 255, 0.15);
-            --glass-bg-hover: rgba(255, 255, 255, 0.25);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --glass-bg-card: rgba(255, 255, 255, 0.12);
+            --glass-bg-hover: rgba(255, 255, 255, 0.18);
             --glass-text: #ffffff;
-            --glass-text-secondary: rgba(255, 255, 255, 0.75);
-            --glass-accent: #4ade80;
-            --glass-accent-light: #86efac;
-            --glass-accent-dark: #16a34a;
-            --glass-accent-rgb: 74, 222, 128;
+            --glass-text-secondary: rgba(255, 255, 255, 0.8);
+            --glass-accent: #34d399;
+            --glass-accent-light: #6ee7b7;
+            --glass-accent-dark: #10b981;
+            --glass-accent-rgb: 52, 211, 153;
         }
 
         body.glass-green::before {
             background: 
-                radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.4) 0%, transparent 60%),
-                radial-gradient(circle at 80% 20%, rgba(22, 163, 74, 0.5) 0%, transparent 60%),
-                radial-gradient(circle at 40% 40%, rgba(21, 128, 61, 0.3) 0%, transparent 60%);
-            backdrop-filter: blur(1px);
+                radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(52, 211, 153, 0.3) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(110, 231, 183, 0.2) 0%, transparent 60%);
+            backdrop-filter: blur(2px);
         }
 
-        /* Glass Theme - Red */
+        /* Glass Theme - Coral */
         body.glass-red {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 25%, #b91c1c 50%, #991b1b 75%, #7f1d1d 100%);
+            background: linear-gradient(135deg, #fb7185 0%, #f472b6 25%, #e879f9 50%, #c084fc 75%, #f0e6ff 100%);
             background-size: 400% 400%;
             animation: gradientMove 19s ease infinite;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-bg-card: rgba(255, 255, 255, 0.15);
-            --glass-bg-hover: rgba(255, 255, 255, 0.25);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --glass-bg-card: rgba(255, 255, 255, 0.12);
+            --glass-bg-hover: rgba(255, 255, 255, 0.18);
             --glass-text: #ffffff;
-            --glass-text-secondary: rgba(255, 255, 255, 0.75);
-            --glass-accent: #f87171;
-            --glass-accent-light: #fca5a5;
-            --glass-accent-dark: #dc2626;
-            --glass-accent-rgb: 248, 113, 113;
+            --glass-text-secondary: rgba(255, 255, 255, 0.8);
+            --glass-accent: #f472b6;
+            --glass-accent-light: #e879f9;
+            --glass-accent-dark: #fb7185;
+            --glass-accent-rgb: 244, 114, 182;
         }
 
         body.glass-red::before {
             background: 
-                radial-gradient(circle at 20% 80%, rgba(239, 68, 68, 0.4) 0%, transparent 60%),
-                radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.5) 0%, transparent 60%),
-                radial-gradient(circle at 40% 40%, rgba(185, 28, 28, 0.3) 0%, transparent 60%);
-            backdrop-filter: blur(1px);
+                radial-gradient(circle at 20% 80%, rgba(251, 113, 133, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(244, 114, 182, 0.3) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(232, 121, 249, 0.2) 0%, transparent 60%);
+            backdrop-filter: blur(2px);
         }
 
-        /* Classic Theme - White */
-        body.classic-theme {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #f1f5f9 50%, #e2e8f0 75%, #cbd5e1 100%);
+        /* Glass Theme - Sunset */
+        body.glass-sunset {
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 25%, #fbbf24 50%, #fde047 75%, #fef3c7 100%);
             background-size: 400% 400%;
             animation: gradientMove 20s ease infinite;
-            --glass-bg: rgba(255, 255, 255, 0.95);
-            --glass-border: rgba(0, 0, 0, 0.1);
-            --glass-shadow: rgba(0, 0, 0, 0.1);
-            --glass-text: #1a1a1a;
-            --glass-text-secondary: #4a4a4a;
-            --glass-accent: #475569;
-            --glass-accent-light: #64748b;
-            --glass-accent-dark: #334155;
-            --glass-accent-rgb: 71, 85, 105;
-            --glass-success: #059669;
-            --glass-warning: #d97706;
-            --glass-bg-card: rgba(255, 255, 255, 0.9);
-            --glass-bg-hover: rgba(255, 255, 255, 1);
-        }
-
-        body.classic-theme::before {
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.9) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(0, 0, 0, 0.02) 0%, transparent 50%);
-        }
-
-        /* Classic Theme - Light Blue */
-        body.classic-light-blue {
-            background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 25%, #81d4fa 50%, #4fc3f7 75%, #29b6f6 100%);
-            background-size: 400% 400%;
-            animation: gradientMove 22s ease infinite;
-            --glass-bg: rgba(255, 255, 255, 0.95);
-            --glass-border: rgba(0, 0, 0, 0.1);
-            --glass-shadow: rgba(0, 0, 0, 0.1);
-            --glass-text: #1a1a1a;
-            --glass-text-secondary: #4a4a4a;
-            --glass-accent: #0288d1;
-            --glass-accent-light: #03a9f4;
-            --glass-accent-dark: #0277bd;
-            --glass-accent-rgb: 2, 136, 209;
-            --glass-bg-card: rgba(255, 255, 255, 0.9);
-            --glass-bg-hover: rgba(255, 255, 255, 1);
-        }
-
-        body.classic-light-blue::before {
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(2, 136, 209, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(3, 169, 244, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(2, 119, 189, 0.05) 0%, transparent 50%);
-        }
-
-        /* Classic Theme - Grey */
-        body.classic-grey {
-            background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 25%, #e0e0e0 50%, #bdbdbd 75%, #9e9e9e 100%);
-            background-size: 400% 400%;
-            animation: gradientMove 21s ease infinite;
-            --glass-bg: rgba(255, 255, 255, 0.95);
-            --glass-border: rgba(0, 0, 0, 0.1);
-            --glass-shadow: rgba(0, 0, 0, 0.1);
-            --glass-text: #1a1a1a;
-            --glass-text-secondary: #4a4a4a;
-            --glass-accent: #616161;
-            --glass-accent-light: #757575;
-            --glass-accent-dark: #424242;
-            --glass-accent-rgb: 97, 97, 97;
-            --glass-bg-card: rgba(255, 255, 255, 0.9);
-            --glass-bg-hover: rgba(255, 255, 255, 1);
-        }
-
-        body.classic-grey::before {
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(97, 97, 97, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(117, 117, 117, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(66, 66, 66, 0.05) 0%, transparent 50%);
-        }
-
-        /* Classic Theme - Dark Blue */
-        body.classic-dark-blue {
-            background: linear-gradient(135deg, #1a237e 0%, #283593 25%, #3949ab 50%, #3f51b5 75%, #5c6bc0 100%);
-            background-size: 400% 400%;
-            animation: gradientMove 23s ease infinite;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --glass-bg-card: rgba(255, 255, 255, 0.12);
+            --glass-bg-hover: rgba(255, 255, 255, 0.18);
             --glass-text: #ffffff;
-            --glass-text-secondary: rgba(255, 255, 255, 0.75);
-            --glass-accent: #7986cb;
-            --glass-accent-light: #9fa8da;
-            --glass-accent-dark: #5c6bc0;
-            --glass-accent-rgb: 121, 134, 203;
-            --glass-bg: rgba(255, 255, 255, 0.15);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-bg-card: rgba(255, 255, 255, 0.1);
-            --glass-bg-hover: rgba(255, 255, 255, 0.2);
+            --glass-text-secondary: rgba(255, 255, 255, 0.8);
+            --glass-accent: #fb923c;
+            --glass-accent-light: #fbbf24;
+            --glass-accent-dark: #f97316;
+            --glass-accent-rgb: 251, 146, 60;
         }
 
-        body.classic-dark-blue::before {
+        body.glass-sunset::before {
             background: 
-                radial-gradient(circle at 20% 80%, rgba(121, 134, 203, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(159, 168, 218, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(92, 107, 192, 0.2) 0%, transparent 50%);
-        }
-
-        /* Classic Theme - Black */
-        body.classic-black {
-            background: linear-gradient(135deg, #000000 0%, #212121 25%, #424242 50%, #616161 75%, #757575 100%);
-            background-size: 400% 400%;
-            animation: gradientMove 24s ease infinite;
-            --glass-text: #ffffff;
-            --glass-text-secondary: rgba(255, 255, 255, 0.75);
-            --glass-accent: #ffffff;
-            --glass-accent-light: #f5f5f5;
-            --glass-accent-dark: #e0e0e0;
-            --glass-accent-rgb: 255, 255, 255;
-            --glass-bg: rgba(255, 255, 255, 0.15);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-bg-card: rgba(255, 255, 255, 0.1);
-            --glass-bg-hover: rgba(255, 255, 255, 0.2);
-        }
-
-        body.classic-black::before {
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(245, 245, 245, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(224, 224, 224, 0.05) 0%, transparent 50%);
-        }
-
-        body.theme-white {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #e2e8f0 50%, #cbd5e1 75%, #94a3b8 100%);
-            background-size: 400% 400%;
-            animation: gradientMove 15s ease infinite;
-        }
-
-        /* Classic color themes */
-        body.classic-theme.theme-light {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #f1f5f9 50%, #e2e8f0 75%, #cbd5e1 100%);
-        }
-
-        body.classic-theme.theme-dark {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 25%, #475569 50%, #64748b 75%, #94a3b8 100%);
-        }
-
-        body.classic-theme.theme-warm {
-            background: linear-gradient(135deg, #fef7ed 0%, #fed7aa 25%, #fdba74 50%, #f59e0b 75%, #d97706 100%);
-        }
-
-        body.classic-theme.theme-cool {
-            background: linear-gradient(135deg, #f0f9ff 0%, #bae6fd 25%, #7dd3fc 50%, #0ea5e9 75%, #0284c7 100%);
+                radial-gradient(circle at 20% 80%, rgba(249, 115, 22, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(251, 146, 60, 0.3) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(251, 191, 36, 0.2) 0%, transparent 60%);
+            backdrop-filter: blur(2px);
         }
 
         /* Header Navigation */
@@ -388,8 +265,11 @@
         .dropdown {
             position: absolute;
             top: 100%;
-            left: 0;
+            right: 0;
             min-width: 200px;
+            max-width: 300px;
+            max-height: 70vh;
+            overflow-y: auto;
             background: var(--glass-bg);
             backdrop-filter: blur(40px);
             border: 1px solid var(--glass-border);
@@ -400,6 +280,7 @@
             transform: translateY(-10px);
             transition: all 0.3s ease;
             padding: 0.5rem;
+            z-index: 1000;
         }
 
         .nav-item:hover .dropdown {
@@ -867,15 +748,11 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">Themes</a>
                         <div class="dropdown">
-                            <a href="#" class="dropdown-item" onclick="setTheme('glass')">Glass</a>
-                            <a href="#" class="dropdown-item" onclick="setTheme('classic')">Classic</a>
-                            <div class="theme-selector">
-                                <div class="theme-option theme-white" onclick="changeTheme('white')" style="background: #ffffff; border: 2px solid #e5e7eb;"></div>
-                                <div class="theme-option theme-grey" onclick="changeTheme('grey')" style="background: #6b7280;"></div>
-                                <div class="theme-option theme-blue" onclick="changeTheme('blue')" style="background: #3b82f6;"></div>
-                                <div class="theme-option theme-green" onclick="changeTheme('green')" style="background: #22c55e;"></div>
-                                <div class="theme-option theme-red" onclick="changeTheme('red')" style="background: #ef4444;"></div>
-                            </div>
+                            <a href="#" class="dropdown-item" onclick="setGlassColor('blue')">Ocean Blue</a>
+                            <a href="#" class="dropdown-item" onclick="setGlassColor('purple')">Cosmic Purple</a>
+                            <a href="#" class="dropdown-item" onclick="setGlassColor('green')">Emerald Green</a>
+                            <a href="#" class="dropdown-item" onclick="setGlassColor('red')">Coral Pink</a>
+                            <a href="#" class="dropdown-item" onclick="setGlassColor('sunset')">Sunset Orange</a>
                         </div>
                     </li>
                 </ul>
@@ -1413,129 +1290,31 @@
             alert('Resume download functionality ready - please provide the PDF file URL to complete implementation.');
         }
 
-        // Theme switching functions
-        function setTheme(theme) {
+        // Glass color theme switching
+        function setGlassColor(color) {
             const body = document.body;
             
-            // Remove all theme classes
-            body.classList.remove('classic-theme', 'classic-light-blue', 'classic-grey', 'classic-dark-blue', 'classic-black');
-            body.classList.remove('glass-white', 'glass-grey', 'glass-blue', 'glass-green', 'glass-red');
+            // Remove all glass theme classes
+            body.classList.remove('glass-blue', 'glass-purple', 'glass-green', 'glass-red', 'glass-sunset');
             
-            if (theme === 'classic') {
-                body.classList.add('classic-theme');
-                localStorage.setItem('theme-mode', 'classic');
-            } else {
-                // Default to glass theme
-                localStorage.setItem('theme-mode', 'glass');
-            }
+            // Add the selected glass color class
+            body.classList.add(`glass-${color}`);
             
-            // Apply current color
-            const currentColor = localStorage.getItem('theme-color') || 'white';
-            changeTheme(currentColor);
-            
-            // Update theme button colors
-            updateThemeButtonColors();
+            // Store in localStorage
+            localStorage.setItem('glass-color', color);
             
             // Force repaint for header background
             forceBackgroundUpdate();
         }
 
-        function changeTheme(color) {
-            const body = document.body;
-            const currentMode = localStorage.getItem('theme-mode') || 'glass';
-            
-            // Remove all color classes
-            body.classList.remove('classic-theme', 'classic-light-blue', 'classic-grey', 'classic-dark-blue', 'classic-black');
-            body.classList.remove('glass-white', 'glass-grey', 'glass-blue', 'glass-green', 'glass-red');
-            
-            if (currentMode === 'classic') {
-                // Classic theme colors
-                switch(color) {
-                    case 'white':
-                        body.classList.add('classic-theme');
-                        break;
-                    case 'grey':
-                        body.classList.add('classic-grey');
-                        break;
-                    case 'blue':
-                        body.classList.add('classic-light-blue');
-                        break;
-                    case 'green':
-                        body.classList.add('classic-dark-blue');
-                        break;
-                    case 'red':
-                        body.classList.add('classic-black');
-                        break;
-                }
-            } else {
-                // Glass theme colors (default)
-                switch(color) {
-                    case 'white':
-                        // Default glass theme - no additional class needed
-                        break;
-                    case 'grey':
-                        body.classList.add('glass-grey');
-                        break;
-                    case 'blue':
-                        body.classList.add('glass-blue');
-                        break;
-                    case 'green':
-                        body.classList.add('glass-green');
-                        break;
-                    case 'red':
-                        body.classList.add('glass-red');
-                        break;
-                }
-            }
-            
-            localStorage.setItem('theme-color', color);
-            
-            // Update theme button colors
-            updateThemeButtonColors();
-            
-            // Force repaint for header background
-            forceBackgroundUpdate();
+        // Initialize theme on page load
+        function initializeTheme() {
+            const savedColor = localStorage.getItem('glass-color') || 'blue';
+            setGlassColor(savedColor);
         }
 
         function updateThemeButtonColors() {
-            const currentMode = localStorage.getItem('theme-mode') || 'glass';
-            const currentColor = localStorage.getItem('theme-color') || 'white';
-            
-            // Define color mappings for each theme mode
-            const glassColors = {
-                white: { bg: '#f8fafc', border: '#e5e7eb' },
-                grey: { bg: '#6b7280', border: '#6b7280' },
-                blue: { bg: '#3b82f6', border: '#3b82f6' },
-                green: { bg: '#22c55e', border: '#22c55e' },
-                red: { bg: '#ef4444', border: '#ef4444' }
-            };
-            
-            const classicColors = {
-                white: { bg: '#ffffff', border: '#e5e7eb' },
-                grey: { bg: '#9e9e9e', border: '#9e9e9e' },
-                blue: { bg: '#29b6f6', border: '#29b6f6' },
-                green: { bg: '#5c6bc0', border: '#5c6bc0' },
-                red: { bg: '#757575', border: '#757575' }
-            };
-            
-            const colorMap = currentMode === 'classic' ? classicColors : glassColors;
-            
-            // Update each theme button
-            const buttons = {
-                white: document.querySelector('.theme-white'),
-                grey: document.querySelector('.theme-grey'),
-                blue: document.querySelector('.theme-blue'),
-                green: document.querySelector('.theme-green'),
-                red: document.querySelector('.theme-red')
-            };
-            
-            Object.keys(buttons).forEach(colorName => {
-                const button = buttons[colorName];
-                if (button && colorMap[colorName]) {
-                    button.style.background = colorMap[colorName].bg;
-                    button.style.border = `2px solid ${colorMap[colorName].border}`;
-                }
-            });
+            // This function is no longer needed with the simplified theme system
         }
 
         function forceBackgroundUpdate() {
@@ -1554,6 +1333,7 @@
                 header.offsetHeight; // Trigger reflow
                 header.style.display = '';
             }
+        }
         }
 
         function toggleTheme() {
@@ -1659,11 +1439,7 @@
 
         // Load saved theme on page load
         document.addEventListener('DOMContentLoaded', () => {
-            const savedMode = localStorage.getItem('theme-mode') || 'glass';
-            const savedColor = localStorage.getItem('theme-color') || 'white';
-            
-            setTheme(savedMode);
-            changeTheme(savedColor);
+            initializeTheme();
             
             // Observe elements for animation
             document.querySelectorAll('.glass-card, .skill-card').forEach(el => {
