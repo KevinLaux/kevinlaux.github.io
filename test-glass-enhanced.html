@@ -33,12 +33,19 @@
 
         body {
             font-family: var(--font-system);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-attachment: fixed;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
             color: var(--glass-text);
             overflow-x: hidden;
             line-height: 1.6;
             min-height: 100vh;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* Background overlay */
@@ -50,11 +57,40 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(96, 165, 250, 0.2) 0%, transparent 50%);
+                radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
+        }
+
+        /* Traditional Apple Theme */
+        body.traditional-theme {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            animation: none;
+        }
+
+        body.traditional-theme::before {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 0, 0, 0.03) 0%, transparent 50%);
+        }
+
+        /* Traditional theme color overrides */
+        .traditional-theme {
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --glass-shadow: rgba(0, 0, 0, 0.1);
+            --glass-text: #1a1a1a;
+            --glass-text-secondary: #4a4a4a;
+            --glass-accent: #007aff;
+            --glass-accent-light: #5ac8fa;
+            --glass-accent-dark: #0051d0;
+            --glass-success: #34c759;
+            --glass-warning: #ff9500;
+            --glass-bg-card: rgba(255, 255, 255, 0.4);
+            --glass-bg-hover: rgba(255, 255, 255, 0.7);
         }
 
         /* Header Navigation */
@@ -564,6 +600,14 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a href="#projects" class="nav-link">Projects</a>
+                        <div class="dropdown">
+                            <a href="https://github.com/KevinLaux/GUI" target="_blank" class="dropdown-item">PowerShell GUI</a>
+                            <a href="https://github.com/KevinLaux/ATOM" target="_blank" class="dropdown-item">ATOM</a>
+                            <a href="#community" class="dropdown-item">Community Projects</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
                         <a href="#skills" class="nav-link">Technical Expertise</a>
                     </li>
                     <li class="nav-item">
@@ -580,6 +624,8 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">Themes</a>
                         <div class="dropdown">
+                            <a href="#" class="dropdown-item" onclick="setTheme('glass')">Liquid Glass</a>
+                            <a href="#" class="dropdown-item" onclick="setTheme('traditional')">Traditional Apple</a>
                             <div class="theme-selector">
                                 <div class="theme-option theme-blue" onclick="changeTheme('blue')"></div>
                                 <div class="theme-option theme-purple" onclick="changeTheme('purple')"></div>
@@ -744,47 +790,138 @@
         </div>
     </section>
 
-    <!-- Resume Section -->
-    <section id="resume" class="resume-section">
-        <div class="resume-content">
-            <h2 class="resume-title">Professional Experience</h2>
-            
-            <div class="resume-item">
-                <div class="resume-item-title">Principal DevOps Engineer</div>
-                <div class="resume-item-company">MetLife</div>
-                <div class="resume-item-date">2024 - Present</div>
-                <div class="resume-item-desc">
-                    Architecting strategic roadmaps for mission-critical platforms processing over 1 million jobs monthly. 
-                    Delivered $17.5M in cost avoidance through platform optimization and strategic licensing audits. 
-                    Led IBM Workload Scheduler upgrade across 2,500+ agents with zero downtime.
+    <!-- Timeline Section -->
+    <section id="timeline" class="glass-section">
+        <h2 class="glass-section-title">Professional Journey</h2>
+        
+        <div style="position: relative; max-width: 1000px; margin: 0 auto;">
+            <!-- Timeline Line -->
+            <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 4px; height: 100%; background: linear-gradient(to bottom, var(--glass-accent), var(--glass-accent-light)); border-radius: 2px; opacity: 0.3;"></div>
+
+            <!-- 2024 - Principal DevOps Engineer -->
+            <div style="display: flex; align-items: center; margin-bottom: 4rem; position: relative;">
+                <div style="flex: 1; text-align: right; padding-right: 2rem;">
+                    <div style="background: var(--glass-bg-card); backdrop-filter: blur(30px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; box-shadow: 0 15px 45px var(--glass-shadow); cursor: pointer; transition: all 0.4s ease;" onclick="showTimelineModal('principal')">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; justify-content: flex-end;">
+                            <div>
+                                <div style="font-size: 1.3rem; font-weight: 600; color: var(--glass-text); margin-bottom: 0.3rem;">Principal DevOps Engineer</div>
+                                <div style="color: var(--glass-text-secondary); font-size: 0.95rem;">MetLife</div>
+                            </div>
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--glass-accent), var(--glass-accent-light)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🚀</div>
+                        </div>
+                        <p style="color: var(--glass-text-secondary); margin-bottom: 1rem;">
+                            Elevated to principal level, architecting strategic roadmaps for mission-critical platforms 
+                            processing over 1 million jobs monthly. Leading transformational initiatives that deliver 
+                            measurable business value and operational excellence.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="background: rgba(var(--glass-accent-rgb), 0.2); color: var(--glass-accent); padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500;">Strategic Planning</span>
+                            <span style="background: rgba(var(--glass-accent-rgb), 0.2); color: var(--glass-accent); padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500;">Cost Optimization</span>
+                            <span style="background: rgba(var(--glass-accent-rgb), 0.2); color: var(--glass-accent); padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500;">Zero Downtime</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: var(--glass-accent); border-radius: 50%; border: 4px solid var(--glass-bg); z-index: 2;"></div>
+                <div style="flex: 1; padding-left: 2rem;">
+                    <div style="color: var(--glass-accent); font-weight: 600; font-size: 1.1rem;">2024 - Present</div>
                 </div>
             </div>
 
-            <div class="resume-item">
-                <div class="resume-item-title">Platform Manager</div>
-                <div class="resume-item-company">MetLife</div>
-                <div class="resume-item-date">2022 - 2024</div>
-                <div class="resume-item-desc">
-                    Led orchestration platform team achieving 50% quality improvements. Championed DevOps initiatives 
-                    and mentored emerging talent across multiple engineering teams.
+            <!-- 2022 - Platform Manager -->
+            <div style="display: flex; align-items: center; margin-bottom: 4rem; position: relative;">
+                <div style="flex: 1; text-align: left; padding-right: 2rem;">
+                    <div style="color: var(--glass-accent); font-weight: 600; font-size: 1.1rem;">2022 - 2024</div>
+                </div>
+                <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: var(--glass-accent-light); border-radius: 50%; border: 4px solid var(--glass-bg); z-index: 2;"></div>
+                <div style="flex: 1; padding-left: 2rem;">
+                    <div style="background: var(--glass-bg-card); backdrop-filter: blur(30px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; box-shadow: 0 15px 45px var(--glass-shadow); cursor: pointer; transition: all 0.4s ease;" onclick="showTimelineModal('manager')">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--glass-accent-light), var(--glass-accent)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">⚙️</div>
+                            <div>
+                                <div style="font-size: 1.3rem; font-weight: 600; color: var(--glass-text); margin-bottom: 0.3rem;">Platform Manager</div>
+                                <div style="color: var(--glass-text-secondary); font-size: 0.95rem;">MetLife</div>
+                            </div>
+                        </div>
+                        <p style="color: var(--glass-text-secondary); margin-bottom: 1rem;">
+                            Promoted to lead the orchestration platform team, driving operational excellence and 
+                            quality improvements. Championed DevOps initiatives while mentoring emerging talent 
+                            across multiple engineering teams.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="background: rgba(var(--glass-accent-rgb), 0.2); color: var(--glass-accent); padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500;">Team Leadership</span>
+                            <span style="background: rgba(var(--glass-accent-rgb), 0.2); color: var(--glass-accent); padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500;">Quality Improvement</span>
+                            <span style="background: rgba(var(--glass-accent-rgb), 0.2); color: var(--glass-accent); padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500;">DevOps</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="resume-item">
-                <div class="resume-item-title">Container Engineering Lead</div>
-                <div class="resume-item-company">MetLife</div>
-                <div class="resume-item-date">2019 - 2022</div>
-                <div class="resume-item-desc">
-                    Scaled container environment capacity 200% while reducing cloud spend by $700K annually. 
-                    Managed international deployments and established DevOps best practices.
+            <!-- 2019 - Container Engineering -->
+            <div style="display: flex; align-items: center; margin-bottom: 4rem; position: relative;">
+                <div style="flex: 1; text-align: right; padding-right: 2rem;">
+                    <div style="background: var(--glass-bg-card); backdrop-filter: blur(30px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; box-shadow: 0 15px 45px var(--glass-shadow); cursor: pointer; transition: all 0.4s ease;" onclick="showTimelineModal('container')">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; justify-content: flex-end;">
+                            <div>
+                                <div style="font-size: 1.3rem; font-weight: 600; color: var(--glass-text); margin-bottom: 0.3rem;">Container Engineering Lead</div>
+                                <div style="color: var(--glass-text-secondary); font-size: 0.95rem;">MetLife</div>
+                            </div>
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--glass-success), var(--glass-accent)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🐳</div>
+                        </div>
+                        <p style="color: var(--glass-text-secondary); margin-bottom: 1rem;">
+                            Spearheaded the container transformation initiative, scaling infrastructure capacity 
+                            while optimizing costs. Led the adoption of modern containerization technologies 
+                            and established cloud-native best practices.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: flex-end;">
+                            <span style="background: rgba(var(--glass-accent-rgb), 0.2); color: var(--glass-accent); padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500;">Docker</span>
+                            <span style="background: rgba(var(--glass-accent-rgb), 0.2); color: var(--glass-accent); padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500;">Kubernetes</span>
+                            <span style="background: rgba(var(--glass-accent-rgb), 0.2); color: var(--glass-accent); padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500;">Cost Reduction</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: var(--glass-success); border-radius: 50%; border: 4px solid var(--glass-bg); z-index: 2;"></div>
+                <div style="flex: 1; padding-left: 2rem;">
+                    <div style="color: var(--glass-accent); font-weight: 600; font-size: 1.1rem;">2019 - 2022</div>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 2rem;">
-                <button class="glass-button glass-button-primary" onclick="downloadResume()">
-                    Download Full Resume
-                </button>
+            <!-- Community Leadership -->
+            <div style="display: flex; align-items: center; margin-bottom: 4rem; position: relative;">
+                <div style="flex: 1; text-align: left; padding-right: 2rem;">
+                    <div style="color: var(--glass-accent); font-weight: 600; font-size: 1.1rem;">2017 - Present</div>
+                </div>
+                <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: var(--glass-warning); border-radius: 50%; border: 4px solid var(--glass-bg); z-index: 2;"></div>
+                <div style="flex: 1; padding-left: 2rem;">
+                    <div style="background: var(--glass-bg-card); backdrop-filter: blur(30px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; box-shadow: 0 15px 45px var(--glass-shadow); cursor: pointer; transition: all 0.4s ease;" onclick="showTimelineModal('community')">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--glass-warning), var(--glass-accent)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">👥</div>
+                            <div>
+                                <div style="font-size: 1.3rem; font-weight: 600; color: var(--glass-text); margin-bottom: 0.3rem;">Community Leader & Speaker</div>
+                                <div style="color: var(--glass-text-secondary); font-size: 0.95rem;">RTPSUG & Industry Conferences</div>
+                            </div>
+                        </div>
+                        <p style="color: var(--glass-text-secondary); margin-bottom: 1rem;">
+                            Building bridges in the PowerShell and DevOps communities through leadership, 
+                            education, and knowledge sharing. Contributing to multiple publications and 
+                            speaking at industry conferences.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="background: rgba(var(--glass-accent-rgb), 0.2); color: var(--glass-accent); padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500;">Public Speaking</span>
+                            <span style="background: rgba(var(--glass-accent-rgb), 0.2); color: var(--glass-accent); padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500;">Community Building</span>
+                            <span style="background: rgba(var(--glass-accent-rgb), 0.2); color: var(--glass-accent); padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500;">Technical Writing</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="resume-full.html" class="glass-button glass-button-primary" style="margin: 0.5rem;">
+                View Full Resume
+            </a>
+            <button class="glass-button glass-button-secondary" onclick="downloadResume()" style="margin: 0.5rem;">
+                Download Resume PDF
+            </button>
         </div>
     </section>
 
@@ -965,21 +1102,185 @@
 
         // Community page functions
         function openRTPSUGPage() {
-            // For now, we'll ask for the actual links
-            alert('Please provide the RTPSUG links (meetup, youtube, rtpsug page) so I can create the dedicated page.');
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const text = document.getElementById('modal-text');
+            
+            title.textContent = 'RTPSUG Leadership & Links';
+            text.innerHTML = `<strong>Research Triangle PowerShell User Group Leadership</strong><br><br>
+                             <strong>RTPSUG Links:</strong><br>
+                             • <a href="https://rtpsug.com" target="_blank" style="color: var(--glass-accent);">RTPSUG Home Page</a><br>
+                             • <a href="https://www.youtube.com/c/RTPSUG" target="_blank" style="color: var(--glass-accent);">RTPSUG YouTube Channel</a><br>
+                             • <a href="https://www.meetup.com/Research-Triangle-PowerShell-Users-Group/" target="_blank" style="color: var(--glass-accent);">RTPSUG Meetup</a><br><br>
+                             
+                             <strong>Community Impact:</strong><br>
+                             Leading the premier PowerShell community in the Research Triangle area through monthly educational meetings, workshops, and networking events. Building bridges between PowerShell professionals and fostering knowledge sharing.`;
+            modal.style.display = 'block';
         }
 
         function openConferencePage() {
-            alert('Please provide the conference video links so I can create the speaking page.');
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const text = document.getElementById('modal-text');
+            
+            title.textContent = 'Conference Speaking & Presentations';
+            text.innerHTML = `<strong>Featured Conference Talks:</strong><br><br>
+                             <strong>PowerShell Summit 2024:</strong><br>
+                             • <a href="https://youtu.be/D2eXIoeMBVU?si=oERgOpKeUiHkKabT" target="_blank" style="color: var(--glass-accent);">PowerShell GUIs: A GUIded Tour by Kevin Laux</a><br><br>
+                             
+                             <strong>GitHub Repositories:</strong><br>
+                             • <a href="https://github.com/KevinLaux/GUI" target="_blank" style="color: var(--glass-accent);">PowerShell GUI Repository</a><br>
+                             • <a href="https://github.com/KevinLaux/ATOM" target="_blank" style="color: var(--glass-accent);">ATOM Repository</a><br><br>
+                             
+                             <strong>Lightning Talks:</strong><br>
+                             • PowerShell Summit debugging lightning talks<br>
+                             • Container lightning talks (PowerShell in a Box)<br>
+                             • UI development and automation presentations<br><br>
+                             
+                             <strong>Speaking Topics:</strong><br>
+                             PowerShell UI development, automation frameworks, debugging techniques, containerization strategies, and community building.`;
+            modal.style.display = 'block';
         }
 
         function openBooksPage() {
-            alert('Please provide the LeanPub book links so I can create the books page.');
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const text = document.getElementById('modal-text');
+            
+            title.textContent = 'Published Books & Technical Writing';
+            text.innerHTML = `<strong>Technical Publications:</strong><br><br>
+                             Contributing to technical books and publications in PowerShell and DevOps domains.<br><br>
+                             
+                             <strong>Areas of Expertise:</strong><br>
+                             • PowerShell automation and scripting<br>
+                             • DevOps best practices<br>
+                             • Container orchestration<br>
+                             • UI development with PowerShell<br>
+                             • Community building strategies<br><br>
+                             
+                             <strong>Writing Philosophy:</strong><br>
+                             "Building staircases, not pulling up ladders" - focused on creating accessible, educational content that helps others grow in their technical journey.`;
+            modal.style.display = 'block';
         }
 
         // Download resume function
         function downloadResume() {
-            alert('Please provide the resume file URL for download functionality.');
+            // Create a temporary link for download
+            alert('Resume download functionality ready - please provide the PDF file URL to complete implementation.');
+        }
+
+        // Theme switching functions
+        function setTheme(theme) {
+            const body = document.body;
+            if (theme === 'traditional') {
+                body.classList.add('traditional-theme');
+                localStorage.setItem('theme', 'traditional');
+            } else {
+                body.classList.remove('traditional-theme');
+                localStorage.setItem('theme', 'glass');
+            }
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            if (body.classList.contains('traditional-theme')) {
+                setTheme('glass');
+            } else {
+                setTheme('traditional');
+            }
+        }
+
+        function toggleColorScheme() {
+            const currentScheme = localStorage.getItem('colorScheme') || 'blue';
+            const schemes = ['blue', 'purple', 'green', 'orange'];
+            const currentIndex = schemes.indexOf(currentScheme);
+            const nextIndex = (currentIndex + 1) % schemes.length;
+            const nextScheme = schemes[nextIndex];
+            
+            changeTheme(nextScheme);
+            localStorage.setItem('colorScheme', nextScheme);
+        }
+
+        // Timeline modal functionality
+        function showTimelineModal(role) {
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const text = document.getElementById('modal-text');
+            
+            const roles = {
+                'principal': {
+                    title: 'Principal DevOps Engineer - Detailed Impact',
+                    text: `<strong>Key Responsibilities:</strong><br>
+                           • Architecting strategic roadmaps for mission-critical platforms<br>
+                           • Leading cross-platform deployment strategies<br>
+                           • Driving cost optimization and licensing audit initiatives<br>
+                           • Managing enterprise-scale infrastructure upgrades<br><br>
+                           
+                           <strong>Major Achievements:</strong><br>
+                           • <strong>$17.5M Cost Avoidance:</strong> Strategic licensing audits and platform optimization<br>
+                           • <strong>Zero Downtime Upgrade:</strong> IBM Workload Scheduler across 2,500+ agents<br>
+                           • <strong>Platform Migration:</strong> 1Desk automation framework to Ansible<br>
+                           • <strong>Strategic Planning:</strong> Cross-platform deployment for OpenShift and AKS<br><br>
+                           
+                           <strong>Technologies & Platforms:</strong><br>
+                           IBM Workload Scheduler, OpenShift, Azure Kubernetes Service, Ansible, Enterprise Architecture`
+                },
+                'manager': {
+                    title: 'Platform Manager - Leadership & Quality',
+                    text: `<strong>Team Leadership:</strong><br>
+                           • Led orchestration platform team<br>
+                           • Mentored emerging talent across engineering teams<br>
+                           • Championed DevOps initiatives organization-wide<br>
+                           • Coordinated international deployments<br><br>
+                           
+                           <strong>Quality Improvements:</strong><br>
+                           • <strong>50% Quality Improvement:</strong> Automata migration processes<br>
+                           • Established DevOps best practices<br>
+                           • Implemented mentoring programs<br>
+                           • Enhanced operational procedures<br><br>
+                           
+                           <strong>Scope & Impact:</strong><br>
+                           Cross-functional team leadership, 24/7 operations support, international coordination, DevOps transformation`
+                },
+                'container': {
+                    title: 'Container Engineering Lead - Transformation',
+                    text: `<strong>Container Transformation:</strong><br>
+                           • Spearheaded container adoption initiative<br>
+                           • Scaled environment capacity by 200%<br>
+                           • Established cloud-native best practices<br>
+                           • Led containerization strategy<br><br>
+                           
+                           <strong>Cost Optimization:</strong><br>
+                           • <strong>$700K Annual Savings:</strong> Cloud spend optimization<br>
+                           • Resource utilization improvements<br>
+                           • International deployment coordination<br>
+                           • Security and compliance frameworks<br><br>
+                           
+                           <strong>Technologies:</strong><br>
+                           Docker, Kubernetes, Container Security, Cloud-native Architecture, International Deployments`
+                },
+                'community': {
+                    title: 'Community Leadership - Building Bridges',
+                    text: `<strong>RTPSUG Leadership:</strong><br>
+                           • Leading Research Triangle PowerShell User Group<br>
+                           • Monthly educational meetings and workshops<br>
+                           • Community building and networking<br>
+                           • Knowledge sharing initiatives<br><br>
+                           
+                           <strong>Speaking & Education:</strong><br>
+                           • <strong>PowerShell Summit 2024:</strong> Featured speaker<br>
+                           • Regular lightning talks and presentations<br>
+                           • UI development and automation expertise<br>
+                           • Educational content creation<br><br>
+                           
+                           <strong>Publications:</strong><br>
+                           Technical book contributions, PowerShell expertise, DevOps knowledge sharing, Community building philosophy`
+                }
+            };
+            
+            title.textContent = roles[role].title;
+            text.innerHTML = roles[role].text;
+            modal.style.display = 'block';
         }
 
         // Theme changing
@@ -1008,6 +1309,20 @@
                     break;
             }
         }
+
+        // Load saved theme on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'glass';
+            const savedColorScheme = localStorage.getItem('colorScheme') || 'blue';
+            
+            setTheme(savedTheme);
+            changeTheme(savedColorScheme);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.glass-card, .skill-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
 
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
