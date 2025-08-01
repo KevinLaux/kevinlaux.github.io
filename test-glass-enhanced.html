@@ -10,9 +10,9 @@
     <style>
         :root {
             /* Default Glass Theme - White */
-            --glass-bg: rgba(255, 255, 255, 0.25);
-            --glass-border: rgba(0, 0, 0, 0.15);
-            --glass-shadow: rgba(0, 0, 0, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-shadow: rgba(0, 0, 0, 0.25);
             --glass-text: #1a1a1a;
             --glass-text-secondary: #4a4a4a;
             --glass-accent: #475569;
@@ -21,8 +21,8 @@
             --glass-accent-rgb: 71, 85, 105;
             --glass-success: #059669;
             --glass-warning: #d97706;
-            --glass-bg-card: rgba(255, 255, 255, 0.35);
-            --glass-bg-hover: rgba(255, 255, 255, 0.45);
+            --glass-bg-card: rgba(255, 255, 255, 0.2);
+            --glass-bg-hover: rgba(255, 255, 255, 0.3);
             --font-system: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-mono: 'SF Mono', 'Monaco', 'Menlo', monospace;
         }
@@ -36,7 +36,7 @@
         /* Default Glass Theme Background - White */
         body {
             font-family: var(--font-system);
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #f1f5f9 50%, #e2e8f0 75%, #cbd5e1 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e1 50%, #94a3b8 75%, #64748b 100%);
             background-size: 400% 400%;
             animation: gradientMove 15s ease infinite;
             color: var(--glass-text);
@@ -60,11 +60,12 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(248, 250, 252, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(241, 245, 249, 0.2) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.4) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(248, 250, 252, 0.5) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(241, 245, 249, 0.3) 0%, transparent 60%);
             pointer-events: none;
             z-index: -1;
+            backdrop-filter: blur(1px);
         }
 
         /* Glass Theme - Grey */
@@ -72,6 +73,12 @@
             background: linear-gradient(135deg, #6b7280 0%, #4b5563 25%, #374151 50%, #1f2937 75%, #111827 100%);
             background-size: 400% 400%;
             animation: gradientMove 18s ease infinite;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-bg-card: rgba(255, 255, 255, 0.15);
+            --glass-bg-hover: rgba(255, 255, 255, 0.25);
+            --glass-text: #ffffff;
+            --glass-text-secondary: rgba(255, 255, 255, 0.75);
             --glass-accent: #9ca3af;
             --glass-accent-light: #d1d5db;
             --glass-accent-dark: #6b7280;
@@ -80,9 +87,10 @@
 
         body.glass-grey::before {
             background: 
-                radial-gradient(circle at 20% 80%, rgba(107, 114, 128, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(75, 85, 99, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(55, 65, 81, 0.2) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(107, 114, 128, 0.4) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(75, 85, 99, 0.5) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(55, 65, 81, 0.3) 0%, transparent 60%);
+            backdrop-filter: blur(1px);
         }
 
         /* Glass Theme - Blue */
@@ -90,6 +98,12 @@
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 25%, #1d4ed8 50%, #1e40af 75%, #1e3a8a 100%);
             background-size: 400% 400%;
             animation: gradientMove 16s ease infinite;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-bg-card: rgba(255, 255, 255, 0.15);
+            --glass-bg-hover: rgba(255, 255, 255, 0.25);
+            --glass-text: #ffffff;
+            --glass-text-secondary: rgba(255, 255, 255, 0.75);
             --glass-accent: #60a5fa;
             --glass-accent-light: #93c5fd;
             --glass-accent-dark: #2563eb;
@@ -98,9 +112,10 @@
 
         body.glass-blue::before {
             background: 
-                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(29, 78, 216, 0.2) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.4) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.5) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(29, 78, 216, 0.3) 0%, transparent 60%);
+            backdrop-filter: blur(1px);
         }
 
         /* Glass Theme - Green */
@@ -108,6 +123,12 @@
             background: linear-gradient(135deg, #22c55e 0%, #16a34a 25%, #15803d 50%, #166534 75%, #14532d 100%);
             background-size: 400% 400%;
             animation: gradientMove 17s ease infinite;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-bg-card: rgba(255, 255, 255, 0.15);
+            --glass-bg-hover: rgba(255, 255, 255, 0.25);
+            --glass-text: #ffffff;
+            --glass-text-secondary: rgba(255, 255, 255, 0.75);
             --glass-accent: #4ade80;
             --glass-accent-light: #86efac;
             --glass-accent-dark: #16a34a;
@@ -116,9 +137,10 @@
 
         body.glass-green::before {
             background: 
-                radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(22, 163, 74, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(21, 128, 61, 0.2) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.4) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(22, 163, 74, 0.5) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(21, 128, 61, 0.3) 0%, transparent 60%);
+            backdrop-filter: blur(1px);
         }
 
         /* Glass Theme - Red */
@@ -126,6 +148,12 @@
             background: linear-gradient(135deg, #ef4444 0%, #dc2626 25%, #b91c1c 50%, #991b1b 75%, #7f1d1d 100%);
             background-size: 400% 400%;
             animation: gradientMove 19s ease infinite;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-bg-card: rgba(255, 255, 255, 0.15);
+            --glass-bg-hover: rgba(255, 255, 255, 0.25);
+            --glass-text: #ffffff;
+            --glass-text-secondary: rgba(255, 255, 255, 0.75);
             --glass-accent: #f87171;
             --glass-accent-light: #fca5a5;
             --glass-accent-dark: #dc2626;
@@ -134,9 +162,10 @@
 
         body.glass-red::before {
             background: 
-                radial-gradient(circle at 20% 80%, rgba(239, 68, 68, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(185, 28, 28, 0.2) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(239, 68, 68, 0.4) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.5) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(185, 28, 28, 0.3) 0%, transparent 60%);
+            backdrop-filter: blur(1px);
         }
 
         /* Classic Theme - White */
@@ -144,7 +173,7 @@
             background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #f1f5f9 50%, #e2e8f0 75%, #cbd5e1 100%);
             background-size: 400% 400%;
             animation: gradientMove 20s ease infinite;
-            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-bg: rgba(255, 255, 255, 0.95);
             --glass-border: rgba(0, 0, 0, 0.1);
             --glass-shadow: rgba(0, 0, 0, 0.1);
             --glass-text: #1a1a1a;
@@ -152,25 +181,36 @@
             --glass-accent: #475569;
             --glass-accent-light: #64748b;
             --glass-accent-dark: #334155;
+            --glass-accent-rgb: 71, 85, 105;
             --glass-success: #059669;
             --glass-warning: #d97706;
-            --glass-bg-card: rgba(255, 255, 255, 0.8);
-            --glass-bg-hover: rgba(255, 255, 255, 0.95);
+            --glass-bg-card: rgba(255, 255, 255, 0.9);
+            --glass-bg-hover: rgba(255, 255, 255, 1);
         }
 
         body.classic-theme::before {
             background: 
-                radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(0, 0, 0, 0.03) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.9) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 0, 0, 0.02) 0%, transparent 50%);
         }
 
         /* Classic Theme - Light Blue */
         body.classic-light-blue {
             background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 25%, #81d4fa 50%, #4fc3f7 75%, #29b6f6 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 22s ease infinite;
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --glass-shadow: rgba(0, 0, 0, 0.1);
+            --glass-text: #1a1a1a;
+            --glass-text-secondary: #4a4a4a;
             --glass-accent: #0288d1;
             --glass-accent-light: #03a9f4;
             --glass-accent-dark: #0277bd;
+            --glass-accent-rgb: 2, 136, 209;
+            --glass-bg-card: rgba(255, 255, 255, 0.9);
+            --glass-bg-hover: rgba(255, 255, 255, 1);
         }
 
         body.classic-light-blue::before {
@@ -183,9 +223,19 @@
         /* Classic Theme - Grey */
         body.classic-grey {
             background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 25%, #e0e0e0 50%, #bdbdbd 75%, #9e9e9e 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 21s ease infinite;
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --glass-shadow: rgba(0, 0, 0, 0.1);
+            --glass-text: #1a1a1a;
+            --glass-text-secondary: #4a4a4a;
             --glass-accent: #616161;
             --glass-accent-light: #757575;
             --glass-accent-dark: #424242;
+            --glass-accent-rgb: 97, 97, 97;
+            --glass-bg-card: rgba(255, 255, 255, 0.9);
+            --glass-bg-hover: rgba(255, 255, 255, 1);
         }
 
         body.classic-grey::before {
@@ -198,15 +248,18 @@
         /* Classic Theme - Dark Blue */
         body.classic-dark-blue {
             background: linear-gradient(135deg, #1a237e 0%, #283593 25%, #3949ab 50%, #3f51b5 75%, #5c6bc0 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 23s ease infinite;
             --glass-text: #ffffff;
             --glass-text-secondary: rgba(255, 255, 255, 0.75);
             --glass-accent: #7986cb;
             --glass-accent-light: #9fa8da;
             --glass-accent-dark: #5c6bc0;
-            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-accent-rgb: 121, 134, 203;
+            --glass-bg: rgba(255, 255, 255, 0.15);
             --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-bg-card: rgba(255, 255, 255, 0.05);
-            --glass-bg-hover: rgba(255, 255, 255, 0.15);
+            --glass-bg-card: rgba(255, 255, 255, 0.1);
+            --glass-bg-hover: rgba(255, 255, 255, 0.2);
         }
 
         body.classic-dark-blue::before {
@@ -219,15 +272,18 @@
         /* Classic Theme - Black */
         body.classic-black {
             background: linear-gradient(135deg, #000000 0%, #212121 25%, #424242 50%, #616161 75%, #757575 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 24s ease infinite;
             --glass-text: #ffffff;
             --glass-text-secondary: rgba(255, 255, 255, 0.75);
             --glass-accent: #ffffff;
             --glass-accent-light: #f5f5f5;
             --glass-accent-dark: #e0e0e0;
-            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-accent-rgb: 255, 255, 255;
+            --glass-bg: rgba(255, 255, 255, 0.15);
             --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-bg-card: rgba(255, 255, 255, 0.05);
-            --glass-bg-hover: rgba(255, 255, 255, 0.15);
+            --glass-bg-card: rgba(255, 255, 255, 0.1);
+            --glass-bg-hover: rgba(255, 255, 255, 0.2);
         }
 
         body.classic-black::before {
@@ -268,10 +324,14 @@
             right: 20px;
             z-index: 1000;
             background: var(--glass-bg);
-            backdrop-filter: blur(40px);
+            backdrop-filter: blur(60px) saturate(180%);
+            -webkit-backdrop-filter: blur(60px) saturate(180%);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            box-shadow: 0 8px 32px var(--glass-shadow);
+            box-shadow: 
+                0 8px 32px var(--glass-shadow),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .header-container {
@@ -402,11 +462,15 @@
         .glass-hero-content {
             max-width: 900px;
             background: var(--glass-bg);
-            backdrop-filter: blur(30px);
+            backdrop-filter: blur(50px) saturate(180%);
+            -webkit-backdrop-filter: blur(50px) saturate(180%);
             border: 1px solid var(--glass-border);
             border-radius: 24px;
             padding: 4rem 3rem;
-            box-shadow: 0 20px 60px var(--glass-shadow);
+            box-shadow: 
+                0 20px 60px var(--glass-shadow),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .glass-hero-title {
@@ -503,12 +567,16 @@
 
         .glass-card {
             background: var(--glass-bg-card);
-            backdrop-filter: blur(30px);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
             padding: 2.5rem;
-            box-shadow: 0 15px 45px var(--glass-shadow);
-            transition: all 0.4s ease;
+            box-shadow: 
+                0 15px 45px var(--glass-shadow),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
             cursor: pointer;
@@ -521,13 +589,16 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
         }
 
         .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 60px var(--glass-shadow);
-            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 30px 80px var(--glass-shadow),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
             background: var(--glass-bg-hover);
         }
 
@@ -1361,6 +1432,12 @@
             // Apply current color
             const currentColor = localStorage.getItem('theme-color') || 'white';
             changeTheme(currentColor);
+            
+            // Update theme button colors
+            updateThemeButtonColors();
+            
+            // Force repaint for header background
+            forceBackgroundUpdate();
         }
 
         function changeTheme(color) {
@@ -1412,6 +1489,71 @@
             }
             
             localStorage.setItem('theme-color', color);
+            
+            // Update theme button colors
+            updateThemeButtonColors();
+            
+            // Force repaint for header background
+            forceBackgroundUpdate();
+        }
+
+        function updateThemeButtonColors() {
+            const currentMode = localStorage.getItem('theme-mode') || 'glass';
+            const currentColor = localStorage.getItem('theme-color') || 'white';
+            
+            // Define color mappings for each theme mode
+            const glassColors = {
+                white: { bg: '#f8fafc', border: '#e5e7eb' },
+                grey: { bg: '#6b7280', border: '#6b7280' },
+                blue: { bg: '#3b82f6', border: '#3b82f6' },
+                green: { bg: '#22c55e', border: '#22c55e' },
+                red: { bg: '#ef4444', border: '#ef4444' }
+            };
+            
+            const classicColors = {
+                white: { bg: '#ffffff', border: '#e5e7eb' },
+                grey: { bg: '#9e9e9e', border: '#9e9e9e' },
+                blue: { bg: '#29b6f6', border: '#29b6f6' },
+                green: { bg: '#5c6bc0', border: '#5c6bc0' },
+                red: { bg: '#757575', border: '#757575' }
+            };
+            
+            const colorMap = currentMode === 'classic' ? classicColors : glassColors;
+            
+            // Update each theme button
+            const buttons = {
+                white: document.querySelector('.theme-white'),
+                grey: document.querySelector('.theme-grey'),
+                blue: document.querySelector('.theme-blue'),
+                green: document.querySelector('.theme-green'),
+                red: document.querySelector('.theme-red')
+            };
+            
+            Object.keys(buttons).forEach(colorName => {
+                const button = buttons[colorName];
+                if (button && colorMap[colorName]) {
+                    button.style.background = colorMap[colorName].bg;
+                    button.style.border = `2px solid ${colorMap[colorName].border}`;
+                }
+            });
+        }
+
+        function forceBackgroundUpdate() {
+            // Force a repaint to update header background
+            const body = document.body;
+            const header = document.querySelector('.glass-header');
+            
+            // Trigger reflow by temporarily modifying and restoring a property
+            body.style.display = 'none';
+            body.offsetHeight; // Trigger reflow
+            body.style.display = '';
+            
+            // Also specifically update header
+            if (header) {
+                header.style.display = 'none';
+                header.offsetHeight; // Trigger reflow
+                header.style.display = '';
+            }
         }
 
         function toggleTheme() {
