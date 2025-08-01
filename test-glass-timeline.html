@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Laux - Professional Timeline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@100;200;300;400;500;600;700;800;900&family=SF+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-shadow: rgba(0, 0, 0, 0.1);
+            --glass-text: #ffffff;
+            --glass-text-secondary: rgba(255, 255, 255, 0.75);
+            --glass-accent: #3b82f6;
+            --glass-accent-light: #60a5fa;
+            --glass-accent-dark: #1d4ed8;
+            --glass-success: #10b981;
+            --glass-warning: #f59e0b;
+            --glass-bg-card: rgba(255, 255, 255, 0.05);
+            --glass-bg-hover: rgba(255, 255, 255, 0.12);
+            --font-system: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'SF Mono', 'Monaco', 'Menlo', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-system);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
+            color: var(--glass-text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Background overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(96, 165, 250, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Header Navigation */
+        .glass-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px var(--glass-shadow);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            height: 70px;
+        }
+
+        .header-logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--glass-text);
+            letter-spacing: 0.5px;
+        }
+
+        .header-nav {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--glass-text-secondary);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link:hover {
+            color: var(--glass-text);
+            background: var(--glass-bg-hover);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px var(--glass-shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            color: var(--glass-text-secondary);
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item:hover {
+            background: var(--glass-bg-hover);
+            color: var(--glass-text);
+        }
+
+        .theme-selector {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.5rem;
+        }
+
+        .theme-option {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .theme-option:hover {
+            transform: scale(1.1);
+            border-color: var(--glass-text);
+        }
+
+        .theme-blue { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        .theme-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .theme-green { background: linear-gradient(135deg, #10b981, #059669); }
+        .theme-orange { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+        /* Hero Section */
+        .glass-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: 70px;
+        }
+
+        .glass-hero-content {
+            max-width: 900px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            box-shadow: 0 20px 60px var(--glass-shadow);
+        }
+
+        .glass-hero-title {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 200;
+            margin-bottom: 1rem;
+            color: var(--glass-text);
+            letter-spacing: -0.02em;
+        }
+
+        .glass-hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin-bottom: 2rem;
+            color: var(--glass-text-secondary);
+            font-weight: 300;
+        }
+
+        .glass-hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: var(--glass-text-secondary);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Buttons */
+        .glass-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        .glass-button-primary {
+            background: linear-gradient(135deg, var(--glass-accent) 0%, var(--glass-accent-light) 100%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+        }
+
+        .glass-button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+        }
+
+        .glass-button-secondary {
+            background: var(--glass-bg);
+            color: var(--glass-text);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px var(--glass-shadow);
+        }
+
+        .glass-button-secondary:hover {
+            background: var(--glass-bg-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px var(--glass-shadow);
+        }
+
+        /* Timeline Styles */
+        .timeline-section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-title {
+            font-size: 2.5rem;
+            font-weight: 200;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--glass-text);
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--glass-border), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+            align-items: flex-start;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: calc(50% - 3rem);
+            background: var(--glass-bg-card);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 45px var(--glass-shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px var(--glass-shadow);
+            border-color: rgba(255, 255, 255, 0.25);
+            background: var(--glass-bg-hover);
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 2.5rem;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -30px;
+            border-left-color: var(--glass-bg-card);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -30px;
+            border-right-color: var(--glass-bg-card);
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--glass-accent);
+            border: 4px solid var(--glass-bg);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            box-shadow: 0 0 0 4px var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background: var(--glass-accent-light);
+            transform: translateX(-50%) scale(1.2);
+            box-shadow: 0 0 0 6px var(--glass-accent);
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -2.5rem;
+            background: var(--glass-accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .timeline-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--glass-accent) 0%, var(--glass-accent-light) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            color: white;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .timeline-title-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--glass-text);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-company {
+            color: var(--glass-accent-light);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: var(--glass-text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-achievements {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-achievements li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--glass-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .timeline-achievements li::before {
+            content: '✦';
+            color: var(--glass-accent-light);
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .timeline-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--glass-accent-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 20px 60px var(--glass-shadow);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--glass-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--glass-bg-hover);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--glass-text);
+        }
+
+        .modal-text {
+            color: var(--glass-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .contact-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px var(--glass-shadow);
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--glass-text);
+        }
+
+        .contact-subtitle {
+            color: var(--glass-text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+            }
+
+            .glass-hero-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .timeline-line {
+                left: 2rem;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+                margin-left: 2rem;
+            }
+
+            .timeline-content {
+                width: calc(100% - 4rem);
+                margin-left: 2rem;
+            }
+
+            .timeline-content::after {
+                left: -30px !important;
+                right: auto !important;
+                border-right-color: var(--glass-bg-card) !important;
+                border-left-color: transparent !important;
+            }
+
+            .timeline-dot {
+                left: 2rem;
+                transform: translateX(-50%);
+            }
+
+            .timeline-date {
+                left: 2rem;
+                transform: translateX(-50%);
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-in {
+            animation: slideUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="glass-header">
+        <div class="header-container">
+            <div class="header-logo">KEVIN LAUX</div>
+            <nav>
+                <ul class="header-nav">
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#experience" class="nav-link">Experience</a>
+                        <div class="dropdown">
+                            <a href="#timeline" class="dropdown-item">Career Timeline</a>
+                            <a href="#resume" class="dropdown-item">Full Resume</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#community" class="nav-link">Community</a>
+                        <div class="dropdown">
+                            <a href="#rtpsug" class="dropdown-item">RTPSUG Leadership</a>
+                            <a href="#speaking" class="dropdown-item">Conference Speaking</a>
+                            <a href="#books" class="dropdown-item">Published Books</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Themes</a>
+                        <div class="dropdown">
+                            <div class="theme-selector">
+                                <div class="theme-option theme-blue" onclick="changeTheme('blue')"></div>
+                                <div class="theme-option theme-purple" onclick="changeTheme('purple')"></div>
+                                <div class="theme-option theme-green" onclick="changeTheme('green')"></div>
+                                <div class="theme-option theme-orange" onclick="changeTheme('orange')"></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="glass-hero" id="about">
+        <div class="glass-hero-content">
+            <h1 class="glass-hero-title">Kevin Laux</h1>
+            <p class="glass-hero-subtitle">Principal DevOps Engineer & Community Builder</p>
+            <p class="glass-hero-description">
+                Transforming complex infrastructure challenges into elegant solutions. 
+                Leading teams, mentoring talent, and building communities that elevate everyone.
+            </p>
+            <div>
+                <a href="#timeline" class="glass-button glass-button-primary">
+                    Explore Journey
+                </a>
+                <a href="#resume" class="glass-button glass-button-secondary">
+                    View Resume
+                </a>
+                <a href="#contact" class="glass-button glass-button-secondary">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="timeline-section">
+        <h2 class="timeline-title">Professional Journey</h2>
+        <div class="timeline-line"></div>
+
+        <!-- 2024 - Principal DevOps Engineer -->
+        <div class="timeline-item">
+            <div class="timeline-date">2024 - Present</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content" onclick="showTimelineModal('principal')">
+                <div class="timeline-header">
+                    <div class="timeline-icon">🚀</div>
+                    <div>
+                        <div class="timeline-title-text">Principal DevOps Engineer</div>
+                        <div class="timeline-company">MetLife</div>
+                    </div>
+                </div>
+                <p class="timeline-description">
+                    Elevated to principal level, architecting strategic roadmaps for mission-critical platforms 
+                    processing over 1 million jobs monthly. Leading transformational initiatives that deliver 
+                    measurable business value and operational excellence.
+                </p>
+                <ul class="timeline-achievements">
+                    <li>Delivered $17.5M in cost avoidance through platform optimization and licensing audits</li>
+                    <li>Spearheaded IBM Workload Scheduler upgrade across 2,500+ agents with zero downtime</li>
+                    <li>Led migration of 1Desk automation framework to Ansible</li>
+                    <li>Shaped cross-platform deployment strategy for OpenShift and AKS</li>
+                </ul>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">Strategic Planning</span>
+                    <span class="timeline-tag">Cost Optimization</span>
+                    <span class="timeline-tag">Zero Downtime</span>
+                    <span class="timeline-tag">Kubernetes</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2022 - Platform Manager -->
+        <div class="timeline-item">
+            <div class="timeline-date">2022 - 2024</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content" onclick="showTimelineModal('manager')">
+                <div class="timeline-header">
+                    <div class="timeline-icon">⚙️</div>
+                    <div>
+                        <div class="timeline-title-text">Platform Manager</div>
+                        <div class="timeline-company">MetLife</div>
+                    </div>
+                </div>
+                <p class="timeline-description">
+                    Promoted to lead the orchestration platform team, driving operational excellence and 
+                    quality improvements. Championed DevOps initiatives while mentoring emerging talent 
+                    across multiple engineering teams.
+                </p>
+                <ul class="timeline-achievements">
+                    <li>Achieved 50% quality improvement in automata migration processes</li>
+                    <li>Led cross-functional teams in delivering mission-critical platform upgrades</li>
+                    <li>Established DevOps best practices and mentoring programs</li>
+                    <li>Coordinated international deployments and 24/7 operations support</li>
+                </ul>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">Team Leadership</span>
+                    <span class="timeline-tag">Quality Improvement</span>
+                    <span class="timeline-tag">DevOps</span>
+                    <span class="timeline-tag">Mentoring</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2019 - Container Engineering -->
+        <div class="timeline-item">
+            <div class="timeline-date">2019 - 2022</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content" onclick="showTimelineModal('container')">
+                <div class="timeline-header">
+                    <div class="timeline-icon">🐳</div>
+                    <div>
+                        <div class="timeline-title-text">Container Engineering Lead</div>
+                        <div class="timeline-company">MetLife</div>
+                    </div>
+                </div>
+                <p class="timeline-description">
+                    Spearheaded the container transformation initiative, scaling infrastructure capacity 
+                    while optimizing costs. Led the adoption of modern containerization technologies 
+                    and established cloud-native best practices.
+                </p>
+                <ul class="timeline-achievements">
+                    <li>Scaled container environment capacity by 200% to meet growing demand</li>
+                    <li>Reduced annual cloud spend by $700K through optimization initiatives</li>
+                    <li>Managed international deployments across multiple geographic regions</li>
+                    <li>Established container security and compliance frameworks</li>
+                </ul>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">Docker</span>
+                    <span class="timeline-tag">Kubernetes</span>
+                    <span class="timeline-tag">Cost Reduction</span>
+                    <span class="timeline-tag">Cloud Native</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community Leadership -->
+        <div class="timeline-item">
+            <div class="timeline-date">2017 - Present</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content" onclick="showTimelineModal('community')">
+                <div class="timeline-header">
+                    <div class="timeline-icon">👥</div>
+                    <div>
+                        <div class="timeline-title-text">Community Leader & Speaker</div>
+                        <div class="timeline-company">RTPSUG & Industry Conferences</div>
+                    </div>
+                </div>
+                <p class="timeline-description">
+                    Building bridges in the PowerShell and DevOps communities through leadership, 
+                    education, and knowledge sharing. Contributing to multiple publications and 
+                    speaking at industry conferences.
+                </p>
+                <ul class="timeline-achievements">
+                    <li>Leading Research Triangle PowerShell User Group (RTPSUG)</li>
+                    <li>Featured speaker at PowerShell Summit 2024</li>
+                    <li>Contributed to multiple technical books and publications</li>
+                    <li>Regular lightning talks and educational presentations</li>
+                </ul>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">Public Speaking</span>
+                    <span class="timeline-tag">Community Building</span>
+                    <span class="timeline-tag">Technical Writing</span>
+                    <span class="timeline-tag">Education</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <button class="glass-button glass-button-primary" onclick="downloadResume()">
+                Download Full Resume
+            </button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2 class="contact-title">Let's Build Together</h2>
+            <p class="contact-subtitle">Building staircases, not pulling up ladders</p>
+            
+            <div class="contact-links">
+                <a href="mailto:resume@kevinlaux.com" class="glass-button glass-button-secondary">Email</a>
+                <a href="https://linkedin.com/in/kevinlaux" target="_blank" class="glass-button glass-button-secondary">LinkedIn</a>
+                <a href="https://github.com/KevinLaux" target="_blank" class="glass-button glass-button-secondary">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 class="modal-title" id="modal-title"></h3>
+            <div class="modal-text" id="modal-text"></div>
+        </div>
+    </div>
+
+    <script>
+        // Timeline modal functionality
+        function showTimelineModal(role) {
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const text = document.getElementById('modal-text');
+            
+            const roles = {
+                'principal': {
+                    title: 'Principal DevOps Engineer - Detailed Impact',
+                    text: `<strong>Key Responsibilities:</strong><br>
+                           • Architecting strategic roadmaps for mission-critical platforms<br>
+                           • Leading cross-platform deployment strategies<br>
+                           • Driving cost optimization and licensing audit initiatives<br>
+                           • Managing enterprise-scale infrastructure upgrades<br><br>
+                           
+                           <strong>Major Achievements:</strong><br>
+                           • <strong>$17.5M Cost Avoidance:</strong> Strategic licensing audits and platform optimization<br>
+                           • <strong>Zero Downtime Upgrade:</strong> IBM Workload Scheduler across 2,500+ agents<br>
+                           • <strong>Platform Migration:</strong> 1Desk automation framework to Ansible<br>
+                           • <strong>Strategic Planning:</strong> Cross-platform deployment for OpenShift and AKS<br><br>
+                           
+                           <strong>Technologies & Platforms:</strong><br>
+                           IBM Workload Scheduler, OpenShift, Azure Kubernetes Service, Ansible, Enterprise Architecture`
+                },
+                'manager': {
+                    title: 'Platform Manager - Leadership & Quality',
+                    text: `<strong>Team Leadership:</strong><br>
+                           • Led orchestration platform team<br>
+                           • Mentored emerging talent across engineering teams<br>
+                           • Championed DevOps initiatives organization-wide<br>
+                           • Coordinated international deployments<br><br>
+                           
+                           <strong>Quality Improvements:</strong><br>
+                           • <strong>50% Quality Improvement:</strong> Automata migration processes<br>
+                           • Established DevOps best practices<br>
+                           • Implemented mentoring programs<br>
+                           • Enhanced operational procedures<br><br>
+                           
+                           <strong>Scope & Impact:</strong><br>
+                           Cross-functional team leadership, 24/7 operations support, international coordination, DevOps transformation`
+                },
+                'container': {
+                    title: 'Container Engineering Lead - Transformation',
+                    text: `<strong>Container Transformation:</strong><br>
+                           • Spearheaded container adoption initiative<br>
+                           • Scaled environment capacity by 200%<br>
+                           • Established cloud-native best practices<br>
+                           • Led containerization strategy<br><br>
+                           
+                           <strong>Cost Optimization:</strong><br>
+                           • <strong>$700K Annual Savings:</strong> Cloud spend optimization<br>
+                           • Resource utilization improvements<br>
+                           • International deployment coordination<br>
+                           • Security and compliance frameworks<br><br>
+                           
+                           <strong>Technologies:</strong><br>
+                           Docker, Kubernetes, Container Security, Cloud-native Architecture, International Deployments`
+                },
+                'community': {
+                    title: 'Community Leadership - Building Bridges',
+                    text: `<strong>RTPSUG Leadership:</strong><br>
+                           • Leading Research Triangle PowerShell User Group<br>
+                           • Monthly educational meetings and workshops<br>
+                           • Community building and networking<br>
+                           • Knowledge sharing initiatives<br><br>
+                           
+                           <strong>Speaking & Education:</strong><br>
+                           • <strong>PowerShell Summit 2024:</strong> Featured speaker<br>
+                           • Regular lightning talks and presentations<br>
+                           • UI development and automation expertise<br>
+                           • Educational content creation<br><br>
+                           
+                           <strong>Publications:</strong><br>
+                           Technical book contributions, PowerShell expertise, DevOps knowledge sharing, Community building philosophy`
+                }
+            };
+            
+            title.textContent = roles[role].title;
+            text.innerHTML = roles[role].text;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Download resume function
+        function downloadResume() {
+            alert('Please provide the resume file URL for download functionality.');
+        }
+
+        // Theme changing
+        function changeTheme(theme) {
+            const root = document.documentElement;
+            switch(theme) {
+                case 'blue':
+                    root.style.setProperty('--glass-accent', '#3b82f6');
+                    root.style.setProperty('--glass-accent-light', '#60a5fa');
+                    root.style.setProperty('--glass-accent-dark', '#1d4ed8');
+                    break;
+                case 'purple':
+                    root.style.setProperty('--glass-accent', '#8b5cf6');
+                    root.style.setProperty('--glass-accent-light', '#a78bfa');
+                    root.style.setProperty('--glass-accent-dark', '#7c3aed');
+                    break;
+                case 'green':
+                    root.style.setProperty('--glass-accent', '#10b981');
+                    root.style.setProperty('--glass-accent-light', '#34d399');
+                    root.style.setProperty('--glass-accent-dark', '#059669');
+                    break;
+                case 'orange':
+                    root.style.setProperty('--glass-accent', '#f59e0b');
+                    root.style.setProperty('--glass-accent-light', '#fbbf24');
+                    root.style.setProperty('--glass-accent-dark', '#d97706');
+                    break;
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.timeline-content').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

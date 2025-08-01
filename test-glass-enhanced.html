@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Laux - Professional Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@100;200;300;400;500;600;700;800;900&family=SF+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-shadow: rgba(0, 0, 0, 0.1);
+            --glass-text: #ffffff;
+            --glass-text-secondary: rgba(255, 255, 255, 0.75);
+            --glass-accent: #3b82f6;
+            --glass-accent-light: #60a5fa;
+            --glass-accent-dark: #1d4ed8;
+            --glass-success: #10b981;
+            --glass-warning: #f59e0b;
+            --glass-bg-card: rgba(255, 255, 255, 0.05);
+            --glass-bg-hover: rgba(255, 255, 255, 0.12);
+            --font-system: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'SF Mono', 'Monaco', 'Menlo', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-system);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
+            color: var(--glass-text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Background overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(96, 165, 250, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Header Navigation */
+        .glass-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px var(--glass-shadow);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            height: 70px;
+        }
+
+        .header-logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--glass-text);
+            letter-spacing: 0.5px;
+        }
+
+        .header-nav {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--glass-text-secondary);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link:hover {
+            color: var(--glass-text);
+            background: var(--glass-bg-hover);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px var(--glass-shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            color: var(--glass-text-secondary);
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item:hover {
+            background: var(--glass-bg-hover);
+            color: var(--glass-text);
+        }
+
+        .theme-selector {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.5rem;
+        }
+
+        .theme-option {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .theme-option:hover {
+            transform: scale(1.1);
+            border-color: var(--glass-text);
+        }
+
+        .theme-blue { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        .theme-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .theme-green { background: linear-gradient(135deg, #10b981, #059669); }
+        .theme-orange { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+        /* Hero Section */
+        .glass-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: 70px;
+        }
+
+        .glass-hero-content {
+            max-width: 900px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            box-shadow: 0 20px 60px var(--glass-shadow);
+        }
+
+        .glass-hero-title {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 200;
+            margin-bottom: 1rem;
+            color: var(--glass-text);
+            letter-spacing: -0.02em;
+        }
+
+        .glass-hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin-bottom: 2rem;
+            color: var(--glass-text-secondary);
+            font-weight: 300;
+        }
+
+        .glass-hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: var(--glass-text-secondary);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Buttons */
+        .glass-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        .glass-button-primary {
+            background: linear-gradient(135deg, var(--glass-accent) 0%, var(--glass-accent-light) 100%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+        }
+
+        .glass-button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+        }
+
+        .glass-button-secondary {
+            background: var(--glass-bg);
+            color: var(--glass-text);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px var(--glass-shadow);
+        }
+
+        .glass-button-secondary:hover {
+            background: var(--glass-bg-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px var(--glass-shadow);
+        }
+
+        /* Sections */
+        .glass-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .glass-section-title {
+            font-size: 2.5rem;
+            font-weight: 200;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--glass-text);
+        }
+
+        .glass-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .glass-card {
+            background: var(--glass-bg-card);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 45px var(--glass-shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px var(--glass-shadow);
+            border-color: rgba(255, 255, 255, 0.25);
+            background: var(--glass-bg-hover);
+        }
+
+        .glass-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .glass-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--glass-accent) 0%, var(--glass-accent-light) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-card-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--glass-text);
+            margin-bottom: 0.3rem;
+        }
+
+        .glass-card-subtitle {
+            color: var(--glass-text-secondary);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 20px 60px var(--glass-shadow);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--glass-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--glass-bg-hover);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--glass-text);
+        }
+
+        .modal-text {
+            color: var(--glass-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--glass-bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            background: var(--glass-bg-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px var(--glass-shadow);
+        }
+
+        .skill-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--glass-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-desc {
+            color: var(--glass-text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Resume Section */
+        .resume-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 4rem 2rem;
+            box-shadow: 0 20px 60px var(--glass-shadow);
+        }
+
+        .resume-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .resume-title {
+            font-size: 2rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--glass-text);
+        }
+
+        .resume-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--glass-bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+        }
+
+        .resume-item-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--glass-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-item-company {
+            color: var(--glass-accent);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-item-date {
+            color: var(--glass-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .resume-item-desc {
+            color: var(--glass-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+            }
+
+            .glass-hero-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .glass-grid, .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-in {
+            animation: slideUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="glass-header">
+        <div class="header-container">
+            <div class="header-logo">KEVIN LAUX</div>
+            <nav>
+                <ul class="header-nav">
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#experience" class="nav-link">Experience</a>
+                        <div class="dropdown">
+                            <a href="#metrics" class="dropdown-item">Impact Metrics</a>
+                            <a href="#timeline" class="dropdown-item">Career Timeline</a>
+                            <a href="#resume" class="dropdown-item">Full Resume</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#skills" class="nav-link">Technical Expertise</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#community" class="nav-link">Community</a>
+                        <div class="dropdown">
+                            <a href="#rtpsug" class="dropdown-item">RTPSUG Leadership</a>
+                            <a href="#speaking" class="dropdown-item">Conference Speaking</a>
+                            <a href="#books" class="dropdown-item">Published Books</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Themes</a>
+                        <div class="dropdown">
+                            <div class="theme-selector">
+                                <div class="theme-option theme-blue" onclick="changeTheme('blue')"></div>
+                                <div class="theme-option theme-purple" onclick="changeTheme('purple')"></div>
+                                <div class="theme-option theme-green" onclick="changeTheme('green')"></div>
+                                <div class="theme-option theme-orange" onclick="changeTheme('orange')"></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="glass-hero" id="about">
+        <div class="glass-hero-content">
+            <h1 class="glass-hero-title">Kevin Laux</h1>
+            <p class="glass-hero-subtitle">Principal DevOps Engineer & Community Builder</p>
+            <p class="glass-hero-description">
+                Transforming complex infrastructure challenges into elegant solutions. 
+                Leading teams, mentoring talent, and building communities that elevate everyone.
+            </p>
+            <div>
+                <a href="#metrics" class="glass-button glass-button-primary">
+                    Explore Achievements
+                </a>
+                <a href="#resume" class="glass-button glass-button-secondary">
+                    View Resume
+                </a>
+                <a href="#contact" class="glass-button glass-button-secondary">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Metrics Section -->
+    <section id="metrics" class="glass-section">
+        <h2 class="glass-section-title">Impact Metrics</h2>
+        
+        <div class="glass-grid">
+            <div class="glass-card" onclick="showMetricModal('cost-avoidance')">
+                <div class="glass-card-header">
+                    <div class="glass-icon">💰</div>
+                    <div>
+                        <div class="glass-card-title">$17.5M Cost Avoidance</div>
+                        <div class="glass-card-subtitle">Platform Optimization</div>
+                    </div>
+                </div>
+                <p style="color: var(--glass-text-secondary);">Strategic licensing audits and infrastructure optimization delivering measurable business value.</p>
+            </div>
+
+            <div class="glass-card" onclick="showMetricModal('jobs-processed')">
+                <div class="glass-card-header">
+                    <div class="glass-icon">⚙️</div>
+                    <div>
+                        <div class="glass-card-title">1M+ Jobs Monthly</div>
+                        <div class="glass-card-subtitle">Mission-Critical Processing</div>
+                    </div>
+                </div>
+                <p style="color: var(--glass-text-secondary);">Architecting and maintaining platforms that process over one million jobs monthly.</p>
+            </div>
+
+            <div class="glass-card" onclick="showMetricModal('agents-managed')">
+                <div class="glass-card-header">
+                    <div class="glass-icon">🖥️</div>
+                    <div>
+                        <div class="glass-card-title">2,500+ Agents</div>
+                        <div class="glass-card-subtitle">Zero Downtime Upgrades</div>
+                    </div>
+                </div>
+                <p style="color: var(--glass-text-secondary);">Leading complex infrastructure upgrades across thousands of agents with perfect uptime.</p>
+            </div>
+
+            <div class="glass-card" onclick="showMetricModal('quality-improvement')">
+                <div class="glass-card-header">
+                    <div class="glass-icon">📈</div>
+                    <div>
+                        <div class="glass-card-title">50% Quality Improvement</div>
+                        <div class="glass-card-subtitle">Process Enhancement</div>
+                    </div>
+                </div>
+                <p style="color: var(--glass-text-secondary);">Transforming operational processes to achieve significant quality improvements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Expertise Section -->
+    <section id="skills" class="glass-section">
+        <h2 class="glass-section-title">Technical Expertise</h2>
+        
+        <div class="skills-grid">
+            <div class="skill-card" onclick="showSkillModal('cloud-architecture')">
+                <div class="skill-name">Cloud Architecture</div>
+                <div class="skill-desc">Azure, AWS, Multi-cloud strategies and enterprise-scale deployments</div>
+            </div>
+
+            <div class="skill-card" onclick="showSkillModal('container-orchestration')">
+                <div class="skill-name">Container Orchestration</div>
+                <div class="skill-desc">Kubernetes, OpenShift, Docker - scaling environments 200%</div>
+            </div>
+
+            <div class="skill-card" onclick="showSkillModal('devops-excellence')">
+                <div class="skill-name">DevOps Excellence</div>
+                <div class="skill-desc">CI/CD, GitOps, Infrastructure as Code implementation</div>
+            </div>
+
+            <div class="skill-card" onclick="showSkillModal('powershell-mastery')">
+                <div class="skill-name">PowerShell Mastery</div>
+                <div class="skill-desc">Expert-level scripting, automation, and community leadership</div>
+            </div>
+
+            <div class="skill-card" onclick="showSkillModal('platform-engineering')">
+                <div class="skill-name">Platform Engineering</div>
+                <div class="skill-desc">Mission-critical systems supporting millions of operations</div>
+            </div>
+
+            <div class="skill-card" onclick="showSkillModal('team-leadership')">
+                <div class="skill-name">Team Leadership</div>
+                <div class="skill-desc">Mentoring, strategic planning, and cross-functional collaboration</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Impact Section -->
+    <section id="community" class="glass-section">
+        <h2 class="glass-section-title">Community Impact</h2>
+        
+        <div class="glass-grid">
+            <div class="glass-card" onclick="openRTPSUGPage()">
+                <div class="glass-card-header">
+                    <div class="glass-icon">👥</div>
+                    <div>
+                        <div class="glass-card-title">RTPSUG Leadership</div>
+                        <div class="glass-card-subtitle">Research Triangle PowerShell User Group</div>
+                    </div>
+                </div>
+                <p style="color: var(--glass-text-secondary);">Leading the premier PowerShell community in the Research Triangle area through education and collaboration.</p>
+            </div>
+
+            <div class="glass-card" onclick="openConferencePage()">
+                <div class="glass-card-header">
+                    <div class="glass-icon">🎯</div>
+                    <div>
+                        <div class="glass-card-title">Conference Speaking</div>
+                        <div class="glass-card-subtitle">PowerShell Summit & Industry Events</div>
+                    </div>
+                </div>
+                <p style="color: var(--glass-text-secondary);">Featured speaker sharing expertise in automation, UI development, and community building.</p>
+            </div>
+
+            <div class="glass-card" onclick="openBooksPage()">
+                <div class="glass-card-header">
+                    <div class="glass-icon">📚</div>
+                    <div>
+                        <div class="glass-card-title">Published Books</div>
+                        <div class="glass-card-subtitle">Technical Publications</div>
+                    </div>
+                </div>
+                <p style="color: var(--glass-text-secondary);">Contributing to technical books and publications in PowerShell and DevOps domains.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume-section">
+        <div class="resume-content">
+            <h2 class="resume-title">Professional Experience</h2>
+            
+            <div class="resume-item">
+                <div class="resume-item-title">Principal DevOps Engineer</div>
+                <div class="resume-item-company">MetLife</div>
+                <div class="resume-item-date">2024 - Present</div>
+                <div class="resume-item-desc">
+                    Architecting strategic roadmaps for mission-critical platforms processing over 1 million jobs monthly. 
+                    Delivered $17.5M in cost avoidance through platform optimization and strategic licensing audits. 
+                    Led IBM Workload Scheduler upgrade across 2,500+ agents with zero downtime.
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-item-title">Platform Manager</div>
+                <div class="resume-item-company">MetLife</div>
+                <div class="resume-item-date">2022 - 2024</div>
+                <div class="resume-item-desc">
+                    Led orchestration platform team achieving 50% quality improvements. Championed DevOps initiatives 
+                    and mentored emerging talent across multiple engineering teams.
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-item-title">Container Engineering Lead</div>
+                <div class="resume-item-company">MetLife</div>
+                <div class="resume-item-date">2019 - 2022</div>
+                <div class="resume-item-desc">
+                    Scaled container environment capacity 200% while reducing cloud spend by $700K annually. 
+                    Managed international deployments and established DevOps best practices.
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="glass-button glass-button-primary" onclick="downloadResume()">
+                    Download Full Resume
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="glass-section">
+        <div style="text-align: center; background: var(--glass-bg); backdrop-filter: blur(30px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 3rem; max-width: 600px; margin: 0 auto; box-shadow: 0 20px 60px var(--glass-shadow);">
+            <h2 style="font-size: 2rem; font-weight: 300; margin-bottom: 1rem; color: var(--glass-text);">Let's Build Together</h2>
+            <p style="color: var(--glass-text-secondary); margin-bottom: 2rem; font-weight: 300;">Building staircases, not pulling up ladders</p>
+            
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="mailto:resume@kevinlaux.com" class="glass-button glass-button-secondary">Email</a>
+                <a href="https://linkedin.com/in/kevinlaux" target="_blank" class="glass-button glass-button-secondary">LinkedIn</a>
+                <a href="https://github.com/KevinLaux" target="_blank" class="glass-button glass-button-secondary">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 class="modal-title" id="modal-title"></h3>
+            <div class="modal-text" id="modal-text"></div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        function showMetricModal(metric) {
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const text = document.getElementById('modal-text');
+            
+            const metrics = {
+                'cost-avoidance': {
+                    title: '$17.5M Cost Avoidance Achievement',
+                    text: `<strong>Position:</strong> Principal DevOps Engineer at MetLife<br><br>
+                           <strong>Achievement:</strong> Led strategic licensing audits and platform optimization initiatives that resulted in $17.5M in cost avoidance for the organization.<br><br>
+                           <strong>Key Actions:</strong><br>
+                           • Conducted comprehensive IBM licensing audits<br>
+                           • Optimized platform resource utilization<br>
+                           • Implemented automation to reduce manual overhead<br>
+                           • Negotiated strategic vendor agreements<br><br>
+                           <strong>Impact:</strong> This achievement represents one of the largest cost optimization successes in the organization's recent history.`
+                },
+                'jobs-processed': {
+                    title: '1M+ Jobs Monthly Processing',
+                    text: `<strong>Position:</strong> Principal DevOps Engineer at MetLife<br><br>
+                           <strong>Achievement:</strong> Architected and maintained mission-critical platforms that reliably process over 1 million jobs monthly.<br><br>
+                           <strong>Technologies:</strong><br>
+                           • IBM Workload Scheduler<br>
+                           • OpenShift container orchestration<br>
+                           • Azure Kubernetes Service<br>
+                           • High-availability infrastructure<br><br>
+                           <strong>Reliability:</strong> Maintained 99.9%+ uptime across all critical processing systems.`
+                },
+                'agents-managed': {
+                    title: '2,500+ Agent Management',
+                    text: `<strong>Position:</strong> Principal DevOps Engineer at MetLife<br><br>
+                           <strong>Achievement:</strong> Successfully led the upgrade of IBM Workload Scheduler across 2,500+ agents with zero downtime.<br><br>
+                           <strong>Scope:</strong><br>
+                           • Enterprise-wide infrastructure upgrade<br>
+                           • International deployment coordination<br>
+                           • Zero-downtime migration strategy<br>
+                           • 24/7 operational support<br><br>
+                           <strong>Complexity:</strong> This represented one of the largest infrastructure upgrades in the company's history.`
+                },
+                'quality-improvement': {
+                    title: '50% Quality Improvement',
+                    text: `<strong>Position:</strong> Platform Manager at MetLife<br><br>
+                           <strong>Achievement:</strong> Led orchestration platform team to achieve 50% improvement in automation quality metrics.<br><br>
+                           <strong>Improvements:</strong><br>
+                           • Reduced automation failures by 50%<br>
+                           • Improved deployment success rates<br>
+                           • Enhanced monitoring and alerting<br>
+                           • Implemented quality gates and testing<br><br>
+                           <strong>Methodology:</strong> Applied DevOps best practices and continuous improvement processes.`
+                }
+            };
+            
+            title.textContent = metrics[metric].title;
+            text.innerHTML = metrics[metric].text;
+            modal.style.display = 'block';
+        }
+
+        function showSkillModal(skill) {
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const text = document.getElementById('modal-text');
+            
+            const skills = {
+                'cloud-architecture': {
+                    title: 'Cloud Architecture Expertise',
+                    text: `<strong>Experience:</strong> 8+ years designing and implementing enterprise cloud solutions<br><br>
+                           <strong>Key Roles:</strong><br>
+                           • Principal DevOps Engineer - Multi-cloud strategy implementation<br>
+                           • Platform Manager - Azure and AWS infrastructure design<br>
+                           • Container Engineering Lead - Cloud-native architecture<br><br>
+                           <strong>Achievements:</strong><br>
+                           • Reduced cloud spend by $700K annually<br>
+                           • Designed high-availability multi-region deployments<br>
+                           • Implemented disaster recovery and business continuity plans<br><br>
+                           <strong>Technologies:</strong> Azure, AWS, OpenShift, AKS, Infrastructure as Code`
+                },
+                'container-orchestration': {
+                    title: 'Container Orchestration Leadership',
+                    text: `<strong>Role:</strong> Container Engineering Lead at MetLife<br><br>
+                           <strong>Achievement:</strong> Scaled container environment capacity by 200% while optimizing costs<br><br>
+                           <strong>Responsibilities:</strong><br>
+                           • Kubernetes cluster management and optimization<br>
+                           • OpenShift enterprise deployment<br>
+                           • Container security and compliance implementation<br>
+                           • International deployment coordination<br><br>
+                           <strong>Impact:</strong> Enabled the organization to handle massive scale while reducing operational overhead and improving deployment velocity.`
+                },
+                'devops-excellence': {
+                    title: 'DevOps Excellence & Implementation',
+                    text: `<strong>Experience:</strong> Led DevOps transformation across multiple roles<br><br>
+                           <strong>Key Contributions:</strong><br>
+                           • Championed DevOps initiatives as Platform Manager<br>
+                           • Implemented CI/CD pipelines and GitOps workflows<br>
+                           • Established Infrastructure as Code practices<br>
+                           • Led migration of 1Desk automation framework to Ansible<br><br>
+                           <strong>Tools & Technologies:</strong><br>
+                           • Git, Ansible, Chef, Terraform<br>
+                           • CI/CD pipeline design and optimization<br>
+                           • Monitoring and observability implementation`
+                },
+                'powershell-mastery': {
+                    title: 'PowerShell Mastery & Community Leadership',
+                    text: `<strong>Community Role:</strong> Leader of Research Triangle PowerShell User Group (RTPSUG)<br><br>
+                           <strong>Speaking Engagements:</strong><br>
+                           • Featured speaker at PowerShell Summit 2024<br>
+                           • Regular lightning talks and educational presentations<br>
+                           • UI development and automation best practices<br><br>
+                           <strong>Publications:</strong><br>
+                           • Contributed to multiple PowerShell technical books<br>
+                           • Technical writing and documentation<br><br>
+                           <strong>Professional Application:</strong> Expert-level PowerShell automation across all roles, driving efficiency and reliability improvements.`
+                },
+                'platform-engineering': {
+                    title: 'Platform Engineering Excellence',
+                    text: `<strong>Current Role:</strong> Principal DevOps Engineer specializing in mission-critical platforms<br><br>
+                           <strong>Platform Scope:</strong><br>
+                           • Processing 1M+ jobs monthly<br>
+                           • Managing 2,500+ agent infrastructure<br>
+                           • Zero-downtime upgrade implementations<br>
+                           • Enterprise-scale reliability and performance<br><br>
+                           <strong>Key Platforms:</strong><br>
+                           • IBM Workload Scheduler<br>
+                           • Container orchestration platforms<br>
+                           • Cloud-native application platforms<br>
+                           • Automation and integration platforms`
+                },
+                'team-leadership': {
+                    title: 'Team Leadership & Mentorship',
+                    text: `<strong>Leadership Experience:</strong> Platform Manager leading cross-functional teams<br><br>
+                           <strong>Responsibilities:</strong><br>
+                           • Led orchestration platform team<br>
+                           • Mentored emerging talent across engineering teams<br>
+                           • Championed DevOps initiatives organization-wide<br>
+                           • Coordinated international deployments and operations<br><br>
+                           <strong>Community Leadership:</strong><br>
+                           • RTPSUG leader building PowerShell community<br>
+                           • Conference speaking and knowledge sharing<br>
+                           • "Building staircases, not pulling up ladders" philosophy`
+                }
+            };
+            
+            title.textContent = skills[skill].title;
+            text.innerHTML = skills[skill].text;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Community page functions
+        function openRTPSUGPage() {
+            // For now, we'll ask for the actual links
+            alert('Please provide the RTPSUG links (meetup, youtube, rtpsug page) so I can create the dedicated page.');
+        }
+
+        function openConferencePage() {
+            alert('Please provide the conference video links so I can create the speaking page.');
+        }
+
+        function openBooksPage() {
+            alert('Please provide the LeanPub book links so I can create the books page.');
+        }
+
+        // Download resume function
+        function downloadResume() {
+            alert('Please provide the resume file URL for download functionality.');
+        }
+
+        // Theme changing
+        function changeTheme(theme) {
+            const root = document.documentElement;
+            switch(theme) {
+                case 'blue':
+                    root.style.setProperty('--glass-accent', '#3b82f6');
+                    root.style.setProperty('--glass-accent-light', '#60a5fa');
+                    root.style.setProperty('--glass-accent-dark', '#1d4ed8');
+                    break;
+                case 'purple':
+                    root.style.setProperty('--glass-accent', '#8b5cf6');
+                    root.style.setProperty('--glass-accent-light', '#a78bfa');
+                    root.style.setProperty('--glass-accent-dark', '#7c3aed');
+                    break;
+                case 'green':
+                    root.style.setProperty('--glass-accent', '#10b981');
+                    root.style.setProperty('--glass-accent-light', '#34d399');
+                    root.style.setProperty('--glass-accent-dark', '#059669');
+                    break;
+                case 'orange':
+                    root.style.setProperty('--glass-accent', '#f59e0b');
+                    root.style.setProperty('--glass-accent-light', '#fbbf24');
+                    root.style.setProperty('--glass-accent-dark', '#d97706');
+                    break;
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.glass-card, .skill-card, .resume-item').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
