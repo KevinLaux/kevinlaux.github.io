@@ -10,18 +10,19 @@
     <style>
         :root {
             /* Default Glass Theme - White */
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --glass-shadow: rgba(0, 0, 0, 0.1);
-            --glass-text: #ffffff;
-            --glass-text-secondary: rgba(255, 255, 255, 0.75);
-            --glass-accent: #ffffff;
-            --glass-accent-light: #f8fafc;
-            --glass-accent-dark: #e2e8f0;
-            --glass-success: #10b981;
-            --glass-warning: #f59e0b;
-            --glass-bg-card: rgba(255, 255, 255, 0.05);
-            --glass-bg-hover: rgba(255, 255, 255, 0.12);
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(0, 0, 0, 0.15);
+            --glass-shadow: rgba(0, 0, 0, 0.15);
+            --glass-text: #1a1a1a;
+            --glass-text-secondary: #4a4a4a;
+            --glass-accent: #475569;
+            --glass-accent-light: #64748b;
+            --glass-accent-dark: #334155;
+            --glass-accent-rgb: 71, 85, 105;
+            --glass-success: #059669;
+            --glass-warning: #d97706;
+            --glass-bg-card: rgba(255, 255, 255, 0.35);
+            --glass-bg-hover: rgba(255, 255, 255, 0.45);
             --font-system: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-mono: 'SF Mono', 'Monaco', 'Menlo', monospace;
         }
@@ -69,9 +70,12 @@
         /* Glass Theme - Grey */
         body.glass-grey {
             background: linear-gradient(135deg, #6b7280 0%, #4b5563 25%, #374151 50%, #1f2937 75%, #111827 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 18s ease infinite;
             --glass-accent: #9ca3af;
             --glass-accent-light: #d1d5db;
             --glass-accent-dark: #6b7280;
+            --glass-accent-rgb: 156, 163, 175;
         }
 
         body.glass-grey::before {
@@ -84,9 +88,12 @@
         /* Glass Theme - Blue */
         body.glass-blue {
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 25%, #1d4ed8 50%, #1e40af 75%, #1e3a8a 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 16s ease infinite;
             --glass-accent: #60a5fa;
             --glass-accent-light: #93c5fd;
             --glass-accent-dark: #2563eb;
+            --glass-accent-rgb: 96, 165, 250;
         }
 
         body.glass-blue::before {
@@ -99,9 +106,12 @@
         /* Glass Theme - Green */
         body.glass-green {
             background: linear-gradient(135deg, #22c55e 0%, #16a34a 25%, #15803d 50%, #166534 75%, #14532d 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 17s ease infinite;
             --glass-accent: #4ade80;
             --glass-accent-light: #86efac;
             --glass-accent-dark: #16a34a;
+            --glass-accent-rgb: 74, 222, 128;
         }
 
         body.glass-green::before {
@@ -114,9 +124,12 @@
         /* Glass Theme - Red */
         body.glass-red {
             background: linear-gradient(135deg, #ef4444 0%, #dc2626 25%, #b91c1c 50%, #991b1b 75%, #7f1d1d 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 19s ease infinite;
             --glass-accent: #f87171;
             --glass-accent-light: #fca5a5;
             --glass-accent-dark: #dc2626;
+            --glass-accent-rgb: 248, 113, 113;
         }
 
         body.glass-red::before {
@@ -755,7 +768,7 @@
                         <div class="dropdown">
                             <a href="#metrics" class="dropdown-item">Impact Metrics</a>
                             <a href="#timeline" class="dropdown-item">Career Timeline</a>
-                            <a href="#resume" class="dropdown-item">Full Resume</a>
+                            <a href="#timeline" class="dropdown-item">Full Resume</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -812,7 +825,7 @@
                 <a href="#metrics" class="glass-button glass-button-primary">
                     Explore Achievements
                 </a>
-                <a href="#resume" class="glass-button glass-button-secondary">
+                <a href="#timeline" class="glass-button glass-button-secondary">
                     View Resume
                 </a>
                 <a href="#contact" class="glass-button glass-button-secondary">
