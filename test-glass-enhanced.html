@@ -825,9 +825,13 @@
                         <a href="#contact" class="nav-link">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Themes</a>
+                        <a href="#" class="nav-link">Colors</a>
                         <div class="dropdown">
                             <div class="theme-color-grid">
+                                <div class="theme-color-button" 
+                                     style="background: linear-gradient(135deg, #f8fafc, #cbd5e1);" 
+                                     onclick="setGlassColor('white')" 
+                                     title="Pure White"></div>
                                 <div class="theme-color-button" 
                                      style="background: linear-gradient(135deg, #0ea5e9, #e0f2fe);" 
                                      onclick="setGlassColor('blue')" 
@@ -836,10 +840,6 @@
                                      style="background: linear-gradient(135deg, #f97316, #fef3c7);" 
                                      onclick="setGlassColor('orange')" 
                                      title="Sunset Orange"></div>
-                                <div class="theme-color-button" 
-                                     style="background: linear-gradient(135deg, #f8fafc, #cbd5e1);" 
-                                     onclick="setGlassColor('white')" 
-                                     title="Pure White"></div>
                                 <div class="theme-color-button" 
                                      style="background: linear-gradient(135deg, #64748b, #f1f5f9);" 
                                      onclick="setGlassColor('grey')" 
@@ -1377,9 +1377,9 @@
             
             // Find and activate the correct button based on the color
             const colorMap = {
-                'blue': 0,
-                'orange': 1, 
-                'white': 2,
+                'white': 0,
+                'blue': 1,
+                'orange': 2, 
                 'grey': 3,
                 'black': 4
             };
@@ -1416,7 +1416,6 @@
                 header.offsetHeight; // Trigger reflow
                 header.style.display = '';
             }
-        }
         }
 
         function toggleTheme() {
