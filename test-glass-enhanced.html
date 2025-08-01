@@ -68,28 +68,104 @@
             backdrop-filter: blur(2px);
         }
 
-        /* Glass Theme - Purple */
-        body.glass-purple {
-            background: linear-gradient(135deg, #a855f7 0%, #c084fc 25%, #d8b4fe 50%, #e9d5ff 75%, #f3e8ff 100%);
+        /* Glass Theme - Orange */
+        body.glass-orange {
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 25%, #fbbf24 50%, #fde047 75%, #fef3c7 100%);
             background-size: 400% 400%;
-            animation: gradientMove 18s ease infinite;
+            animation: gradientMove 20s ease infinite;
             --glass-bg: rgba(255, 255, 255, 0.08);
             --glass-border: rgba(255, 255, 255, 0.25);
             --glass-bg-card: rgba(255, 255, 255, 0.12);
             --glass-bg-hover: rgba(255, 255, 255, 0.18);
             --glass-text: #ffffff;
             --glass-text-secondary: rgba(255, 255, 255, 0.8);
-            --glass-accent: #c084fc;
-            --glass-accent-light: #d8b4fe;
-            --glass-accent-dark: #a855f7;
-            --glass-accent-rgb: 192, 132, 252;
+            --glass-accent: #fb923c;
+            --glass-accent-light: #fbbf24;
+            --glass-accent-dark: #f97316;
+            --glass-accent-rgb: 251, 146, 60;
         }
 
-        body.glass-purple::before {
+        body.glass-orange::before {
             background: 
-                radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.2) 0%, transparent 60%),
-                radial-gradient(circle at 80% 20%, rgba(192, 132, 252, 0.3) 0%, transparent 60%),
-                radial-gradient(circle at 40% 40%, rgba(216, 180, 254, 0.2) 0%, transparent 60%);
+                radial-gradient(circle at 20% 80%, rgba(249, 115, 22, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(251, 146, 60, 0.3) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(251, 191, 36, 0.2) 0%, transparent 60%);
+            backdrop-filter: blur(2px);
+        }
+
+        /* Glass Theme - White */
+        body.glass-white {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 25%, #e2e8f0 50%, #cbd5e1 75%, #94a3b8 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --glass-bg-card: rgba(255, 255, 255, 0.2);
+            --glass-bg-hover: rgba(255, 255, 255, 0.3);
+            --glass-text: #1a1a1a;
+            --glass-text-secondary: rgba(0, 0, 0, 0.7);
+            --glass-accent: #64748b;
+            --glass-accent-light: #94a3b8;
+            --glass-accent-dark: #475569;
+            --glass-accent-rgb: 100, 116, 139;
+            --glass-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body.glass-white::before {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(100, 116, 139, 0.1) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(148, 163, 184, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(71, 85, 105, 0.05) 0%, transparent 60%);
+            backdrop-filter: blur(1px);
+        }
+
+        /* Glass Theme - Grey */
+        body.glass-grey {
+            background: linear-gradient(135deg, #64748b 0%, #94a3b8 25%, #cbd5e1 50%, #e2e8f0 75%, #f1f5f9 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 18s ease infinite;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-bg-card: rgba(255, 255, 255, 0.15);
+            --glass-bg-hover: rgba(255, 255, 255, 0.25);
+            --glass-text: #ffffff;
+            --glass-text-secondary: rgba(255, 255, 255, 0.8);
+            --glass-accent: #94a3b8;
+            --glass-accent-light: #cbd5e1;
+            --glass-accent-dark: #64748b;
+            --glass-accent-rgb: 148, 163, 184;
+        }
+
+        body.glass-grey::before {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(100, 116, 139, 0.3) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(148, 163, 184, 0.4) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(203, 213, 225, 0.2) 0%, transparent 60%);
+            backdrop-filter: blur(2px);
+        }
+
+        /* Glass Theme - Black */
+        body.glass-black {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 25%, #475569 50%, #64748b 75%, #94a3b8 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 22s ease infinite;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-bg-card: rgba(255, 255, 255, 0.1);
+            --glass-bg-hover: rgba(255, 255, 255, 0.15);
+            --glass-text: #ffffff;
+            --glass-text-secondary: rgba(255, 255, 255, 0.8);
+            --glass-accent: #64748b;
+            --glass-accent-light: #94a3b8;
+            --glass-accent-dark: #475569;
+            --glass-accent-rgb: 100, 116, 139;
+        }
+
+        body.glass-black::before {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(30, 41, 59, 0.4) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(51, 65, 85, 0.5) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(71, 85, 105, 0.3) 0%, transparent 60%);
             backdrop-filter: blur(2px);
         }
 
@@ -116,31 +192,6 @@
                 radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.5) 0%, transparent 60%),
                 radial-gradient(circle at 40% 40%, rgba(29, 78, 216, 0.3) 0%, transparent 60%);
             backdrop-filter: blur(1px);
-        }
-
-        /* Glass Theme - Green */
-        body.glass-green {
-            background: linear-gradient(135deg, #10b981 0%, #34d399 25%, #6ee7b7 50%, #a7f3d0 75%, #d1fae5 100%);
-            background-size: 400% 400%;
-            animation: gradientMove 17s ease infinite;
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.25);
-            --glass-bg-card: rgba(255, 255, 255, 0.12);
-            --glass-bg-hover: rgba(255, 255, 255, 0.18);
-            --glass-text: #ffffff;
-            --glass-text-secondary: rgba(255, 255, 255, 0.8);
-            --glass-accent: #34d399;
-            --glass-accent-light: #6ee7b7;
-            --glass-accent-dark: #10b981;
-            --glass-accent-rgb: 52, 211, 153;
-        }
-
-        body.glass-green::before {
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.2) 0%, transparent 60%),
-                radial-gradient(circle at 80% 20%, rgba(52, 211, 153, 0.3) 0%, transparent 60%),
-                radial-gradient(circle at 40% 40%, rgba(110, 231, 183, 0.2) 0%, transparent 60%);
-            backdrop-filter: blur(2px);
         }
 
         /* Glass Theme - Coral */
@@ -302,6 +353,34 @@
         .dropdown-item:hover {
             background: var(--glass-bg-hover);
             color: var(--glass-text);
+        }
+
+        .theme-color-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            padding: 0.5rem;
+        }
+
+        .theme-color-button {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid var(--glass-border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .theme-color-button:hover {
+            transform: scale(1.1);
+            border-color: var(--glass-accent);
+            box-shadow: 0 4px 12px rgba(var(--glass-accent-rgb), 0.3);
+        }
+
+        .theme-color-button.active {
+            border-color: var(--glass-accent);
+            box-shadow: 0 0 0 2px rgba(var(--glass-accent-rgb), 0.2);
         }
 
         .theme-selector {
@@ -748,11 +827,28 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">Themes</a>
                         <div class="dropdown">
-                            <a href="#" class="dropdown-item" onclick="setGlassColor('blue')">Ocean Blue</a>
-                            <a href="#" class="dropdown-item" onclick="setGlassColor('purple')">Cosmic Purple</a>
-                            <a href="#" class="dropdown-item" onclick="setGlassColor('green')">Emerald Green</a>
-                            <a href="#" class="dropdown-item" onclick="setGlassColor('red')">Coral Pink</a>
-                            <a href="#" class="dropdown-item" onclick="setGlassColor('sunset')">Sunset Orange</a>
+                            <div class="theme-color-grid">
+                                <div class="theme-color-button" 
+                                     style="background: linear-gradient(135deg, #0ea5e9, #e0f2fe);" 
+                                     onclick="setGlassColor('blue')" 
+                                     title="Ocean Blue"></div>
+                                <div class="theme-color-button" 
+                                     style="background: linear-gradient(135deg, #f97316, #fef3c7);" 
+                                     onclick="setGlassColor('orange')" 
+                                     title="Sunset Orange"></div>
+                                <div class="theme-color-button" 
+                                     style="background: linear-gradient(135deg, #f8fafc, #cbd5e1);" 
+                                     onclick="setGlassColor('white')" 
+                                     title="Pure White"></div>
+                                <div class="theme-color-button" 
+                                     style="background: linear-gradient(135deg, #64748b, #f1f5f9);" 
+                                     onclick="setGlassColor('grey')" 
+                                     title="Silver Grey"></div>
+                                <div class="theme-color-button" 
+                                     style="background: linear-gradient(135deg, #1e293b, #475569);" 
+                                     onclick="setGlassColor('black')" 
+                                     title="Space Black"></div>
+                            </div>
                         </div>
                     </li>
                 </ul>
@@ -1295,7 +1391,7 @@
             const body = document.body;
             
             // Remove all glass theme classes
-            body.classList.remove('glass-blue', 'glass-purple', 'glass-green', 'glass-red', 'glass-sunset');
+            body.classList.remove('glass-blue', 'glass-orange', 'glass-white', 'glass-grey', 'glass-black');
             
             // Add the selected glass color class
             body.classList.add(`glass-${color}`);
@@ -1303,8 +1399,33 @@
             // Store in localStorage
             localStorage.setItem('glass-color', color);
             
+            // Update active button state
+            updateActiveColorButton(color);
+            
             // Force repaint for header background
             forceBackgroundUpdate();
+        }
+
+        // Update active color button visual state
+        function updateActiveColorButton(activeColor) {
+            const buttons = document.querySelectorAll('.theme-color-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Find and activate the correct button based on the color
+            const colorMap = {
+                'blue': 0,
+                'orange': 1, 
+                'white': 2,
+                'grey': 3,
+                'black': 4
+            };
+            
+            const activeIndex = colorMap[activeColor];
+            if (activeIndex !== undefined && buttons[activeIndex]) {
+                buttons[activeIndex].classList.add('active');
+            }
         }
 
         // Initialize theme on page load
