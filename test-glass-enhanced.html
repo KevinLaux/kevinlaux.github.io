@@ -111,6 +111,24 @@
             --glass-shadow: rgba(0, 0, 0, 0.1);
         }
 
+        /* Fix modal for white theme */
+        body.glass-white .modal-content {
+            background: rgba(15, 23, 42, 0.95);
+            color: #ffffff;
+        }
+
+        body.glass-white .modal-title {
+            color: #ffffff;
+        }
+
+        body.glass-white .modal-text {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        body.glass-white .modal-close {
+            color: #ffffff;
+        }
+
         body.glass-white::before {
             background: 
                 radial-gradient(circle at 20% 80%, rgba(100, 116, 139, 0.1) 0%, transparent 60%),
@@ -1327,8 +1345,12 @@
             const text = document.getElementById('modal-text');
             
             title.textContent = 'Published Books & Technical Writing';
-            text.innerHTML = `<strong>Technical Publications:</strong><br><br>
-                             Contributing to technical books and publications in PowerShell and DevOps domains.<br><br>
+            text.innerHTML = `<strong>Published Technical Books:</strong><br><br>
+                             <strong>PowerShell Conference Book Volume 3</strong><br>
+                             • <a href="https://leanpub.com/psconfbook3" target="_blank" style="color: var(--glass-accent); text-decoration: none;">Available on LeanPub</a><br><br>
+                             
+                             <strong>Modern Automation with PowerShell</strong><br>
+                             • <a href="https://leanpub.com/modernautomationwithpowershell" target="_blank" style="color: var(--glass-accent); text-decoration: none;">Available on LeanPub</a><br><br>
                              
                              <strong>Areas of Expertise:</strong><br>
                              • PowerShell automation and scripting<br>
