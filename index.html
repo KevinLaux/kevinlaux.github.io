@@ -9,6 +9,8 @@
             'test-glass-enhanced-optimized.html',
             'test-glass-cyberpunk-optimized.html'
         ];
+        // Set session flag to prevent immediate switching and redirect to random theme
+        sessionStorage.setItem('themeChoice', 'initial');
         window.location.replace(themes[Math.floor(Math.random() * themes.length)]);
     </script>
 </head>

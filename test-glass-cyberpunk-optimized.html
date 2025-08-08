@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Kevin Laux - Principal DevOps Engineer & Community Leader</title>
+    <script>
+        // Random theme switching on refresh - 50% chance to switch themes
+        if (Math.random() < 0.5 && !sessionStorage.getItem('themeChoice')) {
+            sessionStorage.setItem('themeChoice', 'switched');
+            window.location.replace('test-glass-enhanced-optimized.html');
+        }
+    </script>
     <style>
         :root{--bg-primary:#0a0a0a;--bg-secondary:#1a1a1a;--bg-tertiary:#2a2a2a;--text-primary:#fff;--text-secondary:#a0a0a0;--text-muted:#666;--accent-green:#00ff88;--accent-blue:#00aaff;--accent-orange:#f80;--accent-red:#f05;--glass-bg:rgba(26,26,26,.8);--glass-border:rgba(0,255,136,.2);--shadow:rgba(0,255,136,.2)}
         *{margin:0;padding:0;box-sizing:border-box}
@@ -209,4 +216,6 @@
         const observerOptions={threshold:.1,rootMargin:'0px 0px -50px 0px'};
         const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('animate-in')})},observerOptions);
         document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.terminal-card, .timeline-content').forEach(el=>{observer.observe(el)})});
+        // Clear session storage after page loads to allow future random switches
+        setTimeout(()=>{sessionStorage.removeItem('themeChoice')},1000);
     </script></body></html>
