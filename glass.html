@@ -8,7 +8,7 @@
         // Random theme switching on refresh - 50% chance to switch themes
         if (Math.random() < 0.5 && !sessionStorage.getItem('themeChoice')) {
             sessionStorage.setItem('themeChoice', 'switched');
-            window.location.replace('test-glass-cyberpunk-optimized.html');
+            window.location.replace('cyberpunk.html');
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -430,7 +430,7 @@
         function setGlassColor(c){document.body.classList.remove('glass-blue','glass-orange','glass-white','glass-grey','glass-black');document.body.classList.add(`glass-${c}`);localStorage.setItem('glass-color',c);updateActiveColorButton(c)}
         function updateActiveColorButton(ac){const buttons=document.querySelectorAll('.theme-color-button');buttons.forEach(b=>b.classList.remove('active'));const cm={'white':0,'blue':1,'orange':2,'grey':3,'black':4};const ai=cm[ac];if(ai!==undefined&&buttons[ai])buttons[ai].classList.add('active')}
         function initializeTheme(){const sc=localStorage.getItem('glass-color')||'blue';setGlassColor(sc)}
-        function goToGlassResume(){const currentColor=localStorage.getItem('glass-color')||'blue';window.location.href=`resume-glass.html?color=${currentColor}`}
+        function goToGlassResume(){const currentColor=localStorage.getItem('glass-color')||'blue';window.location.href=`glass-resume.html?color=${currentColor}`}
         document.addEventListener('DOMContentLoaded',()=>{initializeTheme();document.querySelectorAll('.glass-card,.skill-card').forEach(el=>observer.observe(el))});
         // Clear session storage after page loads to allow future random switches
         setTimeout(()=>{sessionStorage.removeItem('themeChoice')},1000);
