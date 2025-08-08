@@ -6,9 +6,17 @@
     <title>Kevin Laux - Principal DevOps Engineer & Community Leader</title>
     <script>
         // Random theme switching on refresh - 50% chance to switch themes
-        if (Math.random() < 0.5 && !sessionStorage.getItem('themeChoice')) {
-            sessionStorage.setItem('themeChoice', 'switched');
+        // Clear any existing session flag first
+        if (sessionStorage.getItem('themeChoice') === 'initial') {
+            sessionStorage.removeItem('themeChoice');
+        }
+        // 50% chance to switch themes on refresh (unless just switched)
+        if (Math.random() < 0.5 && sessionStorage.getItem('themeChoice') !== 'just-switched') {
+            sessionStorage.setItem('themeChoice', 'just-switched');
             window.location.replace('glass.html');
+        } else {
+            // Clear the flag after a moment to allow future switches
+            setTimeout(() => sessionStorage.removeItem('themeChoice'), 100);
         }
     </script>
     <style>
@@ -216,6 +224,4 @@
         const observerOptions={threshold:.1,rootMargin:'0px 0px -50px 0px'};
         const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('animate-in')})},observerOptions);
         document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.terminal-card, .timeline-content').forEach(el=>{observer.observe(el)})});
-        // Clear session storage after page loads to allow future random switches
-        setTimeout(()=>{sessionStorage.removeItem('themeChoice')},1000);
     </script></body></html>
