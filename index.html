@@ -9,8 +9,8 @@
             'glass.html',
             'cyberpunk.html'
         ];
-        // Set session flag to prevent immediate switching and redirect to random theme
-        sessionStorage.setItem('themeChoice', 'initial');
+        // Set flag to prevent immediate switching after redirect and redirect to random theme
+        sessionStorage.setItem('justSwitched', 'true');
         window.location.replace(themes[Math.floor(Math.random() * themes.length)]);
     </script>
 </head>

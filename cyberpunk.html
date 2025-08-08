@@ -6,17 +6,13 @@
     <title>Kevin Laux - Principal DevOps Engineer & Community Leader</title>
     <script>
         // Random theme switching on refresh - 50% chance to switch themes
-        // Clear any existing session flag first
-        if (sessionStorage.getItem('themeChoice') === 'initial') {
-            sessionStorage.removeItem('themeChoice');
-        }
-        // 50% chance to switch themes on refresh (unless just switched)
-        if (Math.random() < 0.5 && sessionStorage.getItem('themeChoice') !== 'just-switched') {
-            sessionStorage.setItem('themeChoice', 'just-switched');
+        // Only prevent switching if we just switched (to avoid infinite loops)
+        const justSwitched = sessionStorage.getItem('justSwitched');
+        sessionStorage.removeItem('justSwitched'); // Clear the flag immediately
+        
+        if (!justSwitched && Math.random() < 0.5) {
+            sessionStorage.setItem('justSwitched', 'true');
             window.location.replace('glass.html');
-        } else {
-            // Clear the flag after a moment to allow future switches
-            setTimeout(() => sessionStorage.removeItem('themeChoice'), 100);
         }
     </script>
     <style>
